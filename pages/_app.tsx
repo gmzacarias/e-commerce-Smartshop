@@ -1,6 +1,17 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import type { AppProps } from "next/app"
+import {PrivateRoute} from "components/utils/private-routes"
+import { RecoilRoot } from 'recoil';
+import { Toaster } from "sonner"
+import "styles/base.css"
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+
+      <RecoilRoot>
+      <PrivateRoute>
+      <Toaster expand={true} richColors position="bottom-right" />
+      <Component {...pageProps} />
+      </PrivateRoute>
+      </RecoilRoot>
+  )
 }
