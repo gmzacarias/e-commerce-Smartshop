@@ -35,7 +35,8 @@ export const SearchIcon = styled(Search)`
     right: 34px;
 `
 const SearchInputHome = styled(Input)`
-    padding-right: 0;
+   padding:unset;
+   margin:5px 0; 
 `
 
 const FormInputs = styled(Input)`

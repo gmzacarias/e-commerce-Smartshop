@@ -13,8 +13,7 @@ const BodyLayout=styled.div`
 const MainContent = styled.main`
   flex: 1; /* Hace que el contenido principal ocupe el espacio restante */
   width: 100%;
-   /* Añade un relleno para separar el contenido del borde */
-  margin-top: auto; /* Empuja el pie de página hacia abajo */
+  height: fit-content;
 `
 
 export function Layout({ children }) {

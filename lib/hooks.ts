@@ -25,18 +25,6 @@ export function useProduct(id: string) {
 
 
 
-// Android.
-// Brand.
-// Camera.
-// Colour
-// Storage
-// FrontCamera.
-// Id
-// Model
-// Photo
-// Ram
-
-
 
 
 

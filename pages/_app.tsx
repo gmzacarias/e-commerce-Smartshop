@@ -8,10 +8,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
 
       <RecoilRoot>
-      <PrivateRoute>
+    
       <Toaster expand={true} richColors position="bottom-right" />
       <Component {...pageProps} />
-      </PrivateRoute>
+     
       </RecoilRoot>
   )
 }

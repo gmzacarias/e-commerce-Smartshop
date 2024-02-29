@@ -10,6 +10,7 @@ padding: 20px;
 display: flex;
 flex-direction: column;
 gap:20px;
+margin-top: 10px;
 `
 const ProductsContainer = styled.div`
     display: flex;

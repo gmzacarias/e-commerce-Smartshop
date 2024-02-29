@@ -248,7 +248,7 @@ export function NavBar() {
           </MenuItem>
           <MenuItem>
             <MenuItemLink onClick={setShowMenu}>
-              <Link href={isLogged ? "/cart": "/login" } className="links">
+              <Link href={isLogged ? "/cart" : "/login"} className="links">
                 <CartIcon />
                 <Paragraph>CARRITO</Paragraph>
               </Link>
@@ -266,9 +266,11 @@ export function NavBar() {
                     </Link>
                   </MenuItemLink>
                 </MenuItem>
-                <LogoutButton onClick={handleLogOut}>
-                  <Paragraph>CERRAR SESION</Paragraph>
-                </LogoutButton>
+                <ButtonsContainer>
+                  <LogoutButton onClick={handleLogOut}>
+                    <Paragraph>CERRAR SESION</Paragraph>
+                  </LogoutButton>
+                </ButtonsContainer>
               </>
             ) : (
               <>
@@ -280,7 +282,7 @@ export function NavBar() {
                     </Link>
                   </MenuItemLink>
                 </MenuItem>
-              <ButtonsContainer>
+                <ButtonsContainer>
                   <LoginButton onClick={handleLogin}>
                     <Paragraph>INGRESAR</Paragraph>
                   </LoginButton>
