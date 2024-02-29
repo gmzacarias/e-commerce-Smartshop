@@ -46,7 +46,10 @@ const ButtonPages = styled(Button)`
     }
 }
 `
-
+const Card = styled(Session)`
+width:100px;
+min-width: unset;;
+`
 const Primary = styled(ButtonPages)`
     color:var(--green);
 `
@@ -57,7 +60,7 @@ const Default = styled(ButtonPages)`
    background-color:var(--warning);
 `
 
-export function LoginButton({ onClick,type,children }:buttonProps) {
+export function LoginButton({ onClick, type, children }: buttonProps) {
     return (
         <Session type={type} onClick={onClick}>
             <LoginIcon></LoginIcon>
@@ -66,7 +69,7 @@ export function LoginButton({ onClick,type,children }:buttonProps) {
     )
 }
 
-export function LogoutButton({ onClick,type,children }:buttonProps) {
+export function LogoutButton({ onClick, type, children }: buttonProps) {
     return (
         <Session type={type} onClick={onClick} >
             <LogoutIcon />
@@ -75,11 +78,15 @@ export function LogoutButton({ onClick,type,children }:buttonProps) {
     )
 }
 
-export function DefaultButton({ onClick,type,children }:buttonProps) {
+export function DefaultButton({ onClick, type, children }: buttonProps) {
     return <Default type={type} onClick={onClick}>{children}</Default>
 }
 
 
-export function OutlinedButton(){
+export function OutlinedButton() {
 
+}
+
+export function CardButton({ onClick, type, children }: buttonProps) {
+    return <Card type={type} onClick={onClick}>{children}</Card>
 }

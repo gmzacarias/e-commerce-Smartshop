@@ -13,7 +13,7 @@ const ProductPage: NextPage = () => {
     return (
         <div>
             <Head>
-                <title>producto {id}</title>
+                <title>Detalle de producto</title>
                 <meta name="description" content="Descubre lo último en smartphones Android de las marcas líderes como Motorola, Xiaomi y Samsung en Smartshop." />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />

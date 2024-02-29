@@ -21,12 +21,14 @@ const ProductsContainer = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap:10px;
+    gap:20px;
     flex-wrap: wrap;
     padding-top:20px;
+    width: 70%;
 
     @media screen and (max-width:1000px) {
         &{
+            
           flex-direction:column;
         }   
     }

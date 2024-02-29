@@ -14,7 +14,7 @@ const SearchPage: NextPage = () => {
 
   return (<>
     <Head>
-      <title>{`Busqueda ${q}`}</title>
+      <title>{`Productos ${q}`}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
