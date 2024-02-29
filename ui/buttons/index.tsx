@@ -1,8 +1,13 @@
 import styled from "styled-components"
 import { LoginIcon, LogoutIcon } from "ui/icons"
 
+type buttonProps = {
+    children?: string | any,
+    type?: "button" | "reset" | "submit",
+    onClick?: (e) => void | any
+}
 
-export const Button = styled.button`
+const Button = styled.button`
   width:fit-content;
   min-width: 150px;
   height: 30px;
@@ -17,12 +22,9 @@ export const Button = styled.button`
   font-family:var(--font-family-Montserrat);
   font-size: 16px;
   cursor: pointer;
-
-
-  
   `
 
-export const Session = styled(Button)`
+const Session = styled(Button)`
     background-color:var(--grey-dark);
     color:var(--light);
 
@@ -31,7 +33,7 @@ export const Session = styled(Button)`
     }
 `
 
-export const ButtonPages = styled(Button)`
+const ButtonPages = styled(Button)`
         @media screen and (min-width:400px) {
     &{
         width: 250px;
@@ -43,41 +45,38 @@ export const ButtonPages = styled(Button)`
         width: 350px;
     }
 }
-    
 `
 
-export const Primary = styled(ButtonPages)`
+const Primary = styled(ButtonPages)`
     color:var(--green);
 `
-export const Secondary = styled(ButtonPages)`
+const Secondary = styled(ButtonPages)`
     color:var(--success);
 `
-export const Default = styled(ButtonPages)`
+const Default = styled(ButtonPages)`
    background-color:var(--warning);
 `
 
-
-
-export function LoginButton({ onClick, children }) {
+export function LoginButton({ onClick,type,children }:buttonProps) {
     return (
-        <Session onClick={onClick}>
+        <Session type={type} onClick={onClick}>
             <LoginIcon></LoginIcon>
             {children}
         </Session>
     )
 }
 
-export function LogoutButton({ onClick, children }) {
+export function LogoutButton({ onClick,type,children }:buttonProps) {
     return (
-        <Session onClick={onClick} >
+        <Session type={type} onClick={onClick} >
             <LogoutIcon />
             {children}
         </Session>
     )
 }
 
-export function DefaultButton({onClick,children}) {
-    return <Default onClick={onClick}>{children}</Default>
+export function DefaultButton({ onClick,type,children }:buttonProps) {
+    return <Default type={type} onClick={onClick}>{children}</Default>
 }
 
 

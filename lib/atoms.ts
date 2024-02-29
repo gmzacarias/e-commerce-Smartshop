@@ -11,17 +11,18 @@ export const appData = atom({
     default: {
         email: "",
         isLogged: false,
+        query: "",
     },
     effects_UNSTABLE: [persistAtom]
 })
 
-export const userData= atom({
-    key:"userData",
-    default:{
-        email:"",
-        userName:"",
-        address:"",
-        phoneNumber:0,
+export const userData = atom({
+    key: "userData",
+    default: {
+        email: "",
+        userName: "",
+        address: "",
+        phoneNumber: 0,
     },
     effects_UNSTABLE: [persistAtom]
 })
@@ -29,5 +30,5 @@ export const userData= atom({
 
 export const useAppData = () => useRecoilState(appData)
 export const useAppDataValue = () => useRecoilValue(appData)
-export const useUserData=()=>useRecoilState(userData)
+export const useUserData = () => useRecoilState(userData)
 

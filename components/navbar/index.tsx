@@ -1,18 +1,18 @@
 
 import router, { useRouter } from "next/router"
 import styled from "styled-components"
-import { useMe } from "lib/hooks"
+import { useMe, useSearch } from "lib/hooks"
 import { useAppData } from "lib/atoms"
 import { logoutToast } from "@/lib/sonner"
-import { UserIcon, CartIcon, SmartPhoneIcon, SearchIcon, LoginIcon } from "ui/icons"
+import { UserIcon, CartIcon, SmartPhoneIcon } from "ui/icons"
 import Link from 'next/link'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FaBattleNet, FaBars, FaTimes, } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { LogoutButton, LoginButton } from "@/ui/buttons"
 import { SearchInputNav } from "@/ui/inputs"
 import { deleteToken } from "@/lib/api"
-import { Paragraph } from "ui/texts"
+import { Paragraph } from "@/ui/typography"
 
 
 
@@ -191,17 +191,41 @@ export const MobileIcon = styled.div`
 export function NavBar() {
   const [data, setData] = useAppData()
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const { isLogged } = data
+  const { isLogged, query } = data
   // console.log("login", isLogged)
   const myData = useMe()
   const email = myData?.email
   const upperEmail = email ? email.toUpperCase() : null;
   const checkPath = useRouter()
   const checkPage = checkPath.pathname;
-  // console.log(checkPage)
+
+  useEffect(() => {
+    if (data) {
+      setData({
+        ...data,
+        query: "",
+      })
+    }
+  }, [])
+
+
+
 
   function setShowMenu() {
     setShowMobileMenu(!showMobileMenu)
+  }
+
+  async function handleSearch(e) {
+    e.preventDefault()
+    const querySearch = e.target.query.value
+    console.log("busqueda", querySearch)
+    setData({
+      ...data,
+      query: querySearch
+    })
+    // await useSearch(querySearch)
+    // router.push(`/search/${querySearch}`)
+    //toast sonner
   }
 
   function handleLogin() {
@@ -231,13 +255,13 @@ export function NavBar() {
           {showMobileMenu ? <FaTimes /> : <FaBars />}
         </MobileIcon>
         <Menu open={showMobileMenu}>
-          {checkPage === "/search" ? (
+          {/* {checkPage === "/search" ? (
             <SearchNavContainer>
-              <SearchInputNav type="search" placeholder="Que estas buscando?" />
+              <SearchInputNav type="search" placeholder="Que estas buscando?" value={query} onChange={handleSearch} />
             </SearchNavContainer>
           ) : (
             null
-          )}
+          )} */}
           <MenuItem>
             <MenuItemLink onClick={setShowMenu}>
               <Link href={"/products"} className="links">

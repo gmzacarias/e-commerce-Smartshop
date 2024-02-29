@@ -1,6 +1,5 @@
 import styled from "styled-components"
-import { SubTitle } from "ui/texts"
-
+import { SubTitle } from "@/ui/typography"
 
 const FeaturedProductsBody = styled.div`
 background-color:var(--red) ;
@@ -25,10 +24,9 @@ const ProductsContainer = styled.div`
           flex-direction:column;
         }   
     }
-
 `
 
-const Products = styled.div`
+const ProductCard = styled.div`
 background-color: #292728;
 min-width:330px;
 height: 380px;
@@ -40,9 +38,9 @@ export function FeaturedProducts() {
         <FeaturedProductsBody>
             <SubTitle>Productos destacados</SubTitle>
             <ProductsContainer>
-                <Products />
-                <Products />
-                <Products />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
             </ProductsContainer>
         </FeaturedProductsBody>
     )

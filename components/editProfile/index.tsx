@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import router from "next/router"
-import { SubTitle, Label, Small, Paragraph } from "ui/texts"
+import { SubTitle, Label, Small, Paragraph } from "@/ui/typography"
 import { InputDefault } from "ui/inputs"
 import { DefaultButton } from "ui/buttons"
 
@@ -20,20 +20,20 @@ gap:10px;
 
 export function EditProfile() {
 
-function handleSubmit(e){
-e.preventDefault()
+    function handleSubmit(e) {
+        e.preventDefault()
 
-}
-function handleEdit() {
-    //guardar datos modificados
-    router.push("/cart")
-}
+    }
+    function handleEdit() {
+        //guardar datos modificados
+        router.push("/cart")
+    }
 
-function handleCancel() {
-    router.push("/me")
-}
+    function handleCancel() {
+        router.push("/me")
+    }
 
-return (
+    return (
         <EditProfileBody>
             <FormContainer onSubmit={handleSubmit}>
                 <SubTitle>Perfil</SubTitle>

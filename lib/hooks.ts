@@ -23,7 +23,29 @@ export function useProduct(id: string) {
     return response
 }
 
+// export function useSearch(query:string) {
+ 
+//     console.log("query",query)
+//     const { data, error } = useSWR(`/search?q=${query}`, fetchApi as any)
+//     if (error) {
+//         return error
+//     }
+//     const response = data?.message
+//     console.log(response)
+//     return response
+// }
 
+export function useSearch(query:string,offset?:string,limit?:string) {
+ 
+    // console.log("query",query)
+    const { data, error } = useSWR(`/search?q=${query}&offset=${offset}&limit=${limit}`, fetchApi as any)
+    if (error) {
+        return error
+    }
+    const response = data?.message as any
+    // console.log(response)
+    return response
+}
 
 
 

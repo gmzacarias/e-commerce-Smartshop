@@ -17,10 +17,11 @@ const Cart = styled(CartSvg)`
      font-size:24px;
     
 `
+
 export const Search = styled(SearchSvg)`
      font-size:24px;
-   
 `
+
 const Login = styled(LoginSvg)`
      font-size:24px;
      color:var(--light);
@@ -29,10 +30,7 @@ const Login = styled(LoginSvg)`
  const Logout =styled(LogoutSvg)`
     font-size:24px;
      color:var(--light);
-
  `
-
-
 
 export function UserIcon() {
     return <User />
@@ -45,11 +43,6 @@ export function SmartPhoneIcon() {
 export function CartIcon() {
     return <Cart />
 }
-
-export function SearchIcon() {
-    return <Search />
-}
-
 
 export function LoginIcon() {
 return <Login/>

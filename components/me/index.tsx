@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import router from "next/router"
-import { SubTitle, Label, Small, Paragraph, ParagraphBold } from "ui/texts"
+import { SubTitle, Label, Small, Paragraph, ParagraphBold } from "@/ui/typography"
 import { InputDefault } from "ui/inputs"
 import { DefaultButton } from "ui/buttons"
-import { useMe} from "@/lib/hooks"
+import { useMe } from "@/lib/hooks"
 import { useUserData } from "@/lib/atoms"
 import { useEffect } from "react"
 
@@ -37,7 +37,7 @@ export function Me() {
         }
     }, [data])
 
-    console.log("datita",userData)
+    console.log("datita", userData)
 
     function handleEdit() {
         router.push("/me/edit")
