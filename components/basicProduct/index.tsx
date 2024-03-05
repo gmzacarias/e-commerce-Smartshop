@@ -5,7 +5,8 @@ import router from "next/router"
 import { SearchInputIndex } from "ui/inputs"
 import { DefaultButton } from "ui/buttons"
 import { useEffect, useState } from "react"
-import {Paragraph,SectionTitle} from "ui/typography"
+import { Paragraph, SectionTitle, Small } from "ui/typography"
+import { Pagination } from "components/pagination"
 
 const BasicProductsBody = styled.div`
 display:flex;
@@ -14,8 +15,12 @@ justify-content: center;
 align-items: center;
 height: fit-content;
 padding: 20px;
-
+gap:5px;
 `
+const PaginationContainer = styled.div`
+    padding: 10px;
+`
+
 const ProductsContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -28,7 +33,6 @@ const ProductsContainer = styled.div`
 
     @media screen and (max-width:1000px) {
         &{
-            
           flex-direction:column;
         }   
     }
@@ -38,15 +42,18 @@ export function BasicProduct({ query, offset, limit }) {
     const [search, setSearch] = useState('');
     const data = useSearch(query, offset, limit)
     console.log("busqueda", data)
-    const pagination = data?.pagination
 
+    const totalResults = data?.pagination.totalResults as any
+    const totalPages = Math.ceil(totalResults / 10)
+    console.log(totalResults)
     const results = data?.results as any
+    
 
     useEffect(() => {
         if (query) {
             setSearch(query)
         }
-    }, [])
+    }, [query])
 
 
     function handleChange(e) {
@@ -56,35 +63,35 @@ export function BasicProduct({ query, offset, limit }) {
     function handleSearch(e) {
         e.preventDefault()
         const querySearch = search
-        // console.log(querySearch)
-        router.push(`/search?q=${querySearch}&offset=${pagination.offset}&limit=${pagination.limit}`)
+        router.push(`/search?q=${querySearch}&offset=${offset}&limit=${limit}`)
     }
 
 
-    // console.log("productos", data.results, "pagination", data.pagination)
+    function handlePageChange(newOffset) {
+        router.push(`/search?q=${search}&offset=${newOffset}&limit=${limit}`)
+    }
 
     return (
         <BasicProductsBody>
-              <SectionTitle>Encontra los mejores celulares del mercado</SectionTitle>
+            <SectionTitle>Encontra los mejores celulares del mercado</SectionTitle>
             < SearchInputIndex type="search" placeholder="Que estas buscando?" name="query" value={search} onChange={handleChange} />
             <DefaultButton onClick={handleSearch}>
                 <Paragraph>BUSCAR</Paragraph>
             </DefaultButton>
-            {/* <h4>pagination
-                <p>  results:{pagination.totalResults}</p>
-                <p>   offset:{pagination.offset}</p>
-                <p> limit:{pagination.limit}</p>
-            </h4> */}
-
-
+            <PaginationContainer>
+                <Pagination totalPages={totalPages} offset={offset} limit={limit} onPageChange={(newOffset) => handlePageChange(newOffset)} />
+            </PaginationContainer>
             <ProductsContainer>
                 {results && results.map(item =>
                     <BasicProductCard key={item.id} id={item.id} brand={item.brand} model={item.model} photo={item.photo} price={item.price}></BasicProductCard>
                 )
                 }
             </ProductsContainer>
-
         </BasicProductsBody>
+
+        // <div>
+        //     hola
+        // </div>
     )
 
 }

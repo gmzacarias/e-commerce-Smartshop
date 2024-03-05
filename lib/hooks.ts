@@ -29,7 +29,7 @@ export function useSearch(query:string,offset?:string,limit?:string) {
     if (error) {
         return error
     }
-    const response = data?.message as any
+    const response = data?.message as object
     // console.log(response)
     return response
 }

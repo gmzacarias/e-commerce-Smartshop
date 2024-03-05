@@ -20,8 +20,9 @@ export const NavBackground = styled.div`
   background-color: var(--light);
   border-bottom:solid 1px var(--grey);
   width: 100%;
-  height: 70px;
+  height: fit-content;
   padding:10px 20px;
+  margin-bottom: 10px;
 `;
 
 export const NavContainer = styled.div`
