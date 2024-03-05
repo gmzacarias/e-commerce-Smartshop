@@ -31,4 +31,4 @@ export const userData = atom({
 export const useAppData = () => useRecoilState(appData)
 export const useAppDataValue = () => useRecoilValue(appData)
 export const useUserData = () => useRecoilState(userData)
-
+export const useUserDataValue = () => useRecoilValue(userData)

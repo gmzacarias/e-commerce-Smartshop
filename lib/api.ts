@@ -73,6 +73,27 @@ export async function getToken(email: string, code: string) {
     }
 }
 
+export async function editProfile(userName?: string, email?: string, address?: string, phoneNumber?: number) {
+    console.log("editar", email, userName, address, phoneNumber)
+    try {
+        const data = await fetchApi("/me", {
+            method: "PATCH",
+            body: {
+                userName,
+                email,
+                address,
+                phoneNumber:phoneNumber,
+            },
+        })
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error("GetToken Error", error)
+    }
+}
+
+
+
 export function saveToken(token: string) {
     return localStorage.setItem("auth_token", token)
 }

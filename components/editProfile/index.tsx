@@ -3,30 +3,73 @@ import router from "next/router"
 import { SubTitle, Label, Small, Paragraph } from "@/ui/typography"
 import { InputDefault } from "ui/inputs"
 import { DefaultButton } from "ui/buttons"
+import { useUserDataValue } from "lib/atoms"
+import { useState, useEffect } from "react"
+import { editProfile } from "lib/api"
+import { emptyInputToast } from "@/lib/sonner"
 
 const EditProfileBody = styled.div`
     display:flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding:30px;
 `
 const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-gap:10px;
+
 `
 
 export function EditProfile() {
+    const [value, setValue] = useState({
+        email: "",
+        userName: "",
+        address: "",
+        phoneNumber: "",
+    })
+    const { userName, email, address, phoneNumber } = useUserDataValue()
 
-    function handleSubmit(e) {
-        e.preventDefault()
+    useEffect(() => {
+        setValue({
+            email,
+            userName,
+            address,
+            phoneNumber,
+        });
+    }, [email, userName, address, phoneNumber]);
 
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setValue((data) =>({
+            ...data,
+            [name]: value,
+        })
+        );
     }
-    function handleEdit() {
-        //guardar datos modificados
-        router.push("/cart")
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+        if (!value.email || !value.userName || !value.address || !value.phoneNumber) {
+            // Handle the case where any input is empty (you can show an error message or perform any other action)
+            console.log("input vacio")
+            emptyInputToast()
+            return
+        }
+
+        const parsePhoneNumber = parseInt(value.phoneNumber)
+        await editProfile(value.userName, value.email, value.address, parsePhoneNumber)
+        //sonner
+        router.push("/me")
+    }
+
+    function handleReset() {
+        setValue({
+            email: "",
+            userName: "",
+            address: "",
+            phoneNumber: "",
+        });
     }
 
     function handleCancel() {
@@ -35,30 +78,32 @@ export function EditProfile() {
 
     return (
         <EditProfileBody>
+            <SubTitle>Perfil</SubTitle>
             <FormContainer onSubmit={handleSubmit}>
-                <SubTitle>Perfil</SubTitle>
-
                 <Label>
                     <Small>Email</Small>
-                    <InputDefault type="email" placeholder="ingresa tu email" />
+                    <InputDefault type="email" name="email" placeholder="ingresa tu email" value={value.email} onChange={handleChange} />
                 </Label>
                 <Label>
                     <Small>Nombre Completo</Small>
-                    <InputDefault type="text" placeholder="ingresa tu nombre completo" />
+                    <InputDefault type="text" name="userName" placeholder="ingresa tu nombre completo" value={value.userName} onChange={handleChange} />
                 </Label>
                 <Label>
                     <Small>Direccion</Small>
-                    <InputDefault type="text" placeholder="ingresa tu direccion" />
+                    <InputDefault type="text" name="address" placeholder="ingresa tu direccion" value={value.address} onChange={handleChange} />
                 </Label>
                 <Label>
                     <Small>Celular</Small>
-                    <InputDefault type="number" placeholder="ingresa tu numero" />
+                    <InputDefault type="number" name="phoneNumber" placeholder="ingresa tu numero" value={value.phoneNumber} onChange={handleChange} />
                 </Label>
-                <DefaultButton onClick={handleEdit}>
-                    <Paragraph>Guardar</Paragraph>
+                <DefaultButton type="submit">
+                    <Paragraph>GUARDAR</Paragraph>
                 </DefaultButton>
-                <DefaultButton onClick={handleCancel}>
-                    <Paragraph>Cancelar</Paragraph>
+                <DefaultButton type="reset" onClick={handleReset}>
+                    <Paragraph>RESETEAR</Paragraph>
+                </DefaultButton>
+                <DefaultButton type="button" onClick={handleCancel}>
+                    <Paragraph>CANCELAR</Paragraph>
                 </DefaultButton>
             </FormContainer>
         </EditProfileBody>

@@ -44,12 +44,13 @@ const SearchIcon = styled(Search)`
 `
 const SearchInputHome = styled(Input)`
    padding:unset;
-   margin:5px 0; 
+   margin-top:5px;; 
 `
 
 const FormInputs = styled(Input)`
-     text-align: left;
-     padding: 0 5px;
+     padding:unset;
+    text-align: left;
+     margin-top:5px;
 `
 
 export function SearchInputNav({ type,name,placeholder,value,onChange }:inputProps) {

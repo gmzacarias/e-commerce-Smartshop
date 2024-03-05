@@ -11,3 +11,7 @@ export function loginToast() {
 export function logoutToast(){
     return toast.info("Se cerro la sesion")
 }
+
+export function emptyInputToast(){
+    return toast.warning("Debes completar todos los campos")
+}

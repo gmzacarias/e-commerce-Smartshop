@@ -58,6 +58,7 @@ const Secondary = styled(ButtonPages)`
 `
 const Default = styled(ButtonPages)`
    background-color:var(--warning);
+   margin-top: 10px;
 `
 
 export function LoginButton({ onClick, type, children }: buttonProps) {

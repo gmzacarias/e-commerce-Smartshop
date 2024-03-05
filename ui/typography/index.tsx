@@ -37,11 +37,11 @@ const LabelText = styled.label`
     text-align: left;
   display: flex;
   flex-direction: column;
-  gap:10px
 `
 
 const SmallText = styled.h5`
     font-size:12px;
+    margin-top: 5px;
 `
 
 
@@ -76,5 +76,5 @@ export function Small({ children }) {
 export function Label({ children }) {
     return <LabelText>
         {children}
-    </LabelText>
+    </LabelText >
 }
