@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic.css';
 
-export function Pagination({ totalPages, offset, limit, onPageChange }) {
+export function Pagination({ totalPages, limit, onPageChange }) {
     const [currentPage, setCurrentPage] = useState(1);
     
     function handlePageChange(page) {

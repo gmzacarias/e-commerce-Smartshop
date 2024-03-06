@@ -7,6 +7,8 @@ import { DefaultButton } from "ui/buttons"
 import { useEffect, useState } from "react"
 import { Paragraph, SectionTitle, Small } from "ui/typography"
 import { Pagination } from "components/pagination"
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const BasicProductsBody = styled.div`
 display:flex;
@@ -29,7 +31,7 @@ const ProductsContainer = styled.div`
     gap:20px;
     flex-wrap: wrap;
     padding-top:20px;
-    width: 70%;
+    
 
     @media screen and (max-width:1000px) {
         &{
@@ -79,12 +81,19 @@ export function BasicProduct({ query, offset, limit }) {
                 <Paragraph>BUSCAR</Paragraph>
             </DefaultButton>
             <PaginationContainer>
-                <Pagination totalPages={totalPages} offset={offset} limit={limit} onPageChange={(newOffset) => handlePageChange(newOffset)} />
+                <Pagination totalPages={totalPages} limit={limit} onPageChange={(newOffset) => handlePageChange(newOffset)} />
             </PaginationContainer>
             <ProductsContainer>
-                {results && results.map(item =>
-                    <BasicProductCard key={item.id} id={item.id} brand={item.brand} model={item.model} photo={item.photo} price={item.price}></BasicProductCard>
-                )
+                {results ?(
+                    results.map(item =>
+                        <BasicProductCard key={item.id} id={item.id} brand={item.brand} model={item.model} photo={item.photo} price={item.price}></BasicProductCard>
+                    )
+
+                ):(
+                    Array.from({ length: 5 }).map((_, index) => (
+                        <Skeleton key={index} height={318} width={220} />
+                      ))
+                ) 
                 }
             </ProductsContainer>
         </BasicProductsBody>

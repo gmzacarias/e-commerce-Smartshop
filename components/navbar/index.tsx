@@ -198,7 +198,7 @@ export function NavBar() {
   const email = myData?.email
   const upperEmail = email ? email.toUpperCase() : null;
   const checkPath = useRouter()
-  const checkPage = checkPath.pathname;
+
 
   useEffect(() => {
     if (data) {
@@ -256,21 +256,6 @@ export function NavBar() {
           {showMobileMenu ? <FaTimes /> : <FaBars />}
         </MobileIcon>
         <Menu open={showMobileMenu}>
-          {/* {checkPage === "/search" ? (
-            <SearchNavContainer>
-              <SearchInputNav type="search" placeholder="Que estas buscando?" value={query} onChange={handleSearch} />
-            </SearchNavContainer>
-          ) : (
-            null
-          )} */}
-          <MenuItem>
-            <MenuItemLink onClick={setShowMenu}>
-              <Link href={"/products"} className="links">
-                <SmartPhoneIcon />
-                <Paragraph>PRODUCTOS</Paragraph>
-              </Link>
-            </MenuItemLink>
-          </MenuItem>
           <MenuItem>
             <MenuItemLink onClick={setShowMenu}>
               <Link href={isLogged ? "/cart" : "/login"} className="links">

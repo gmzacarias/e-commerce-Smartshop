@@ -9,7 +9,7 @@ import { useProduct } from "@/lib/hooks";
 const ProductPage: NextPage = () => {
     const router = useRouter();
     const id = router.query.id
-
+console.log("id",id)
     return (
         <div>
             <Head>

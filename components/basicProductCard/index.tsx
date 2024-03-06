@@ -31,10 +31,13 @@ gap: 5px;
 `
 
 export function BasicProductCard({ key, id, brand, model, photo, price }) {
- function handleRedirect(){
-    router.push(`/product/${id}`)
- }
- 
+
+
+    function handleRedirect() {
+        const productId = id
+        router.push(`/product/${productId}`)
+    }
+
     return (
         <BasicProductCardBody key={key} id={id}>
             <ImageCardProduct src={photo} alt={`${brand}${model}`} />

@@ -18,9 +18,8 @@ export function useProduct(id: string) {
     if (error) {
         return error
     }
-    const response = data?.message as any
-    console.log(response)
-    return response
+    const products = data?.message as any
+    return products
 }
 
 export function useSearch(query:string,offset?:string,limit?:string) {
@@ -29,7 +28,7 @@ export function useSearch(query:string,offset?:string,limit?:string) {
     if (error) {
         return error
     }
-    const response = data?.message as object
+    const response = data?.message as any
     // console.log(response)
     return response
 }
