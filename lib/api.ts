@@ -82,7 +82,7 @@ export async function editProfile(userName?: string, email?: string, address?: s
                 userName,
                 email,
                 address,
-                phoneNumber:phoneNumber,
+                phoneNumber: phoneNumber,
             },
         })
         console.log(data)
@@ -91,6 +91,50 @@ export async function editProfile(userName?: string, email?: string, address?: s
         console.error("GetToken Error", error)
     }
 }
+
+
+
+export async function addItemCart(productId: string) {
+    console.log("add cart", productId)
+    try {
+        const data = await fetchApi(`/me/cart?productId=${productId}`, {
+            method: "POST",
+        })
+        console.log(data)
+        return data
+
+    } catch (error) {
+        console.error("Error al agregar el producto al carrito", error)
+    }
+}
+
+export async function deleteItemCart(productId: string) {
+    console.log("add cart", productId)
+    try {
+        const data = await fetchApi(`/me/cart?productId=${productId}`, {
+            method: "DELETE",
+        })
+        console.log(data)
+        return data
+
+    } catch (error) {
+        console.error("Error al agregar el producto al carrito", error)
+    }
+}
+
+export async function resetCart() {
+    try {
+        const data = await fetchApi(`/me/cart`, {
+            method: "DELETE",
+        })
+        console.log(data)
+        return data
+
+    } catch (error) {
+        console.error("Error al agregar el producto al carrito", error)
+    }
+}
+
 
 
 

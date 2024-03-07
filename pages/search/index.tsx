@@ -7,21 +7,20 @@ import { useEffect } from "react"
 import Head from "next/head"
 
 const SearchPage: NextPage = () => {
-  const router = useRouter();
-  const { q, offset, limit } = router.query;
+  const router = useRouter()
+  const { q, offset, limit } = router.query
 
-
-
-  return (<>
-    <Head>
-      <title>{`Productos ${q}`}</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-    <Layout>
-      <BasicProduct query={q} offset={offset} limit={limit}></BasicProduct>
-    </Layout>
-  </>
+  return (
+    <>
+      <Head>
+        <title>{`Productos ${q}`}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Layout>
+        <BasicProduct query={q} offset={offset} limit={limit}></BasicProduct>
+      </Layout>
+    </>
   );
 };
 

@@ -1,8 +1,11 @@
 import styled from "styled-components"
 import { useProduct } from "lib/hooks"
 import { DetailedImageProduct } from "ui/images"
-import { ParagraphBold, SectionTitle, SubTitle, Title } from "@/ui/typography"
-
+import { ParagraphBold, SectionTitle, SubTitle, Title, Paragraph } from "@/ui/typography"
+import { DefaultButton } from "ui/buttons"
+import { useAppDataValue } from "lib/atoms"
+import { addItemCartToast, loginCartToast } from "@/lib/sonner"
+import { addItemCart } from "@/lib/api"
 
 const DetailedProductCardBody = styled.div`
 border-radius: 10px;
@@ -47,7 +50,22 @@ border-top: 2px solid var(--grey);
 
 
 
-export function DetailedProductCard({ photo, brand, model, android, colour, camera, frontCamera, storage, ram }) {
+export function DetailedProductCard({ id, photo, brand, model, android, colour, camera, frontCamera, storage, ram }) {
+    const { isLogged } = useAppDataValue()
+
+    async function handleCart() {
+        if (isLogged == false) {
+            console.log("check", isLogged)
+            loginCartToast()
+            return
+        }
+        const response = await addItemCart(id)
+        console.log("producto agregado", response)
+        addItemCartToast()
+        return response
+    }
+
+
 
     return (
         <DetailedProductCardBody>
@@ -65,6 +83,10 @@ export function DetailedProductCard({ photo, brand, model, android, colour, came
                     <ParagraphBold>Almacenamiento: {storage}</ParagraphBold>
                     <ParagraphBold>Memoria: {ram}</ParagraphBold>
                 </SpecificationContainer>
+                <DefaultButton type="button" onClick={handleCart}>
+                    <Paragraph>AGREGAR AL CARRITO</Paragraph>
+                </DefaultButton>
+
             </DetailedProductCardContainer>
         </DetailedProductCardBody>
     )

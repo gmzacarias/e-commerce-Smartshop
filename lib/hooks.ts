@@ -22,7 +22,7 @@ export function useProduct(id: string) {
     return products
 }
 
-export function useSearch(query:string,offset?:string,limit?:string) {
+export function useSearch(query: string, offset?: string, limit?: string) {
     // console.log("query",query)
     const { data, error } = useSWR(`/search?q=${query}&offset=${offset}&limit=${limit}`, fetchApi as any)
     if (error) {
@@ -31,6 +31,15 @@ export function useSearch(query:string,offset?:string,limit?:string) {
     const response = data?.message as any
     // console.log(response)
     return response
+}
+
+export function useCart() {
+    const { data, error } = useSWR("/me/cart", fetchApi as any)
+    if (error) {
+        return error
+    }
+    console.log("soy el carrito",data)
+    return data
 }
 
 

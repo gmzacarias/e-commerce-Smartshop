@@ -2,6 +2,7 @@ import { Login } from "components/login"
 import { Layout } from "components/layout";
 import { NextPage } from "next";
 import styled from "styled-components"
+import Head from "next/head"
 
 const LoginPageBody = styled.div`
     display: flex;
@@ -12,11 +13,19 @@ const LoginPageBody = styled.div`
 
 const LoginPage: NextPage = () => {
     return (
-        <Layout>
-            <LoginPageBody>
-                <Login />
-            </LoginPageBody>
-        </Layout>
+        <>
+            <Head>
+                <title>Iniciar sesion</title>
+                <meta name="description" content="Iniciar sesion en Smartshop" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Layout>
+                <LoginPageBody>
+                    <Login />
+                </LoginPageBody>
+            </Layout>
+        </>
     );
 };
 
