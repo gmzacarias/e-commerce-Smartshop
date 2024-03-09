@@ -61,6 +61,14 @@ const Default = styled(ButtonPages)`
    margin-top: 10px;
 `
 
+const Count =styled(Button)`
+    width:20px ;
+    height: 20px;
+    background-color: brown;
+    min-width: unset;
+    padding-bottom: 10px;
+`
+
 export function LoginButton({ onClick, type, children }: buttonProps) {
     return (
         <Session type={type} onClick={onClick}>
@@ -90,4 +98,8 @@ export function OutlinedButton() {
 
 export function CardButton({ onClick, type, children }: buttonProps) {
     return <Card type={type} onClick={onClick}>{children}</Card>
+}
+
+export function CountButton ({onClick,type,children}:buttonProps){
+    return <Count type={type} onClick={onClick}>{children}</Count>
 }

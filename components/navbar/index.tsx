@@ -13,6 +13,7 @@ import { LogoutButton, LoginButton } from "@/ui/buttons"
 import { SearchInputNav } from "@/ui/inputs"
 import { deleteToken } from "@/lib/api"
 import { Paragraph } from "@/ui/typography"
+import { useUserData } from "lib/atoms"
 
 
 
@@ -191,43 +192,19 @@ export const MobileIcon = styled.div`
 
 export function NavBar() {
   const [data, setData] = useAppData()
+  const [userData, setUserData] = useUserData()
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const { isLogged, query } = data
+  const { isLogged } = data
   // console.log("login", isLogged)
   const myData = useMe()
   const email = myData?.email
   const upperEmail = email ? email.toUpperCase() : null;
-  const checkPath = useRouter()
-
-
-  useEffect(() => {
-    if (data) {
-      setData({
-        ...data,
-        query: "",
-      })
-    }
-  }, [])
-
-
 
 
   function setShowMenu() {
     setShowMobileMenu(!showMobileMenu)
   }
 
-  async function handleSearch(e) {
-    e.preventDefault()
-    const querySearch = e.target.query.value
-    console.log("busqueda", querySearch)
-    setData({
-      ...data,
-      query: querySearch
-    })
-    // await useSearch(querySearch)
-    // router.push(`/search/${querySearch}`)
-    //toast sonner
-  }
 
   function handleLogin() {
     router.push("/login")
@@ -237,6 +214,13 @@ export function NavBar() {
     setData({
       ...data,
       isLogged: false
+    })
+    setUserData({
+      ...data,
+      email: "",
+      userName: "",
+      address: "",
+      phoneNumber: 0,
     })
     deleteToken()
     logoutToast()

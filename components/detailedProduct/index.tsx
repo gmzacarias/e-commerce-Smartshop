@@ -26,7 +26,7 @@ export function DetailedProduct({ productId }) {
             {isLoading ? (
                 <Skeleton></Skeleton>
             ) : (
-                    <DetailedProductCard id={productData.id} photo={productData.photo} brand={productData.brand} model={productData.model} android={productData.android} colour={productData.colour} camera={productData.camera} frontCamera={productData.frontCamera} storage={productData.storage} ram={productData.ram} />
+                    <DetailedProductCard id={productData.id} photo={productData.photo} price={productData.price} brand={productData.brand} model={productData.model} android={productData.android} colour={productData.colour} camera={productData.camera} frontCamera={productData.frontCamera} storage={productData.storage} ram={productData.ram} />
             )}
         </BasicProductsBody>
     )

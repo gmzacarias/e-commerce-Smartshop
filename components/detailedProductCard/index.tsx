@@ -50,7 +50,7 @@ border-top: 2px solid var(--grey);
 
 
 
-export function DetailedProductCard({ id, photo, brand, model, android, colour, camera, frontCamera, storage, ram }) {
+export function DetailedProductCard({ id, photo,price, brand, model, android, colour, camera, frontCamera, storage, ram }) {
     const { isLogged } = useAppDataValue()
 
     async function handleCart() {
@@ -65,7 +65,7 @@ export function DetailedProductCard({ id, photo, brand, model, android, colour, 
         return response
     }
 
-
+// agregar precio a la card
 
     return (
         <DetailedProductCardBody>

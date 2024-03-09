@@ -31,7 +31,7 @@ const ProductsContainer = styled.div`
     gap:20px;
     flex-wrap: wrap;
     padding-top:20px;
-    
+    width:60vw;
 
     @media screen and (max-width:1000px) {
         &{
