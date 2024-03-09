@@ -1,8 +1,7 @@
 
 import router, { useRouter } from "next/router"
 import styled from "styled-components"
-import { useMe, useSearch } from "lib/hooks"
-import { useAppData } from "lib/atoms"
+import { useMe } from "lib/hooks"
 import { logoutToast } from "@/lib/sonner"
 import { UserIcon, CartIcon, SmartPhoneIcon } from "ui/icons"
 import Link from 'next/link'
@@ -13,7 +12,7 @@ import { LogoutButton, LoginButton } from "@/ui/buttons"
 import { SearchInputNav } from "@/ui/inputs"
 import { deleteToken } from "@/lib/api"
 import { Paragraph } from "@/ui/typography"
-import { useUserData } from "lib/atoms"
+import { useSetUserData, useSetCart, useAppData, useSetProductsData } from "lib/atoms"
 
 
 
@@ -191,8 +190,11 @@ export const MobileIcon = styled.div`
 `;
 
 export function NavBar() {
+  const setUserData = useSetUserData()
+  const setCart = useSetCart()
+  const setProductCart = useSetProductsData()
   const [data, setData] = useAppData()
-  const [userData, setUserData] = useUserData()
+
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { isLogged } = data
   // console.log("login", isLogged)
@@ -211,19 +213,33 @@ export function NavBar() {
   }
 
   function handleLogOut() {
+    deleteToken()
+
     setData({
       ...data,
       isLogged: false,
       email: "",
     })
-    setUserData({
-      ...data,
+    setUserData((prevData) => ({
+      ...prevData,
       email: "",
       userName: "",
       address: "",
       phoneNumber: 0,
-    })
-    deleteToken()
+    }))
+
+    setProductCart((prevData) => ({
+      ...prevData,
+      id: "",
+      photo: "",
+      model: "",
+      brand: "",
+      colour: "",
+      price: "",
+      quantity: 0,
+    }))
+
+    setCart([])
     logoutToast()
   }
 
