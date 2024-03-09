@@ -59,9 +59,10 @@ export const addToCart = selector({
         if (existingProduct !== -1) {
             set(cartAtom, (prevCart) => {
                 const updatedCart = [...prevCart];
-               updatedCart[existingProduct].quantity += 1
-               console.log("update",updatedCart[existingProduct].quantity += 1) 
-               return updatedCart;
+                const dataProduct = updatedCart[existingProduct]
+                const rewriteDataProduct = { ...dataProduct, quantity: dataProduct.quantity + 1 };
+                console.log("update", rewriteDataProduct)
+                return rewriteDataProduct;
             });
         } else {
             const itemToAdd = { ...productsDataValue, ...newItem, quantity: 1 };
