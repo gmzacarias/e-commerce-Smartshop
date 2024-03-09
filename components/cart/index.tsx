@@ -1,8 +1,9 @@
 import { useCart } from "lib/hooks"
 import styled from "styled-components"
-import {SectionTitle} from "ui/typography"
+import { SectionTitle } from "ui/typography"
 import { ItemCartCard } from "components/itemCartCard"
-import {CartCount} from "components/cartCount"
+import { CartCount } from "components/cartCount"
+import { useCartValue } from "@/lib/atoms"
 
 const CartBody = styled.main`
 display:flex;
@@ -34,19 +35,20 @@ gap: 5px;
 
 export function Cart() {
     const dataCart = useCart() as any
-    console.log("carrito", dataCart)
-
+    const cart=useCartValue()
+    // console.log("carrito", dataCart)
+console.log("carrito",cart)
 
     return (
         <CartBody>
-<SectionTitle>Productos</SectionTitle>
-<ItemsContainer>
-{dataCart && dataCart.map(item=>
+            <SectionTitle>Productos</SectionTitle>
+            <ItemsContainer>
+                {/* {dataCart && dataCart.map(item=>
     <ItemCartCard key={item.id} id={item.id} model={item.model} photo={item.photo} brand={item.brand} colour={item.colour} price={item.price}/>
-    )}
+    )} */}
+                <p>hola soy la p</p>
 
-
-</ItemsContainer>
+            </ItemsContainer>
 
 
         </CartBody>

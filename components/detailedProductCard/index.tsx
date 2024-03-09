@@ -5,7 +5,8 @@ import { ParagraphBold, SectionTitle, SubTitle, Title, Paragraph } from "@/ui/ty
 import { DefaultButton } from "ui/buttons"
 import { useAppDataValue, useProductsData, addToCart, useSetToCart } from "lib/atoms"
 import { addItemCartToast, loginCartToast } from "@/lib/sonner"
-
+import { useState } from "react"
+import router from "next/router"
 
 const DetailedProductCardBody = styled.div`
 border-radius: 10px;
@@ -51,14 +52,15 @@ border-top: 2px solid var(--grey);
 
 export function DetailedProductCard({ id, photo, price, brand, model, android, colour, camera, frontCamera, storage, ram }) {
     const { isLogged } = useAppDataValue()
+    const [productAdded, setProductAdded] = useState(false);
     const [data, setData] = useProductsData()
     const setAddProduct = useSetToCart()
     async function handleCart() {
-        if (isLogged == false) {
-            console.log("check", isLogged)
-            loginCartToast()
-            return
-        }
+        // if (isLogged == false) {
+        //     console.log("check", isLogged)
+        //     loginCartToast()
+        //     return
+        // }
         setData({
             ...data,
             id: id,
@@ -69,12 +71,33 @@ export function DetailedProductCard({ id, photo, price, brand, model, android, c
             colour: colour
         })
 
-        const newItem = data
-        console.log("item", newItem)
+        const newItem = {
+            id: id,
+            photo: photo,
+            price: price,
+            model: model,
+            brand: brand,
+            colour: colour,
+            quantity: 1,
+        };
+
+        console.log("new", newItem)
         setAddProduct(newItem)
+        setProductAdded(true)
         addItemCartToast()
         return data
     }
+
+
+    function handleGoToCart() {
+        router.push("/cart")
+    }
+
+    function handleContinueShopping() {
+        router.push("/")
+    }
+
+
 
     // agregar precio a la card
 
@@ -94,9 +117,28 @@ export function DetailedProductCard({ id, photo, price, brand, model, android, c
                     <ParagraphBold>Almacenamiento: {storage}</ParagraphBold>
                     <ParagraphBold>Memoria: {ram}</ParagraphBold>
                 </SpecificationContainer>
-                <DefaultButton type="button" onClick={handleCart}>
-                    <Paragraph>AGREGAR AL CARRITO</Paragraph>
-                </DefaultButton>
+
+                {productAdded ? (
+                    <>
+                        <DefaultButton type="button" onClick={handleGoToCart}>
+                            <Paragraph>IR AL CARRITO</Paragraph>
+                        </DefaultButton>
+                        <DefaultButton type="button" onClick={handleContinueShopping}>
+                            <Paragraph>SEGUIR COMPRANDO</Paragraph>
+                        </DefaultButton>
+                    </>
+
+                ) : (
+                    <DefaultButton type="button" onClick={handleCart}>
+                        <Paragraph>AGREGAR AL CARRITO</Paragraph>
+                    </DefaultButton>
+
+                )
+                }
+
+
+
+
 
             </DetailedProductCardContainer>
         </DetailedProductCardBody>

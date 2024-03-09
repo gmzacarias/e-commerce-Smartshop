@@ -55,22 +55,12 @@ export const addToCart = selector({
     },
     set: ({ set, get }, newItem) => {
         const productsDataValue = get(productsData);
-        const existingProduct = get(cartAtom).findIndex(item => item.id === productsDataValue.id)
-        if (existingProduct !== -1) {
-            set(cartAtom, (prevCart) => {
-                const updatedCart = [...prevCart];
-                const dataProduct = updatedCart[existingProduct]
-                const rewriteDataProduct = { ...dataProduct, quantity: dataProduct.quantity + 1 };
-                console.log("update", rewriteDataProduct)
-                return rewriteDataProduct;
-            });
-        } else {
-            const itemToAdd = { ...productsDataValue, ...newItem, quantity: 1 };
-            set(cartAtom, (prevCart) => [...prevCart, itemToAdd]);
-        }
-
+        const itemToAdd = { ...productsDataValue, ...newItem };
+        set(cartAtom, (prevCart) => [...prevCart, itemToAdd]);
     },
 });
+
+
 
 
 
@@ -85,3 +75,4 @@ export const useSetProductsData = () => useSetRecoilState(productsData)
 export const useSetCart = () => useSetRecoilState(cartAtom)
 export const useSetUserData = () => useSetRecoilState(userData)
 export const useSetToCart = () => useSetRecoilState(addToCart)
+export const useCartValue=()=>useRecoilValue(cartAtom)
