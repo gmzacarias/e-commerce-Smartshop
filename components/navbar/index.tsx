@@ -213,7 +213,8 @@ export function NavBar() {
   function handleLogOut() {
     setData({
       ...data,
-      isLogged: false
+      isLogged: false,
+      email: "",
     })
     setUserData({
       ...data,
