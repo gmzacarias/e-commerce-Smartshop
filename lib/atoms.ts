@@ -27,20 +27,6 @@ export const userData = atom({
     effects_UNSTABLE: [persistAtom]
 })
 
-export const productsData = atom({
-    key: "productsData",
-    default: {
-        id: "",
-        photo: "",
-        model: "",
-        brand: "",
-        colour: "",
-        price: "",
-        quantity: 0,
-    },
-    effects_UNSTABLE: [persistAtom]
-})
-
 export const cartAtom = atom({
     key: 'cartAtom',
     default: [],
@@ -53,15 +39,10 @@ export const addToCart = selector({
         const cart = get(cartAtom);
         return cart;
     },
-    set: ({ set, get }, newItem) => {
-        const productsDataValue = get(productsData);
-        const itemToAdd = { ...productsDataValue, ...newItem };
-        set(cartAtom, (prevCart) => [...prevCart, itemToAdd]);
+    set: ({ set}, newItem) => {
+        set(cartAtom, (prevCart) => [...prevCart,newItem]);
     },
 });
-
-
-
 
 
 
@@ -69,10 +50,8 @@ export const useAppData = () => useRecoilState(appData)
 export const useAppDataValue = () => useRecoilValue(appData)
 export const useUserData = () => useRecoilState(userData)
 export const useUserDataValue = () => useRecoilValue(userData)
-export const useProductsData = () => useRecoilState(productsData)
 
-export const useSetProductsData = () => useSetRecoilState(productsData)
-export const useSetCart = () => useSetRecoilState(cartAtom)
 export const useSetUserData = () => useSetRecoilState(userData)
+export const useSetCart = () => useSetRecoilState(cartAtom)
 export const useSetToCart = () => useSetRecoilState(addToCart)
-export const useCartValue=()=>useRecoilValue(cartAtom)
+export const useCart=()=>useRecoilState(cartAtom)

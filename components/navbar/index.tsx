@@ -12,7 +12,7 @@ import { LogoutButton, LoginButton } from "@/ui/buttons"
 import { SearchInputNav } from "@/ui/inputs"
 import { deleteToken } from "@/lib/api"
 import { Paragraph } from "@/ui/typography"
-import { useSetUserData, useSetCart, useAppData, useSetProductsData } from "lib/atoms"
+import { useSetUserData, useSetCart, useAppData } from "lib/atoms"
 
 
 
@@ -192,7 +192,7 @@ export const MobileIcon = styled.div`
 export function NavBar() {
   const setUserData = useSetUserData()
   const setCart = useSetCart()
-  const setProductCart = useSetProductsData()
+ 
   const [data, setData] = useAppData()
 
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -228,17 +228,7 @@ export function NavBar() {
       phoneNumber: 0,
     }))
 
-    setProductCart((prevData) => ({
-      ...prevData,
-      id: "",
-      photo: "",
-      model: "",
-      brand: "",
-      colour: "",
-      price: "",
-      quantity: 0,
-    }))
-
+   
     setCart([])
     logoutToast()
   }

@@ -1,66 +1,77 @@
 import { CountButton } from "ui/buttons"
-import { Small } from "ui/typography"
-import { useState ,useEffect} from "react"
+import { Small, ParagraphBold } from "ui/typography"
+import { useState, useEffect, use } from "react"
 import styled from "styled-components"
-import { addItemCart,deleteItemCart } from "lib/api"
-import { useCart } from "@/lib/hooks"
+
 
 const CartCountBody = styled.div`
     display: flex;
     flex-direction: row;
-
 `
 
-export function CartCount({id}) {
+const InputCount = styled.input`
+    width: 30px;
+    height: 20px;
+    border: none;
+    text-align: center;
+
+  &[type=number]::-webkit-inner-spin-button, 
+&[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+`
+const CountContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:0 20px;
+`
+
+export function CartCount({ id, price }) {
     const [count, setCount] = useState(1)
-    const [isProductInCart, setIsProductInCart] = useState(false);
-
-useEffect(()=>{
-
- const cartItems = useCart() as any
- const existingProduct = cartItems.find((item) => item.id === id);
- if (existingProduct) {
-    setIsProductInCart(true);
-  }
-
-},[id])
-
-
+    const [totalPrice, setTotalPrice] = useState(price * count)
+ 
 
     function handleChange(e) {
-        const parseValue = parseInt(e.target.value, 10)
-        if (parseValue <= 10) {
-            setCount(parseValue)
-        }
+        const newCount = parseInt(e.target.value)
+        setCount(newCount)
+        setTotalPrice(price * newCount)
     }
 
     async function handleIncrement() {
-        if (isProductInCart) {
-            // Si el producto ya está en el carrito, agregar uno nuevo
-            await addItemCart(id);
-          } else {
-            // Si no está en el carrito, agregarlo
-            await addItemCart(id);
-            setIsProductInCart(true);
-          }
+        if (count >= 10) {
+            alert("el maximo de compra son 10 unidades")
+            return
+        }
+        setCount(count + 1)
+        setTotalPrice(price * (count + 1))
     }
 
     function handleDecrement() {
         if (count > 1) {
             setCount(count - 1);
-            
+            setTotalPrice(price * (count - 1))
         }
     }
 
+
+
     return (
-        <CartCountBody>
-            <CountButton onClick={handleDecrement}>
-                <Small>-</Small>
-            </CountButton>
-            <input type="number" min={1} max={10} value={count} onChange={handleChange} />
-            <CountButton onClick={handleIncrement}>
-                <Small>+</Small>
-            </CountButton>
+        <CartCountBody id={id}>
+            <CountContainer>
+
+                <CountButton onClick={handleDecrement}>
+                    <Small>-</Small>
+                </CountButton>
+                <InputCount type="number" min={1} max={10} value={count} onChange={handleChange} />
+                <CountButton onClick={handleIncrement}>
+                    <Small>+</Small>
+                </CountButton>
+            </CountContainer>
+            <ParagraphBold>${totalPrice}</ParagraphBold>
+          
         </CartCountBody>
     )
 }

@@ -1,11 +1,10 @@
-import { useCart } from "lib/hooks"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { SectionTitle } from "ui/typography"
 import { ItemCartCard } from "components/itemCartCard"
-import { CartCount } from "components/cartCount"
-import { useCartValue } from "@/lib/atoms"
 
-const CartBody = styled.main`
+import { useCart,  } from "@/lib/atoms"
+
+const CartBody = styled.div`
 display:flex;
 flex-direction: column;
 justify-content: center;
@@ -20,7 +19,7 @@ background-color:var(--light);
 border-radius: 10px;
 padding:10px;
 width:500px;
-height: fit-content;
+height: 400px;
 display: flex;
 flex-direction: column;
 color:var(--blue-dark);
@@ -32,25 +31,59 @@ gap: 5px;
 }
 `
 
+const Products = styled.div`
+background-color:darkblue;
+width: 500px;
+height: 50px;
+
+
+ul{
+    display: flex;
+    flex-direction: row;
+}
+
+li{
+    list-style: none;
+}
+
+li:nth-child(0){
+color: aquamarine;
+}
+`
+
 
 export function Cart() {
-    const dataCart = useCart() as any
-    const cart=useCartValue()
-    // console.log("carrito", dataCart)
-console.log("carrito",cart)
+    const [cartData, setCartData] = useCart()
+
+    function handleDelete(productId) {
+        const updateCart = cartData.filter(item => item.id !== productId)
+        setCartData(updateCart)
+    }
+
 
     return (
+
         <CartBody>
             <SectionTitle>Productos</SectionTitle>
-            <ItemsContainer>
-                {/* {dataCart && dataCart.map(item=>
-    <ItemCartCard key={item.id} id={item.id} model={item.model} photo={item.photo} brand={item.brand} colour={item.colour} price={item.price}/>
-    )} */}
-                <p>hola soy la p</p>
+            <Products>
+                <ul>
+                    <li>producto</li>
+                    <li>precio</li>
+                    <li>cantidad</li>
+                    <li>total</li>
 
+
+
+
+                </ul>
+            </Products>
+            <ItemsContainer>
+                {cartData.map(item =>
+                    <ItemCartCard key={item.id} model={item.model} photo={item.photo} brand={item.brand} colour={item.colour} price={item.price} onDelete={() => handleDelete(item.id)} />
+                )}
             </ItemsContainer>
 
-
         </CartBody>
+
     )
 }

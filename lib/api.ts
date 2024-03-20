@@ -94,11 +94,14 @@ export async function editProfile(userName?: string, email?: string, address?: s
 
 
 
-export async function addItemCart(productId: string) {
+export async function addItemCart(productId: string,quantity:number) {
     console.log("add cart", productId)
     try {
         const data = await fetchApi(`/me/cart?productId=${productId}`, {
             method: "POST",
+            body: {
+                quantity,
+            },
         })
         console.log(data)
         return data
