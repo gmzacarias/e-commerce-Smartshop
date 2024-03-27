@@ -3,7 +3,7 @@ import { useProduct } from "lib/hooks"
 import { DetailedImageProduct } from "ui/images"
 import { ParagraphBold, SectionTitle, SubTitle, Title, Paragraph } from "@/ui/typography"
 import { DefaultButton } from "ui/buttons"
-import { useAppDataValue,  addToCart, useSetToCart } from "lib/atoms"
+import { useAppDataValue,useAddItem } from "lib/atoms"
 import { addItemCartToast, loginCartToast } from "@/lib/sonner"
 import { useState } from "react"
 import router from "next/router"
@@ -53,34 +53,23 @@ border-top: 2px solid var(--grey);
 export function DetailedProductCard({ id, photo, price, brand, model, android, colour, camera, frontCamera, storage, ram }) {
     const { isLogged } = useAppDataValue()
     const [productAdded, setProductAdded] = useState(false);
-    const setAddProduct = useSetToCart()
+    const setAddProduct = useAddItem()
     async function handleCart() {
         // if (isLogged == false) {
         //     console.log("check", isLogged)
         //     loginCartToast()
         //     return
         // }
-        // setData({
-        //     ...data,
-        //     id: id,
-        //     photo: photo,
-        //     price: price,
-        //     model: model,
-        //     brand: brand,
-        //     colour: colour
-        // })
-
-        const newItem = {
+    
+        setAddProduct({
             id: id,
             photo: photo,
             price: price,
             model: model,
             brand: brand,
             colour: colour,
-        };
-
-        console.log("new", newItem)
-        setAddProduct(newItem)
+            quantity: 0,
+        })
         setProductAdded(true)
         addItemCartToast()
     }

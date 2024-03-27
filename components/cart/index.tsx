@@ -1,8 +1,9 @@
 import styled, { keyframes } from "styled-components"
 import { SectionTitle } from "ui/typography"
-import { ItemCartCard } from "components/itemCartCard"
+import { ItemCart } from "@/components/itemCart"
 
-import { useCart,  } from "@/lib/atoms"
+import { useCart, useReset, useDeleteItem } from "@/lib/atoms"
+import router from "next/router"
 
 const CartBody = styled.div`
 display:flex;
@@ -50,40 +51,69 @@ li:nth-child(0){
 color: aquamarine;
 }
 `
+const ResumeCartContainer = styled.div`
+    display: flex;
+    width: 500px;
+    height: 500px;
+    background-color: cornflowerblue;
+`
 
 
 export function Cart() {
     const [cartData, setCartData] = useCart()
+    const resetCart = useReset()
+    const deleteItem = useDeleteItem()
+    console.log(cartData)
 
     function handleDelete(productId) {
-        const updateCart = cartData.filter(item => item.id !== productId)
-        setCartData(updateCart)
+        deleteItem(productId)
+        const updatedCart = cartData.filter(item => item.id !== productId)
+        setCartData(updatedCart)
+    }
+    
+    function handleReset() {
+        resetCart()
+    }
+    
+    function handleRedirect() {
+        router.push("/")
     }
 
 
-    return (
 
-        <CartBody>
-            <SectionTitle>Productos</SectionTitle>
-            <Products>
-                <ul>
-                    <li>producto</li>
-                    <li>precio</li>
-                    <li>cantidad</li>
-                    <li>total</li>
+    if (cartData.length >= 1) {
+        return (
+            <CartBody>
+                <SectionTitle>Productos</SectionTitle>
+                <Products>
+                    <ul>
+                        <li>producto</li>
+                        <li>precio</li>
+                        <li>cantidad</li>
+                        <li>total</li>
+                    </ul>
+                </Products>
+                <ItemsContainer>
+                    {cartData && cartData.map(item =>
+                        <ItemCart key={item.id} id={item.id} model={item.model} photo={item.photo} brand={item.brand} colour={item.colour} price={item.price} onDelete={() => handleDelete(item.id)} />
+                    )}
+                </ItemsContainer>
+                <button type="reset" onClick={handleReset} >reset</button>
+                <ResumeCartContainer>
 
+                </ResumeCartContainer>
 
+            </CartBody>
+        )
 
+    } else {
+        return (
+            <CartBody>
+                <h2>no hay productos agregados</h2>
+                <button onClick={handleRedirect}>buscar productos</button>
+            </CartBody>
 
-                </ul>
-            </Products>
-            <ItemsContainer>
-                {cartData.map(item =>
-                    <ItemCartCard key={item.id} model={item.model} photo={item.photo} brand={item.brand} colour={item.colour} price={item.price} onDelete={() => handleDelete(item.id)} />
-                )}
-            </ItemsContainer>
+        )
+    }
 
-        </CartBody>
-
-    )
 }

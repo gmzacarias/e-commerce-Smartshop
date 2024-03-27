@@ -2,7 +2,7 @@ import { CountButton } from "ui/buttons"
 import { Small, ParagraphBold } from "ui/typography"
 import { useState, useEffect, use } from "react"
 import styled from "styled-components"
-
+import { useCart, useCheckoutCart} from "@/lib/atoms"
 
 const CartCountBody = styled.div`
     display: flex;
@@ -32,15 +32,21 @@ const CountContainer = styled.div`
 export function CartCount({ id, price }) {
     const [count, setCount] = useState(1)
     const [totalPrice, setTotalPrice] = useState(price * count)
- 
+    const setAddProduct = useCheckoutCart()
+
 
     function handleChange(e) {
         const newCount = parseInt(e.target.value)
         setCount(newCount)
         setTotalPrice(price * newCount)
+
+     checkout(id,newCount)
+
     }
 
-    async function handleIncrement() {
+
+
+    function handleIncrement() {
         if (count >= 10) {
             alert("el maximo de compra son 10 unidades")
             return
@@ -55,7 +61,13 @@ export function CartCount({ id, price }) {
             setTotalPrice(price * (count - 1))
         }
     }
-
+ function checkout(id,quantity){
+    const newItem ={
+        id:id,
+        quantity:quantity
+    }
+    setAddProduct(newItem)
+ }
 
 
     return (
@@ -71,7 +83,7 @@ export function CartCount({ id, price }) {
                 </CountButton>
             </CountContainer>
             <ParagraphBold>${totalPrice}</ParagraphBold>
-          
+
         </CartCountBody>
     )
 }
