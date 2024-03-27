@@ -1,7 +1,7 @@
 import { CartImageProduct } from "@/ui/images";
 import { ParagraphBold, Small } from "ui/typography"
 import styled from "styled-components"
-import { CartCount } from "components/cartCount"
+
 import { useState } from "react"
 
 
