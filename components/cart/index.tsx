@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components"
-import { SectionTitle } from "ui/typography"
+import { SectionTitle, ParagraphBold } from "ui/typography"
 import { ItemCart } from "@/components/itemCart"
 
 import { useCart, useReset, useDeleteItem } from "@/lib/atoms"
@@ -36,6 +36,7 @@ const Products = styled.div`
 background-color:darkblue;
 width: 500px;
 height: 50px;
+opacity: 0.5;
 
 
 ul{
@@ -53,7 +54,7 @@ color: aquamarine;
 `
 const ResumeCartContainer = styled.div`
     display: flex;
-    width: 500px;
+    width: 150px;
     height: 500px;
     background-color: cornflowerblue;
 `
@@ -70,37 +71,59 @@ export function Cart() {
         const updatedCart = cartData.filter(item => item.id !== productId)
         setCartData(updatedCart)
     }
-    
+
     function handleReset() {
         resetCart()
     }
-    
-    function handleRedirect() {
-        router.push("/")
+
+    function handleSearch() {
+        router.push("/search?q=&offset=0&limit=10")
     }
 
+    function handleTotalQuantity() {
+        const totalQuantity = cartData.reduce((total, item) => {
+            return total + item.quantity
+        }, 0)
+        // console.log("cantidad total", totalQuantity)
+        return totalQuantity
+    }
+
+    function handleTotalPrice() {
+        const totalPrice = cartData.reduce((total, item) => {
+            return total + (item.price * item.quantity)
+        }, 0)
+        // console.log("precio total", totalPrice)
+        return totalPrice
+    }
+
+    function handleCheckout() {
+
+    }
 
 
     if (cartData.length >= 1) {
         return (
             <CartBody>
                 <SectionTitle>Productos</SectionTitle>
-                <Products>
-                    <ul>
-                        <li>producto</li>
-                        <li>precio</li>
-                        <li>cantidad</li>
-                        <li>total</li>
-                    </ul>
-                </Products>
                 <ItemsContainer>
+                    <Products>
+                        <ul>
+                            <li>producto</li>
+                            <li>precio</li>
+                            <li>cantidad</li>
+                            <li>total</li>
+                        </ul>
+                    </Products>
                     {cartData && cartData.map(item =>
-                        <ItemCart key={item.id} id={item.id} model={item.model} photo={item.photo} brand={item.brand} colour={item.colour} price={item.price} onDelete={() => handleDelete(item.id)} />
+                        <ItemCart key={item.id} id={item.id} model={item.model} photo={item.photo} brand={item.brand} colour={item.colour} price={item.price} quantity={item.quantity} onDelete={() => handleDelete(item.id)} />
                     )}
                 </ItemsContainer>
                 <button type="reset" onClick={handleReset} >reset</button>
                 <ResumeCartContainer>
+                    <ParagraphBold>Cantidad:{handleTotalQuantity()}</ParagraphBold>
+                    <ParagraphBold>Precio Final:{handleTotalPrice()}</ParagraphBold>
 
+                    <button onClick={handleCheckout}>Pagar</button>
                 </ResumeCartContainer>
 
             </CartBody>
@@ -110,7 +133,7 @@ export function Cart() {
         return (
             <CartBody>
                 <h2>no hay productos agregados</h2>
-                <button onClick={handleRedirect}>buscar productos</button>
+                <button onClick={handleSearch}>buscar productos</button>
             </CartBody>
 
         )

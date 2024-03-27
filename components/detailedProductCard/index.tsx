@@ -68,7 +68,7 @@ export function DetailedProductCard({ id, photo, price, brand, model, android, c
             model: model,
             brand: brand,
             colour: colour,
-            quantity: 0,
+            quantity: 1,
         })
         setProductAdded(true)
         addItemCartToast()
@@ -80,7 +80,7 @@ export function DetailedProductCard({ id, photo, price, brand, model, android, c
     }
 
     function handleContinueShopping() {
-        router.push("/")
+        router.push("/search?q=&offset=0&limit=10")
     }
 
 

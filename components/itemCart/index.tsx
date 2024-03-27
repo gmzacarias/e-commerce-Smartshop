@@ -2,7 +2,8 @@ import { CartImageProduct } from "@/ui/images";
 import { ParagraphBold, Small } from "ui/typography"
 import styled from "styled-components"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useUpdateQuantity } from "lib/atoms"
 
 
 const ItemCartBody = styled.div`
@@ -20,14 +21,17 @@ const CardContainer = styled.div`
 `
 
 
-export function ItemCart({ key, id, photo, model, brand, colour, price, onDelete }) {
-    const [count, setCount] = useState(1)
+export function ItemCart({ key, id, photo, model, brand, colour, price, quantity, onDelete }) {
+    const [count, setCount] = useState(quantity)
     const [totalPrice, setTotalPrice] = useState(price * count)
+    const updateQuantity = useUpdateQuantity()
+    console.log("contador", count)
 
     function handleChange(e) {
         const newCount = parseInt(e.target.value)
         setCount(newCount)
         setTotalPrice(price * newCount)
+        updateQuantity({ itemId: id, newQuantity: newCount });
     }
 
     function handleIncrement() {
@@ -37,21 +41,22 @@ export function ItemCart({ key, id, photo, model, brand, colour, price, onDelete
         }
         setCount(count + 1)
         setTotalPrice(price * (count + 1))
+        updateQuantity({ itemId: id, newQuantity: count + 1 });
     }
 
     function handleDecrement() {
         if (count > 1) {
             setCount(count - 1);
             setTotalPrice(price * (count - 1))
+            updateQuantity({ itemId: id, newQuantity: count - 1 });
         }
     }
- 
- 
+
 
 
     return (
-        
-        <ItemCartBody key={key} id={id}>
+
+        <ItemCartBody key={key} id={id} >
             <CartImageProduct src={photo} alt={`${brand} ${model}`} />
             <CardContainer>
                 <ParagraphBold>{brand}</ParagraphBold>
@@ -64,6 +69,6 @@ export function ItemCart({ key, id, photo, model, brand, colour, price, onDelete
             <ParagraphBold>${totalPrice}</ParagraphBold>
             <button onClick={onDelete}>Eliminar</button>
         </ItemCartBody>
-      
+
     )
 }

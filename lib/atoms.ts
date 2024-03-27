@@ -58,23 +58,42 @@ const deleteItemCart = selector({
     },
 })
 
-const resetCart = selector({
-    key: "resetCart",
+const updateQuantity = selector({
+    key: "updateQuantity",
     get: ({ get }) => {
         const cart = get(myCart);
         return cart;
     },
-    set:({set,get}) =>{
+    set: ({ get, set }, { itemId, newQuantity }) => {
         const cart = get(myCart)
-        set(cart,[])
+        const updateCart = cart.map(item => {
+            if (item.id === itemId) {
+                return {
+                    ...item,
+                    quantity: newQuantity
+                }
+            }
+            return item
+        })
+        // console.log("nuevo carrito", updateCart)
+        set(myCart, updateCart)
     },
 })
 
+
+
+
+
+
+//***App***
 export const useAppData = () => useRecoilState(appData)
 export const useAppDataValue = () => useRecoilValue(appData)
-export const useUserData = () => useRecoilState(userData)
-export const useUserDataValue = () => useRecoilValue(userData)
 
+//***User***
+//state
+export const useUserData = () => useRecoilState(userData)
+//value
+export const useUserDataValue = () => useRecoilValue(userData)
 export const useSetUserData = () => useSetRecoilState(userData)
 
 //***Cart***
@@ -85,4 +104,6 @@ export const useAddItem = () => useSetRecoilState(addItemCart)
 // delete item
 export const useDeleteItem = () => useSetRecoilState(deleteItemCart)
 // reset
-export const useReset = () => useResetRecoilState(resetCart)
+export const useReset = () => useResetRecoilState(myCart)
+// update quantity
+export const useUpdateQuantity = () => useSetRecoilState(updateQuantity)
