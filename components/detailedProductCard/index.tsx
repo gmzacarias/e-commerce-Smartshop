@@ -3,9 +3,9 @@ import { useProduct } from "lib/hooks"
 import { DetailedImageProduct } from "ui/images"
 import { ParagraphBold, SectionTitle, SubTitle, Title, Paragraph } from "@/ui/typography"
 import { DefaultButton } from "ui/buttons"
-import { useAppDataValue,useAddItem } from "lib/atoms"
+import { useAppDataValue, useAddItem, useCartValue } from "lib/atoms"
 import { addItemCartToast, loginCartToast } from "@/lib/sonner"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import router from "next/router"
 
 const DetailedProductCardBody = styled.div`
@@ -51,16 +51,24 @@ border-top: 2px solid var(--grey);
 
 
 export function DetailedProductCard({ id, photo, price, brand, model, android, colour, camera, frontCamera, storage, ram }) {
+    const [isCart, setIsCart] = useState(false)
     const { isLogged } = useAppDataValue()
-    const [productAdded, setProductAdded] = useState(false);
+    const cartData = useCartValue()
     const setAddProduct = useAddItem()
+
+    useEffect(() => {
+        const isInCart = cartData.some(item => item.id === id)
+        console.log("boolean", isInCart)
+        setIsCart(isInCart)
+    }, [])
+
     async function handleCart() {
-        // if (isLogged == false) {
-        //     console.log("check", isLogged)
-        //     loginCartToast()
-        //     return
-        // }
-    
+        if (isLogged == false) {
+            console.log("check", isLogged)
+            loginCartToast()
+            return
+        }
+
         setAddProduct({
             id: id,
             photo: photo,
@@ -70,10 +78,10 @@ export function DetailedProductCard({ id, photo, price, brand, model, android, c
             colour: colour,
             quantity: 1,
         })
-        setProductAdded(true)
+
+        setIsCart(true)
         addItemCartToast()
     }
-
 
     function handleGoToCart() {
         router.push("/cart")
@@ -82,10 +90,6 @@ export function DetailedProductCard({ id, photo, price, brand, model, android, c
     function handleContinueShopping() {
         router.push("/search?q=&offset=0&limit=10")
     }
-
-
-
-    // agregar precio a la card
 
     return (
         <DetailedProductCardBody>
@@ -104,7 +108,7 @@ export function DetailedProductCard({ id, photo, price, brand, model, android, c
                     <ParagraphBold>Memoria: {ram}</ParagraphBold>
                 </SpecificationContainer>
 
-                {productAdded ? (
+                {isCart ? (
                     <>
                         <DefaultButton type="button" onClick={handleGoToCart}>
                             <Paragraph>IR AL CARRITO</Paragraph>

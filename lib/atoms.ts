@@ -5,7 +5,6 @@ const { persistAtom } = recoilPersist({
     key: 'recoil-persist', // this key is using to store data in local storage
 })
 
-
 const appData = atom({
     key: "appData",
     default: {
@@ -53,7 +52,7 @@ const deleteItemCart = selector({
     set({ set, get }, itemId) {
         const cart = get(myCart)
         const updatedCart = cart.filter(item => item.id !== itemId)
-        console.log("update", updatedCart)
+        // console.log("update", updatedCart)
         set(myCart, updatedCart)
     },
 })
@@ -94,11 +93,14 @@ export const useAppDataValue = () => useRecoilValue(appData)
 export const useUserData = () => useRecoilState(userData)
 //value
 export const useUserDataValue = () => useRecoilValue(userData)
+//
 export const useSetUserData = () => useSetRecoilState(userData)
 
 //***Cart***
 //state
 export const useCart = () => useRecoilState(myCart)
+//state value
+export const useCartValue=()=> useRecoilValue(myCart)
 //add item
 export const useAddItem = () => useSetRecoilState(addItemCart)
 // delete item

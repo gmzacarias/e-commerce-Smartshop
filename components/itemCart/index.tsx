@@ -65,7 +65,7 @@ export function ItemCart({ key, id, photo, model, brand, colour, price, quantity
             </CardContainer>
             <button onClick={handleDecrement}>-</button>
             <input type="number" min={1} max={10} value={count} onChange={handleChange} />
-            <button onClick={handleIncrement}>-</button>
+            <button onClick={handleIncrement}>+</button>
             <ParagraphBold>${totalPrice}</ParagraphBold>
             <button onClick={onDelete}>Eliminar</button>
         </ItemCartBody>
