@@ -1,9 +1,11 @@
 import { CartImageProduct } from "@/ui/images";
 import { ParagraphBold, Small } from "ui/typography"
 import styled from "styled-components"
-
+import {CountInputCart} from "ui/inputs"
 import { useState, useEffect } from "react"
 import { useUpdateQuantity } from "lib/atoms"
+import {CountButton,TrashButton} from "ui/buttons"
+
 
 
 const ItemCartBody = styled.div`
@@ -12,6 +14,15 @@ const ItemCartBody = styled.div`
     align-items: center;
     gap: 5px;
     justify-content: space-between;
+:nth-child(3){
+   justify-content: center;
+}
+:nth-child(4){
+   width: 70px;
+   justify-content: center;
+}
+
+
 `
 const CardContainer = styled.div`
     display: flex;
@@ -23,6 +34,10 @@ const CardContainer = styled.div`
 
 const CountContainer = styled.div`
     width: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 `
 
 
@@ -70,12 +85,12 @@ export function ItemCart({ key, id, photo, model, brand, colour, price, quantity
             </CardContainer>
 
             <CountContainer>
-                <button onClick={handleDecrement}>-</button>
-                <input type="number" min={1} max={10} value={count} onChange={handleChange} />
-                <button onClick={handleIncrement}>+</button>
+                <CountButton type="button" onClick={handleDecrement}>-</CountButton>
+                <CountInputCart type="number" min={1} max={10} value={count} onChange={handleChange} />
+                <CountButton type="button" onClick={handleIncrement}>+</CountButton>
             </CountContainer>
             <ParagraphBold>${totalPrice}</ParagraphBold>
-            <button onClick={onDelete}>Eliminar</button>
+            <TrashButton onClick={onDelete}/>
         </ItemCartBody>
 
     )

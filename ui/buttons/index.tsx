@@ -1,10 +1,14 @@
 import styled from "styled-components"
-import { LoginIcon, LogoutIcon } from "ui/icons"
+import { LoginIcon, LogoutIcon, TrashIcon } from "ui/icons"
+
+
+
 
 type buttonProps = {
     children?: string | any,
     type?: "button" | "reset" | "submit",
-    onClick?: (e) => void | any
+    onClick?: (e) => void | any,
+
 }
 
 const Button = styled.button`
@@ -61,13 +65,28 @@ const Default = styled(ButtonPages)`
    margin-top: 10px;
 `
 
-const Count =styled(Button)`
+const Outlined =styled(ButtonPages)`
+  border: solid 2px var(--primary);
+  width: 120px;
+  min-width: unset;
+`
+
+const Count = styled(Button)`
     width:20px ;
     height: 20px;
-    background-color: brown;
+    background-color:var(--primary);
     min-width: unset;
     padding-bottom: 10px;
+    color: var(--white);
+    border-radius: 50%;
 `
+const TrashIconContainer = styled.div`
+    display: flex;
+    width: 20px;
+    height: 20px;
+
+`
+
 
 export function LoginButton({ onClick, type, children }: buttonProps) {
     return (
@@ -92,14 +111,24 @@ export function DefaultButton({ onClick, type, children }: buttonProps) {
 }
 
 
-export function OutlinedButton() {
 
+
+export function OutlinedButton({ onClick, type, children }: buttonProps) {
+return <Outlined type={type} onClick={onClick}>{children}</Outlined>
 }
 
 export function CardButton({ onClick, type, children }: buttonProps) {
     return <Card type={type} onClick={onClick}>{children}</Card>
 }
 
-export function CountButton ({onClick,type,children}:buttonProps){
+export function CountButton({ onClick, type, children }: buttonProps) {
     return <Count type={type} onClick={onClick}>{children}</Count>
+}
+
+export function TrashButton({ onClick }: buttonProps) {
+    return (
+        <TrashIconContainer onClick={onClick} >
+            <TrashIcon />
+        </TrashIconContainer>
+    )
 }

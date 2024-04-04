@@ -4,10 +4,12 @@ import { Search } from "ui/icons"
 type inputProps = {
     type: "text" | "number" | "search" | "email" | "password",
     name?: string | any
-    placeholder: string
+    placeholder?: string
     value?: string | any
     required?: boolean
     onChange?: (e?) => void
+    min?:number
+    max?:number
 };
 
 const Input = styled.input`
@@ -53,6 +55,20 @@ const FormInputs = styled(Input)`
      margin-top:5px;
 `
 
+const CountInput=styled(Input)`
+    min-width: 30px;
+    width: 30px;
+    padding: unset;
+ 
+    &input[type=number]::-webkit-inner-spin-button,
+&input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+
+`
+
 export function SearchInputNav({ type,name,placeholder,value,onChange }:inputProps) {
     return (
         <>
@@ -68,4 +84,9 @@ export function SearchInputIndex({ type,name,placeholder,value,onChange }:inputP
 
 export function InputDefault({ type,name,placeholder,value,onChange }:inputProps) {
     return <FormInputs type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+}
+
+export function CountInputCart({type,min,max,value,onChange}:inputProps){
+    return <CountInput type={type} min={min} max={max} value={value} onChange={onChange}/>
+
 }

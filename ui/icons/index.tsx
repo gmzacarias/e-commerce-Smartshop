@@ -5,6 +5,7 @@ import CartSvg from "./cart.svg"
 import SearchSvg from "./search.svg"
 import LoginSvg from "./login.svg"
 import LogoutSvg from "./logout.svg"
+import TrashSvg from "./trash.svg"
 
 const User = styled(UserSvg)`
     font-size:24px;
@@ -27,10 +28,14 @@ const Login = styled(LoginSvg)`
      color:var(--light);
     
  `
- const Logout =styled(LogoutSvg)`
+const Logout = styled(LogoutSvg)`
     font-size:24px;
      color:var(--light);
  `
+
+const Trash = styled(TrashSvg)`
+     fill:var(--red);
+`
 
 export function UserIcon() {
     return <User />
@@ -45,9 +50,13 @@ export function CartIcon() {
 }
 
 export function LoginIcon() {
-return <Login/>
+    return <Login />
 }
 
 export function LogoutIcon() {
-    return <Logout/>
- }
+    return <Logout />
+}
+
+export function TrashIcon() {
+    return <Trash />
+}

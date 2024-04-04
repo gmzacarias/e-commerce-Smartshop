@@ -79,6 +79,7 @@ export const Menu = styled.ul<{ open: any }>`
   display: flex;
   justify-content: space-between;
   list-style: none;
+  z-index: 2;
 
   @media(max-width: 1000px) {
     background-color: var(--light);
