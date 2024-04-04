@@ -33,23 +33,33 @@ gap: 5px;
 `
 
 const Products = styled.div`
-background-color:darkblue;
-width: 500px;
+
+width: 480px;
 height: 50px;
-opacity: 0.5;
+gap: 10px;
+
 
 
 ul{
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 li{
     list-style: none;
 }
 
-li:nth-child(0){
-color: aquamarine;
+li:nth-child(1){
+color: #000101;
+width: 100px;
+border:solid 1px black;
+padding-left: 20px;
+}
+
+li:nth-child(2){
+color: #45c03c;
+
 }
 `
 const ResumeCartContainer = styled.div`
@@ -97,7 +107,11 @@ export function Cart() {
     }
 
     function handleCheckout() {
-
+        console.log("data cart", cartData)
+        for (const products of cartData) {
+            const { id, quantity } = products
+            console.log("resultado del for", id, quantity)
+        }
     }
 
 
@@ -108,10 +122,10 @@ export function Cart() {
                 <ItemsContainer>
                     <Products>
                         <ul>
-                            <li>producto</li>
-                            <li>precio</li>
-                            <li>cantidad</li>
-                            <li>total</li>
+                            <li>Producto</li>
+                            <li>Cantidad</li>
+                            <li>Precio final</li>
+                        
                         </ul>
                     </Products>
                     {cartData && cartData.map(item =>

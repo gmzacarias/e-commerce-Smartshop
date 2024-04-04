@@ -11,6 +11,7 @@ const ItemCartBody = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 5px;
+    justify-content: space-between;
 `
 const CardContainer = styled.div`
     display: flex;
@@ -18,6 +19,10 @@ const CardContainer = styled.div`
     flex-direction: column;
     
 
+`
+
+const CountContainer = styled.div`
+    width: 100px;
 `
 
 
@@ -63,9 +68,12 @@ export function ItemCart({ key, id, photo, model, brand, colour, price, quantity
                 <Small>{model}</Small>
                 <Small>{colour}</Small>
             </CardContainer>
-            <button onClick={handleDecrement}>-</button>
-            <input type="number" min={1} max={10} value={count} onChange={handleChange} />
-            <button onClick={handleIncrement}>+</button>
+
+            <CountContainer>
+                <button onClick={handleDecrement}>-</button>
+                <input type="number" min={1} max={10} value={count} onChange={handleChange} />
+                <button onClick={handleIncrement}>+</button>
+            </CountContainer>
             <ParagraphBold>${totalPrice}</ParagraphBold>
             <button onClick={onDelete}>Eliminar</button>
         </ItemCartBody>
