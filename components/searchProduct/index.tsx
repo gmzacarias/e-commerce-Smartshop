@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useSearch } from "lib/hooks"
-import { BasicProductCard } from "../basicProductCard"
+import { SearchProductCard } from "../searchProductCard"
 import router from "next/router"
 import { SearchInputIndex } from "ui/inputs"
 import { DefaultButton } from "ui/buttons"
@@ -44,12 +44,11 @@ export function SearchProduct({ query, offset, limit }) {
     const [search, setSearch] = useState('');
     const data = useSearch(query, offset, limit)
     console.log("busqueda", data)
-
     const totalResults = data?.pagination.totalResults as any
-    const totalPages = Math.ceil(totalResults / 10)
-    console.log(totalResults)
+    const totalPages = totalResults ? Math.ceil(totalResults / 10) : 0
+    console.log(totalResults, totalPages)
     const results = data?.results as any
-    
+
 
     useEffect(() => {
         if (query) {
@@ -73,6 +72,35 @@ export function SearchProduct({ query, offset, limit }) {
         router.push(`/search?q=${search}&offset=${newOffset}&limit=${limit}`)
     }
 
+
+    if (totalResults !== 0) {
+        return (
+            <SearchProductBody>
+                <SectionTitle>Encontra los mejores celulares del mercado</SectionTitle>
+                < SearchInputIndex type="search" placeholder="Que estas buscando?" name="query" value={search} onChange={handleChange} />
+                <DefaultButton onClick={handleSearch}>
+                    <Paragraph>BUSCAR</Paragraph>
+                </DefaultButton>
+                <PaginationContainer>
+                    <Pagination totalPages={totalPages} limit={limit} onPageChange={(newOffset) => handlePageChange(newOffset)} />
+                </PaginationContainer>
+
+                <ProductsContainer>
+
+                    {results ? (
+                        results.map(item =>
+                            <SearchProductCard key={item.id} id={item.id} brand={item.brand} model={item.model} photo={item.photo} price={item.price}></SearchProductCard>
+                        )
+                    ) : (
+                        Array.from({ length: 5 }).map((_,index) => (
+                          <Skeleton key={index}></Skeleton>
+                      ))
+                    )
+                }
+                </ProductsContainer>
+            </SearchProductBody >
+        )
+    }
     return (
         <SearchProductBody>
             <SectionTitle>Encontra los mejores celulares del mercado</SectionTitle>
@@ -80,22 +108,9 @@ export function SearchProduct({ query, offset, limit }) {
             <DefaultButton onClick={handleSearch}>
                 <Paragraph>BUSCAR</Paragraph>
             </DefaultButton>
-            <PaginationContainer>
-                <Pagination totalPages={totalPages} limit={limit} onPageChange={(newOffset) => handlePageChange(newOffset)} />
-            </PaginationContainer>
-            <ProductsContainer>
-                {results ?(
-                    results.map(item =>
-                        <BasicProductCard key={item.id} id={item.id} brand={item.brand} model={item.model} photo={item.photo} price={item.price}></BasicProductCard>
-                    )
-
-                ):(
-                    Array.from({ length: 5 }).map((_, index) => (
-                        <Skeleton count={4} key={index} height={318} width={220} />
-                      ))
-                ) 
-                }
-            </ProductsContainer>
+            <div>
+                <h1>no hay resultados</h1>
+            </div>
         </SearchProductBody>
     )
 

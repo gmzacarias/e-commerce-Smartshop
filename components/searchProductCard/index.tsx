@@ -5,7 +5,7 @@ import { ParagraphBold } from "ui/typography"
 import { CardButton } from "ui/buttons"
 import router from "next/router"
 
-const BasicProductCardBody = styled.div`
+const SearchProductCardBody = styled.div`
 background-color:var(--light);
 border-radius: 60px 30px 60px 30px;
 padding:10px;
@@ -30,16 +30,14 @@ align-items:center;
 gap: 5px;
 `
 
-export function BasicProductCard({ key, id, brand, model, photo, price }) {
-
-
+export function SearchProductCard({ key, id, brand, model, photo, price }) {
     function handleRedirect() {
         const productId = id
         router.push(`/product/${productId}`)
     }
 
     return (
-        <BasicProductCardBody key={key} id={id}>
+        <SearchProductCardBody key={key} id={id}>
             <ImageCardProduct src={photo} alt={`${brand}${model}`} />
             <DetailedContainer>
                 <Small>{brand}</Small>
@@ -47,6 +45,6 @@ export function BasicProductCard({ key, id, brand, model, photo, price }) {
                 <SectionTitleBold>${price}</SectionTitleBold>
                 <CardButton onClick={handleRedirect}>Ver mas</CardButton>
             </DetailedContainer>
-        </BasicProductCardBody>
+        </SearchProductCardBody>
     )
 }
