@@ -10,6 +10,8 @@ import { Pagination } from "components/pagination"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
+
+
 const SearchProductBody = styled.div`
 display:flex;
 flex-direction: column;
@@ -38,6 +40,24 @@ const ProductsContainer = styled.div`
           flex-direction:column;
         }   
     }
+`
+const SkeletonCard=styled.div`
+    background-color:var(--light);
+border-radius: 60px 30px 60px 30px;
+padding:10px;
+width:220px;
+height: fit-content;
+display: flex;
+flex-direction: column;
+gap: 5px;
+
+.dataContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap:5px;
+}
 `
 
 export function SearchProduct({ query, offset, limit }) {
@@ -92,11 +112,19 @@ export function SearchProduct({ query, offset, limit }) {
                             <SearchProductCard key={item.id} id={item.id} brand={item.brand} model={item.model} photo={item.photo} price={item.price}></SearchProductCard>
                         )
                     ) : (
-                        Array.from({ length: 5 }).map((_,index) => (
-                          <Skeleton key={index}></Skeleton>
-                      ))
+                        Array.from({ length: 9}).map((_, index) => (
+                            <SkeletonCard key={index}>
+                            <Skeleton width={200} height={180} borderRadius="50px 20px 20px"/>
+                            <div className="dataContainer">
+                            <Skeleton width={52} height={16} borderRadius={5}/>
+                            <Skeleton width={50} height={27} borderRadius={5}/>
+                            <Skeleton width={80} height={27} borderRadius={5}/>
+                            <Skeleton width={100} height={30} borderRadius={5}/>
+                            </div>
+                     </SkeletonCard>
+                        ))
                     )
-                }
+                    }
                 </ProductsContainer>
             </SearchProductBody >
         )
@@ -108,9 +136,9 @@ export function SearchProduct({ query, offset, limit }) {
             <DefaultButton onClick={handleSearch}>
                 <Paragraph>BUSCAR</Paragraph>
             </DefaultButton>
-            <div>
-                <h1>no hay resultados</h1>
-            </div>
+         
+         <h1>no hay resultados con la busqueda {query}</h1>
+       
         </SearchProductBody>
     )
 
