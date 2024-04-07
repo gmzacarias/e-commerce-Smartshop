@@ -10,7 +10,7 @@ import { Pagination } from "components/pagination"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-const BasicProductsBody = styled.div`
+const SearchProductBody = styled.div`
 display:flex;
 flex-direction: column;
 justify-content: center;
@@ -40,7 +40,7 @@ const ProductsContainer = styled.div`
     }
 `
 
-export function BasicProduct({ query, offset, limit }) {
+export function SearchProduct({ query, offset, limit }) {
     const [search, setSearch] = useState('');
     const data = useSearch(query, offset, limit)
     console.log("busqueda", data)
@@ -74,7 +74,7 @@ export function BasicProduct({ query, offset, limit }) {
     }
 
     return (
-        <BasicProductsBody>
+        <SearchProductBody>
             <SectionTitle>Encontra los mejores celulares del mercado</SectionTitle>
             < SearchInputIndex type="search" placeholder="Que estas buscando?" name="query" value={search} onChange={handleChange} />
             <DefaultButton onClick={handleSearch}>
@@ -91,16 +91,12 @@ export function BasicProduct({ query, offset, limit }) {
 
                 ):(
                     Array.from({ length: 5 }).map((_, index) => (
-                        <Skeleton key={index} height={318} width={220} />
+                        <Skeleton count={4} key={index} height={318} width={220} />
                       ))
                 ) 
                 }
             </ProductsContainer>
-        </BasicProductsBody>
-
-        // <div>
-        //     hola
-        // </div>
+        </SearchProductBody>
     )
 
 }
