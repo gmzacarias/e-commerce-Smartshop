@@ -1,7 +1,7 @@
 import { Login } from "components/login"
 import { Layout } from "components/layout";
 import { NextPage } from "next";
-import { BasicProduct } from "components/basicProduct"
+import { SearchProduct } from "@/components/searchProduct"
 import { useRouter } from "next/router";
 import { useEffect } from "react"
 import Head from "next/head"
@@ -18,7 +18,7 @@ const SearchPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <BasicProduct query={q} offset={offset} limit={limit}></BasicProduct>
+        <SearchProduct query={q} offset={offset} limit={limit}></SearchProduct>
       </Layout>
     </>
   );

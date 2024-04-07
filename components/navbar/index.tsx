@@ -264,7 +264,7 @@ export function NavBar() {
                   <MenuItemLink onClick={setShowMenu}>
                     <Link href={isLogged ? "/me" : "/login"} className="links">
                       <UserIcon />
-                      MI PERFIL
+                    
                       {upperEmail}
                     </Link>
                   </MenuItemLink>
