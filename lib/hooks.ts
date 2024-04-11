@@ -33,15 +33,17 @@ export function useSearch(query: string, offset?: string, limit?: string) {
     return response
 }
 
-// export function useCart() {
-//     const { data, error } = useSWR("/me/cart", fetchApi as any)
-//     if (error) {
-//         return error
-//     }
-//     const response = data?.cart
-//     console.log("soy el carrito",response)
-//     return response
-// }
+export function useCart() {
+    const { data, error } = useSWR("/me/cart", fetchApi as any)
+    if (error) {
+        return error
+    }
+    const response = data?.cart
+    console.log("soy el carrito",response)
+    return response
+}
+
+
 
 
 
