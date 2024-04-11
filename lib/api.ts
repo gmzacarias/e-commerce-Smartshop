@@ -128,7 +128,7 @@ export async function deleteItemCart(productId: string) {
 export async function resetCart() {
     try {
         const data = await fetchApi(`/me/cart`, {
-            method: "DELETE",
+            method: "PUT",
         })
         console.log(data)
         return data
