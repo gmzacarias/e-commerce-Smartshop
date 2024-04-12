@@ -5,7 +5,7 @@ import { ItemCart } from "@/components/itemCart"
 import { useCart, useReset, useDeleteItem } from "@/lib/atoms"
 import router from "next/router"
 import { OutlinedButton } from "ui/buttons"
-import { addItemCart, deleteItemCart ,resetCart} from "@/lib/api"
+import { addItemCart, createPurchaseOrder, deleteItemCart, resetCart } from "@/lib/api"
 
 const CartBody = styled.div`
 display:flex;
@@ -106,6 +106,7 @@ export function Cart() {
     const [cartData, setCartData] = useCart()
     const resetCartState = useReset()
     const deleteItem = useDeleteItem()
+    const currentCart = useCart()
     console.log(cartData)
 
     async function handleDelete(productId) {
@@ -117,9 +118,9 @@ export function Cart() {
 
     }
 
-   async function handleReset() {
+    async function handleReset() {
         resetCartState()
-await resetCart()
+        await resetCart()
     }
 
     function handleSearch() {
@@ -149,6 +150,12 @@ await resetCart()
             const addItem = await addItemCart(id, quantity)
             console.log("resultado del for", addItem)
         }
+        const additionalInfo = "envio a domicilio"
+        const purchaseOrder = await createPurchaseOrder(additionalInfo)
+        const urlMercadoPago = purchaseOrder.url
+        // console.log(urlMercadoPago)
+       router.push(urlMercadoPago)
+        resetCartState()
     }
 
 
