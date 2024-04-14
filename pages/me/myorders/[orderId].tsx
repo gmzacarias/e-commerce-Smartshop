@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 const OrderByIdPage: NextPage = () => {
     const router = useRouter();
-    const orderId = router.query.id
+    const orderId = router.query.orderId
     console.log("id", orderId)
     return (
         <>

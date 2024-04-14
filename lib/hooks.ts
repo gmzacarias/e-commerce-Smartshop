@@ -49,7 +49,7 @@ export function useOrders(){
     if(error){
         return error
     }
-    const response=data.data
+    const response=data?.data as any
     console.log("mis ordenes",response)
     return response
 }
