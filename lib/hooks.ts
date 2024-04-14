@@ -44,6 +44,16 @@ export function useCart() {
 }
 
 
+export function useOrders(){
+    const {data,error}=useSWR("/order/myorders", fetchApi as any)
+    if(error){
+        return error
+    }
+    const response=data
+    console.log("mis ordenes",response)
+    return response
+}
+
 
 
 
