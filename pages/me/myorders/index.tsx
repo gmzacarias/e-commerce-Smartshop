@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
 import { useMe } from "lib/hooks"
-import { Me } from "components/me"
+import { Me } from "@/components/myProfile/me"
 import styled from "styled-components"
 import Head from "next/head"
-import {MyOrders} from "components/myOrders"
+import { MyOrders } from "components/myOrders"
 
 const MyOrdersPage: NextPage = () => {
 
@@ -17,7 +17,7 @@ const MyOrdersPage: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-               <MyOrders></MyOrders> 
+                <MyOrders></MyOrders>
             </Layout>
         </>
     );

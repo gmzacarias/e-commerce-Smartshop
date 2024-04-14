@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
 import { useMe } from "lib/hooks"
-import { Me } from "components/me"
+import { Me } from "@/components/myProfile/me"
 import styled from "styled-components"
 import Head from "next/head"
 
