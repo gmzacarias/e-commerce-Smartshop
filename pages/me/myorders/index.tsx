@@ -4,7 +4,7 @@ import { useMe } from "lib/hooks"
 import { Me } from "@/components/myProfile/me"
 import styled from "styled-components"
 import Head from "next/head"
-import { MyOrders } from "components/myOrders"
+import { MyOrders } from "@/components/myProfile/me/myOrders"
 
 const MyOrdersPage: NextPage = () => {
 
