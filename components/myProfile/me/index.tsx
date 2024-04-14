@@ -46,6 +46,10 @@ export function Me() {
         router.push("/")
     }
 
+    function handleMyOrders() {
+        router.push("/me/myorders")
+    }
+
     return (
         <MeBody>
             <DataContainer>
@@ -69,8 +73,11 @@ export function Me() {
                 <DefaultButton onClick={handleEdit}>
                     <Paragraph>Editar</Paragraph>
                 </DefaultButton>
+                <DefaultButton onClick={handleMyOrders}>
+                    <Paragraph>Mis ordenes</Paragraph>
+                </DefaultButton>
                 <DefaultButton onClick={handleCancel}>
-                    <Paragraph>Cancelar</Paragraph>
+                    <Paragraph>Regresar</Paragraph>
                 </DefaultButton>
             </DataContainer>
         </MeBody>
