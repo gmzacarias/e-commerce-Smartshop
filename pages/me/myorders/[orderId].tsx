@@ -5,7 +5,7 @@ import { Me } from "components/me"
 import styled from "styled-components"
 import Head from "next/head"
 
-const OrdersPage: NextPage = () => {
+const OrderByIdPage: NextPage = () => {
 
     return (
         <>
@@ -22,4 +22,4 @@ const OrdersPage: NextPage = () => {
     );
 };
 
-export default OrdersPage;
+export default OrderByIdPage;
