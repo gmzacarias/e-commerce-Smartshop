@@ -3,7 +3,7 @@ import router, { useRouter } from "next/router"
 import styled from "styled-components"
 import { useMe } from "lib/hooks"
 import { logoutToast } from "@/lib/sonner"
-import { UserIcon, CartIcon, SmartPhoneIcon } from "ui/icons"
+import { UserIcon, CartIcon, SmartPhoneIcon, BrandIcon } from "ui/icons"
 import Link from 'next/link'
 import { useEffect, useState } from "react"
 import { FaBattleNet, FaBars, FaTimes, } from "react-icons/fa";
@@ -36,42 +36,8 @@ export const NavContainer = styled.div`
 `;
 
 export const LogoContainer = styled.div`
-  margin-left: 0.5rem;
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-  font-family: sans-serif;
-
-  p {
-    &:nth-child(2) {
-      color: var(--grey-dark);
-    }
-
-    &:nth-child(3) {
-      font-size: 1.5rem;
-      font-weight: 500;
-      color:var(--orange);
-    }
-  }
-
-  svg {
-    fill:var(--orange);
-    margin-right: 0.5rem;
-  }
-
-  .link-logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 5px 10px;
-    color: var(--grey-dark);
-    font-size:16px;
-    text-decoration: none;
-    transition: transform 250ms;
-    cursor: pointer;
-
-  }
+  width:fit-content;
+  height: fit-content;
 `;
 
 export const Menu = styled.ul<{ open: any }>`
@@ -239,9 +205,7 @@ export function NavBar() {
       <NavContainer>
         <LogoContainer>
           <Link href={"/"} className="link-logo">
-            <FaBattleNet />
-            <p>Vector -</p>
-            <p>F(X)</p>
+           <BrandIcon/>
           </Link>
         </LogoContainer>
         <MobileIcon onClick={setShowMenu}>
