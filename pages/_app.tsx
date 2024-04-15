@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Suspense>
       <RecoilRoot>
         <Toaster expand={true} richColors position="bottom-right" />
+        <link rel="icon" href="/favicon.png" sizes="any" />
         <Component {...pageProps} />
       </RecoilRoot>
     </Suspense>
