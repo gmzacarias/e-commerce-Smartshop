@@ -6,6 +6,7 @@ import SearchSvg from "./search.svg"
 import LoginSvg from "./login.svg"
 import LogoutSvg from "./logout.svg"
 import TrashSvg from "./trash.svg"
+import SmartshopSvg from "./logo-smartshop.svg"
 
 const User = styled(UserSvg)`
     font-size:24px;
@@ -36,6 +37,18 @@ const Logout = styled(LogoutSvg)`
 const Trash = styled(TrashSvg)`
      fill:var(--red);
 `
+
+const Smartshop=styled(SmartshopSvg)`
+    fill: beige;
+    width: 200px;
+    height: 50px;
+`
+
+export function BrandIcon(){
+    return <Smartshop/>
+}
+
+
 
 export function UserIcon() {
     return <User />
