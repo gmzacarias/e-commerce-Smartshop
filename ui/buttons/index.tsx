@@ -1,8 +1,6 @@
 import styled from "styled-components"
 import { LoginIcon, LogoutIcon, TrashIcon } from "ui/icons"
-
-
-
+import { useAppDataValue } from "lib/atoms"
 
 type buttonProps = {
     children?: string | any,
@@ -27,16 +25,6 @@ const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
   `
-
-const Session = styled(Button)`
-    background-color:var(--grey-dark);
-    color:var(--light);
-
-    &:hover{
-    background-color:var(--blue) ;
-    }
-`
-
 const ButtonPages = styled(Button)`
         @media screen and (min-width:400px) {
     &{
@@ -49,8 +37,10 @@ const ButtonPages = styled(Button)`
         width: 350px;
     }
 }
+
+
 `
-const Card = styled(Session)`
+const Card = styled(Button)`
 width:100px;
 min-width: unset;;
 `
@@ -65,7 +55,7 @@ const Default = styled(ButtonPages)`
    margin-top: 10px;
 `
 
-const Outlined =styled(ButtonPages)`
+const Outlined = styled(ButtonPages)`
   border: solid 2px var(--primary);
   width: 120px;
   min-width: unset;
@@ -87,6 +77,25 @@ const TrashIconContainer = styled.div`
 
 `
 
+/*Button Login/Logout */
+const Session = styled.button`
+   background: none;
+   border:none;
+   border-radius: 4px;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content:center;
+   align-items: center;
+   padding:5px 10px;
+   font-family:var(--font-family-Montserrat);
+   color: var(--grey);
+   cursor: pointer;
+   
+  &:hover {
+       color:var(--dark-grey)
+  }
+`
 
 export function LoginButton({ onClick, type, children }: buttonProps) {
     return (
@@ -106,6 +115,12 @@ export function LogoutButton({ onClick, type, children }: buttonProps) {
     )
 }
 
+
+
+
+
+
+
 export function DefaultButton({ onClick, type, children }: buttonProps) {
     return <Default type={type} onClick={onClick}>{children}</Default>
 }
@@ -114,7 +129,7 @@ export function DefaultButton({ onClick, type, children }: buttonProps) {
 
 
 export function OutlinedButton({ onClick, type, children }: buttonProps) {
-return <Outlined type={type} onClick={onClick}>{children}</Outlined>
+    return <Outlined type={type} onClick={onClick}>{children}</Outlined>
 }
 
 export function CardButton({ onClick, type, children }: buttonProps) {

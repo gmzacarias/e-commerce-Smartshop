@@ -4,7 +4,6 @@ const TitleText = styled.h1`
     font-size:48px;
     font-weight: var(--font-weight-bold);
     text-align: center;
-
     @media screen and(max-width:768px) {
     &{
         font-size: 40px;
