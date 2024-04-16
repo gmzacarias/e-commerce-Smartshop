@@ -5,17 +5,15 @@ import { deleteToken } from "@/lib/api"
 import { useMe } from "lib/hooks"
 import { useSetUserData, useReset, useAppData } from "lib/atoms"
 import { logoutToast } from "@/lib/sonner"
-import { ButtonsContainer, ItemMenu, LogoContainer, MenuContainer, MenuItemLink, HamburguerMenu, NavBackground, NavContainer } from "./styles"
+import { NavBody, NavContainer, LogoContainer, HamburguerMenu, MenuContainer, ItemListMenu, LinkItemList, ButtonsContainer } from "./styles"
 import { UserIcon, CartIcon, BrandIcon, CloseHamburguerIcon, HamburguerIcon } from "ui/icons"
 import { Paragraph } from "@/ui/typography"
 import { LoginButton, LogoutButton } from "@/ui/buttons"
 
 export function NavBar() {
+  const [data, setData] = useAppData()
   const setUserData = useSetUserData()
   const resetCart = useReset()
-
-  const [data, setData] = useAppData()
-
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { isLogged } = data
   // console.log("login", isLogged)
@@ -26,7 +24,6 @@ export function NavBar() {
   function setShowMenu() {
     setShowMobileMenu(!showMobileMenu)
   }
-
 
   function handleLogin() {
     router.push("/login")
@@ -53,7 +50,7 @@ export function NavBar() {
   }
 
   return (
-    <NavBackground>
+    <NavBody>
       <NavContainer>
         <LogoContainer>
           <Link href={"/"}>
@@ -64,22 +61,22 @@ export function NavBar() {
           {showMobileMenu ? <CloseHamburguerIcon /> : <HamburguerIcon />}
         </HamburguerMenu>
         <MenuContainer open={showMobileMenu}>
-          <ItemMenu>
-            <MenuItemLink onClick={setShowMenu}>
+          <ItemListMenu>
+            <LinkItemList onClick={setShowMenu}>
               <Link href={isLogged ? "/cart" : "/login"} className="links">
                 <CartIcon />
                 <Paragraph>CARRITO</Paragraph>
               </Link>
-            </MenuItemLink>
-          </ItemMenu>
-          <ItemMenu>
-            <MenuItemLink onClick={setShowMenu}>
+            </LinkItemList>
+          </ItemListMenu>
+          <ItemListMenu>
+            <LinkItemList onClick={setShowMenu}>
               <Link href={isLogged ? "/me" : "/login"} className="links">
                 <UserIcon />
                 {isLogged ? upperEmail : <Paragraph>MI PERFIL</Paragraph>}
               </Link>
-            </MenuItemLink>
-          </ItemMenu>
+            </LinkItemList>
+          </ItemListMenu>
           <ButtonsContainer>
             {isLogged ?
               <LogoutButton onClick={handleLogOut}>
@@ -93,6 +90,6 @@ export function NavBar() {
           </ButtonsContainer>
         </MenuContainer>
       </NavContainer>
-    </NavBackground>
+    </NavBody>
   )
 }

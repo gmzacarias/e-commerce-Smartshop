@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const NavBackground = styled.div`
+export const NavBody = styled.div`
   background-color: var(--light);
   border-bottom:solid 1px var(--grey);
   width: 100%;
@@ -57,14 +57,13 @@ export const MenuContainer = styled.ul<{ open: any }>`
   }
 `;
 
-export const ItemMenu = styled.li`
+export const ItemListMenu = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-
-export const MenuItemLink = styled.div`
+export const LinkItemList = styled.div`
   display: flex;
   margin-left:15px;
 
@@ -90,7 +89,7 @@ export const MenuItemLink = styled.div`
   @media(min-width: 1000px) {
     margin-left: unset;
   }
-  `;
+`;
 
 export const HamburguerMenu = styled.div`
   display: flex;
@@ -113,7 +112,7 @@ export const HamburguerMenu = styled.div`
        display: none;
       }
     }
-    `;
+`;
 
 export const ButtonsContainer = styled.div`
   display: flex;
