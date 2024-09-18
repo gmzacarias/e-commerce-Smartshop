@@ -36,7 +36,7 @@ export function Me() {
         }
     }, [data])
 
-    console.log("datita", userData)
+    console.log("userData", userData)
 
     function handleEdit() {
         router.push("/me/edit")

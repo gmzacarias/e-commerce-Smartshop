@@ -5,14 +5,14 @@ export function MyOrders() {
     const data = useOrders()
     console.log("component my orders", data)
 
-    function handleOrderById(orderId) {
+    function handleOrderById(orderId:string) {
         console.log("orderid", orderId)
         router.push(`/me/myorders/${orderId}`)
     }
 
     return (
         <div>
-            {data.length > 0 ?
+            {data?.length > 0 ?
                 (
                     data.map(item =>
                         <div key={item.id}>
