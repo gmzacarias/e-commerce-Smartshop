@@ -9,6 +9,15 @@ export function loginToast() {
     return toast.success("Iniciaste sesion")
 }
 
+export function errorSendCodeToast(errors: string | undefined){
+    return toast.error(errors||"Error en el campo")
+}
+
+export function errorCodeToast(error:string|undefined){
+    return toast.error(error||"Error en el campo")
+}
+
+
 export function logoutToast() {
     return toast.info("Se cerro la sesion")
 }
