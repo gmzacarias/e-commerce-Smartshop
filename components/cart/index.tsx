@@ -154,7 +154,7 @@ export function Cart() {
         const purchaseOrder = await createPurchaseOrder(additionalInfo)
         const urlMercadoPago = purchaseOrder.url
         // console.log(urlMercadoPago)
-       router.push(urlMercadoPago)
+        await router.push(urlMercadoPago)
         resetCartState()
     }
 

@@ -112,7 +112,7 @@ export function SearchProduct({ query, offset, limit }) {
                             <SearchProductCard key={item.id} id={item.id} brand={item.brand} model={item.model} photo={item.photo} price={item.price}></SearchProductCard>
                         )
                     ) : (
-                        Array.from({ length: 9}).map((_, index) => (
+                        Array.from({ length: 9}).map((_,index) => (
                             <SkeletonCard key={index}>
                             <Skeleton width={200} height={180} borderRadius="50px 20px 20px"/>
                             <div className="dataContainer">
