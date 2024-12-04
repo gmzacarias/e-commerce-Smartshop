@@ -5,6 +5,7 @@ import { Me } from "@/components/myProfile/me"
 import styled from "styled-components"
 import Head from "next/head"
 import { useRouter } from "next/router";
+import { OrderById } from "@/components/myProfile/me/myOrders/orderById";
 
 const OrderByIdPage: NextPage = () => {
     const router = useRouter();
@@ -19,7 +20,7 @@ const OrderByIdPage: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                <h1>hola soy la orden {orderId}</h1>
+                <OrderById orderId={orderId} />
             </Layout>
         </>
     );

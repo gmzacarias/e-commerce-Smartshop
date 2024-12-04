@@ -54,7 +54,15 @@ export function useOrders(){
     return response
 }
 
-
+export function useOrderById(id:string){
+const{data,error}=useSWR(`/order/myorders/${id}`, fetchApi as any)
+if (error){
+    return error
+}
+const response=data
+console.log("orden por id",response)
+return response
+}
 
 
 
