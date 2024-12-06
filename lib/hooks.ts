@@ -13,7 +13,7 @@ export function useMe() {
 
 export function useProduct(id: string) {
     //usan la funcion inmutable de swr,por que los productos no suelen variar.
-    const { data, error } = useSWRImmutable("/product/" + id, fetchApi as any)
+    const { data, error } = useSWRImmutable(`/product/${id}`, fetchApi as any)
     // console.log("id",id)
     if (error) {
         return error
@@ -66,6 +66,14 @@ return response
 
 
 
-
+export function useProductsList(){
+    const {data,error}=useSWR("/product",fetchApi as any)
+    if (error) {
+        return error
+    }
+    const response= data
+    console.log("listado de productos destacados",data)
+    return response
+}
 
 
