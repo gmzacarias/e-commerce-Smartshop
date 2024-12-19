@@ -33,7 +33,7 @@ const BackgroundCheckIcon = styled.div<{ color?: string }>`
        width: 75px;
         height: 75px;
         border-radius: 50px;
-       background-color:${(props) => props.color || "#FFF"} ;
+       background-color:${(props) => props.color || "#00050"} ;
    position:relative;
    display: flex;
    justify-content: center;
@@ -41,11 +41,11 @@ const BackgroundCheckIcon = styled.div<{ color?: string }>`
    margin: 0 auto;
    `
 
-const CheckIcon = styled.div`
+const CheckIcon = styled.div<{ color: string }>`
         width: 50px;
         height: 50px;
         border-radius: 50px;
-        background-color: #23A26D;
+        background-color:${(props) => props.color || "#fff"};
    position:absolute
    
     `
@@ -77,25 +77,28 @@ const Logo = styled.div`
     background-color:#000;
 `
 type Props = {
-    status: "success" | "pending" | "failure"|undefined
-    orderId: string|undefined
-    paymentId: string|undefined
+    status: "success" | "pending" | "failure" | undefined
+    orderId: string | undefined
+    paymentId: string | undefined
 }
 
 
 
-export function PurchaseTicketCard({status, orderId, paymentId }:Props) {
+export function PurchaseTicketCard({ status, orderId, paymentId }: Props) {
     const fecha = new Date()
     const currentDate = fecha.toLocaleString()
     const [color, SetColor] = useState("")
-
+    const [backgroundColor, SetBackgroundColor] = useState("")
     useEffect(() => {
         if (status === "success") {
             SetColor("#23A26D")
+            SetBackgroundColor("#a1cdbb")
         } else if (status === "pending") {
             SetColor("#db4109")
+            SetBackgroundColor("#f5d1c5")
         } else {
             SetColor("#ee0b0b")
+            SetBackgroundColor("#e79b9b")
         }
 
 
@@ -106,8 +109,8 @@ export function PurchaseTicketCard({status, orderId, paymentId }:Props) {
         <>
             <BodyCard >
                 <PaymentContainer>
-                    <BackgroundCheckIcon color={color}>
-                        <CheckIcon />
+                    <BackgroundCheckIcon color={backgroundColor}>
+                        <CheckIcon color={color} />
                     </BackgroundCheckIcon>
                     <h1 style={{ marginBottom: 10, textAlign: "center" }}>Pago exitoso!</h1>
                     <h2 style={{ textAlign: "center", fontSize: 24 }}>$10000</h2>
