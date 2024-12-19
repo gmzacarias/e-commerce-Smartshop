@@ -1,5 +1,7 @@
+"use client"
+
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiColorSwatch } from "react-icons/hi";
 
 
@@ -55,7 +57,7 @@ const ContainerData = styled.div`
   display: flex;
    flex-direction: column;
    
-    padding: 10px 0; /* Añadir espacio arriba y abajo del contenedor */
+    padding: 10px 0;
     font-size: 16px;
     background-color: blueviolet;
 `
@@ -64,8 +66,8 @@ const Divs = styled.div`
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 10px; /* Añadir margen entre cada Div */
-    background-color: #f9f9f9; /* Cambia el color de fondo para diferenciarlos */
+  margin-bottom: 10px; 
+    background-color: #f9f9f9; 
     padding: 10px;
 `
 
@@ -74,30 +76,31 @@ const Logo = styled.div`
     height: 60px;
     background-color:#000;
 `
+type Props = {
+    status: "success" | "pending" | "failure"|undefined
+    orderId: string|undefined
+    paymentId: string|undefined
+}
 
-export function PurchaseTicketCard({status}) {
+
+
+export function PurchaseTicketCard({status, orderId, paymentId }:Props) {
     const fecha = new Date()
     const currentDate = fecha.toLocaleString()
     const [color, SetColor] = useState("")
 
-    function updateStatus(status) {
-        SetColor(status)
-    }
-    const data = "soy data"
-
-    const statusData = data ? "pending" : "failure";
-    let statusColor
-    if (statusData === "pending") {
-        statusColor = "#db4109"
-
-    } else if (statusData === "failure") {
-        statusColor = "#ee0b0b"
-    } else {
-        statusColor ="#23A26D"
-    }
+    useEffect(() => {
+        if (status === "success") {
+            SetColor("#23A26D")
+        } else if (status === "pending") {
+            SetColor("#db4109")
+        } else {
+            SetColor("#ee0b0b")
+        }
 
 
-    const orderId = "1xy0jCYUzvRPJ4Td0zjm"
+
+    }, [status])
 
     return (
         <>

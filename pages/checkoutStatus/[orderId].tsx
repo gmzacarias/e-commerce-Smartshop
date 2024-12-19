@@ -14,20 +14,25 @@ import { PurchaseTicketCard } from "@/components/purchaseTicketCard";
 
 const CheckOutPage: NextPage = () => {
     const router = useRouter()
-    const orderId = router.query.orderId
+    const orderId=router.query.orderId
     const { status, payment_Id } = router.query
+    const orderIdType = typeof orderId === "string" ? orderId : undefined
+    const statusType = status === "success" || status === "pending" || status === "failure" ? status : undefined
+    const paymentIdType = typeof payment_Id === "string" ? payment_Id : undefined
 
-    let statusMessage
-    let description
-    if (status == "approved") {
+    console.log("estado",orderId,status,payment_Id)
+
+    let statusMessage: string
+    let description: string
+    if (status == "success") {
         statusMessage = "Compra aprobada"
         description = "Compra realizada con exito"
     } else if (status == "pending") {
         statusMessage = "Compra pendiente de pago"
-        description="compra pendiente de pago"
+        description = "compra pendiente de pago"
     } else {
         statusMessage = "Fallo al realizar el pago"
-        description="fallo al realizar el pago,reintente con otro medio de pago"
+        description = "fallo al realizar el pago,reintente con otro medio de pago"
     }
 
     return (
@@ -41,8 +46,8 @@ const CheckOutPage: NextPage = () => {
             <Layout>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 10 }}>
                     <h1>compra aprobada ${orderId}</h1>
-                    <PurchaseTicketCard status={status}/>
-
+                    {/* <PurchaseTicketCard status={statusType} orderId={orderIdType} paymentId={paymentIdType} /> */}
+<h4>hola</h4>
                 </div>
             </Layout>
         </>
