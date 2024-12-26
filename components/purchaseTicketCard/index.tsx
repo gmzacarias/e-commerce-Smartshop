@@ -89,6 +89,7 @@ export function PurchaseTicketCard({ status, orderId, paymentId }: Props) {
     const currentDate = fecha.toLocaleString()
     const [color, SetColor] = useState("")
     const [backgroundColor, SetBackgroundColor] = useState("")
+    console.log("status",status)
     useEffect(() => {
         if (status === "success") {
             SetColor("#23A26D")
