@@ -1,12 +1,8 @@
 "use client"
-
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 type StatusType = "success" | "pending" | "failure" | undefined;
-
-
-
 
 export function useCheckoutPages() {
     const router = useRouter()

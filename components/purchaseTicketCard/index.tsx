@@ -77,19 +77,17 @@ const Logo = styled.div`
     background-color:#000;
 `
 type Props = {
-    status: "success" | "pending" | "failure" | undefined
+    status: string | undefined
     orderId: string | undefined
     paymentId: string | undefined
 }
-
-
 
 export function PurchaseTicketCard({ status, orderId, paymentId }: Props) {
     const fecha = new Date()
     const currentDate = fecha.toLocaleString()
     const [color, SetColor] = useState("")
     const [backgroundColor, SetBackgroundColor] = useState("")
-    console.log("status",status)
+    console.log("status", status)
     useEffect(() => {
         if (status === "success") {
             SetColor("#23A26D")
