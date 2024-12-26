@@ -1,6 +1,8 @@
+"use client"
+
 import router from "next/router"
 import Link from 'next/link'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { deleteToken } from "@/lib/api"
 import { useMe } from "lib/hooks"
 import { useSetUserData, useReset, useAppData } from "lib/atoms"
@@ -9,10 +11,13 @@ import { NavBody, NavContainer, LogoContainer, HamburguerMenu, MenuContainer, It
 import { UserIcon, CartIcon, BrandIcon, CloseHamburguerIcon, HamburguerIcon } from "ui/icons"
 import { Paragraph } from "@/ui/typography"
 import { LoginButton, LogoutButton } from "@/ui/buttons"
+import { useCartValue } from "lib/atoms"
 
 export function NavBar() {
   const [data, setData] = useAppData()
   const setUserData = useSetUserData()
+  const currentCart = useCartValue()
+  console.log("data del carro", currentCart)
   const resetCart = useReset()
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { isLogged } = data
@@ -20,6 +25,31 @@ export function NavBar() {
   const myData = useMe()
   const email = myData?.email
   const upperEmail = email ? email.toUpperCase() : null;
+  const [valueCart, SetValueCart] = useState("")
+  const [textCart,SetTextCart]=useState("")
+  console.log("actualizate", valueCart)
+
+  useEffect(() => {
+    if (currentCart) {
+      const currentValue = currentCart.reduce((total, item) => {
+        return total + item.quantity
+      }, 0)
+      console.log("carrito", currentValue)
+      if(currentValue > 10){
+        SetValueCart("+10")
+      }else{
+        SetValueCart(currentValue.toString())
+      }
+      SetTextCart("Mi Compra")
+    } else {
+      SetValueCart("")
+      SetTextCart("Mi carrito")
+    }
+  }, [currentCart])
+
+
+
+
 
   function setShowMenu() {
     setShowMobileMenu(!showMobileMenu)
@@ -64,8 +94,8 @@ export function NavBar() {
           <ItemListMenu>
             <LinkItemList onClick={setShowMenu}>
               <Link href={isLogged ? "/cart" : "/login"} className="links">
-                <CartIcon />
-                <Paragraph>CARRITO</Paragraph>
+                <CartIcon  state={valueCart}/>
+    
               </Link>
             </LinkItemList>
           </ItemListMenu>
