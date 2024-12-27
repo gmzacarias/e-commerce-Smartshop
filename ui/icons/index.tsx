@@ -7,6 +7,7 @@ import LoginSvg from "./login.svg"
 import LogoutSvg from "./logout.svg"
 import TrashSvg from "./trash.svg"
 import BrandSvg from "./brand.svg"
+import Logout2Svg from "./logoutnew.svg"
 import { FaBars, FaTimes, } from "react-icons/fa";
 
 const User = styled(UserSvg)`
@@ -18,8 +19,12 @@ const Login = styled(LoginSvg)`
 `;
 
 const Logout = styled(LogoutSvg)`
-     font-size:24px;       
+     font-size:24px;    
+     padding   :0 ;
 `;
+
+
+
 
 const Hamburguer = styled(FaBars)`
     font-size: 24px;
@@ -41,32 +46,31 @@ position:relative;
 const CartContainer = styled.div`
     display:flex;
     flex-direction: column;
- 
- 
     width:30px;
     height:30px;
 position:relative;
-
-
 `
 const CartText = styled.p`
     font-size: 12px;
     font-weight: bold;
-    position:absolute;
+    color:#dee3e8e1;
+    /* position:absolute;
     z-index: 2;
-color:#dee3e8e1;
 top:-6px;
-left:20px;
+left:20px; */
 `
 const CountContainer = styled.div`
     background-color:#137be4;
-    width:18px;
-    height:18px;
+    width:20px;
+    height:20px;
     border-radius: 50%;
     position:absolute;
     z-index: 1;
     top:-8px;
     left:16px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
  `
 
 
@@ -91,14 +95,22 @@ export function SmartPhoneIcon() {
 }
 
 export function CartIcon({ state }) {
-    return (
-        <CartContainer >
-            <CartText>{state}</CartText>
-            <CountContainer>
-            </CountContainer>
-            <Cart />
-        </CartContainer>
-    )
+    if (state > 0) {
+        return (
+            <CartContainer >
+                <CountContainer>
+                    <CartText>{state}</CartText>
+                </CountContainer>
+                <Cart />
+            </CartContainer>
+        )
+    } else {
+        return (
+            <CartContainer >
+                <Cart />
+            </CartContainer>
+        )
+    }
 }
 
 export function UserIcon() {

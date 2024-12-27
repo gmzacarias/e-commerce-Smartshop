@@ -4,7 +4,7 @@ import { NextPage } from "next";
 import { Layout } from "components/layout";
 import Head from "next/head"
 import { PurchaseTicketCard } from "@/components/purchaseTicketCard";
-import { useCheckoutPages } from "@/components/utils/pages/usePages";
+import { useCheckoutPages } from "@/utils/pages/usePages";
 
 const CheckOutPage: NextPage = () => {
     const { orderIdType, statusType, paymentIdType, statusMessage, description, isLoading } = useCheckoutPages()

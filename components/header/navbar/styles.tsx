@@ -24,6 +24,32 @@ export const LogoContainer = styled.div`
   height:fit-content;
 `;
 
+export const UserContainer = styled.div`
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+
+  svg{
+    display: flex;
+  }
+
+  .link{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+     padding: 5px 10px;
+     color: var(--grey);
+     text-decoration: none;
+     cursor: pointer;
+    }
+
+    .link:hover {
+      color: var(--grey-dark);
+    }
+`
+
 export const MenuContainer = styled.ul<{ open: any }>`
   background-color: var(--light);
   border-bottom:solid 1px var(--grey);
@@ -41,7 +67,7 @@ export const MenuContainer = styled.ul<{ open: any }>`
   transition: 0.5s all ease-in-out;
   z-index:1;
 
-  @media(min-width: 1000px) {
+  @media(min-width: 769px) {
     border-bottom: unset;
     width: fit-content;
     flex-direction: row;
@@ -71,7 +97,7 @@ export const LinkItemList = styled.div`
      display: flex;
     } 
     
-    .links{
+    .link{
      display: flex;
      justify-content: center;
      align-items: center;
@@ -82,12 +108,27 @@ export const LinkItemList = styled.div`
      cursor: pointer;
     }
 
-    .links:hover {
+    .link:hover {
       color: var(--grey-dark);
     }
 
-  @media(min-width: 1000px) {
+    .linkMobile{
+      display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100%;
+     padding: 5px 10px;
+     color: var(--grey);
+     text-decoration: none;
+     cursor: pointer;
+    }
+
+  @media(min-width: 769px)
+   {
     margin-left: unset;
+  }
+  .linkMobile{
+    display: none;
   }
 `;
 
@@ -98,14 +139,14 @@ export const HamburguerMenu = styled.div`
   
   svg {
     fill:var(--grey);
-    margin-right: 10px;
+    margin-left: 10px;
   }
 
     svg:hover{
       fill:var(--grey-dark);
     }
 
-  @media(min-width: 1000px) {
+  @media(min-width: 769px) {
     display:none;
     
       svg{
@@ -125,3 +166,11 @@ export const ButtonsContainer = styled.div`
     }
   }
 `;
+
+export const SessionContainer = styled.div`
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+`

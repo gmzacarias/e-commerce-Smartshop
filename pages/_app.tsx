@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app"
-import { PrivateRoute } from "components/utils/private-routes"
+import { PrivateRoute } from "@/utils/private-routes"
 import { RecoilRoot } from 'recoil';
 import { Toaster } from "sonner"
 import "styles/base.css"
