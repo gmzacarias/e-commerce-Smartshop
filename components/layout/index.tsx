@@ -8,12 +8,13 @@ const BodyLayout=styled.div`
     display:flex;
     flex-direction:column;
     align-items: center;
+    
 `
 
 const MainContent = styled.main`
-  flex: 1; /* Hace que el contenido principal ocupe el espacio restante */
+  flex: 1;
   width: 100%;
-  height: fit-content;
+  height:max-content;
 `
 
 export function Layout({ children }) {

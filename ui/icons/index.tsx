@@ -7,7 +7,11 @@ import LoginSvg from "./login.svg"
 import LogoutSvg from "./logout.svg"
 import TrashSvg from "./trash.svg"
 import BrandSvg from "./brand.svg"
-import Logout2Svg from "./logoutnew.svg"
+import GithubSvg from "./github.svg"
+import LinkedinSvg from "./linkedin.svg"
+import GmailSvg from "./gmail.svg"
+
+
 import { FaBars, FaTimes, } from "react-icons/fa";
 
 const User = styled(UserSvg)`
@@ -82,13 +86,45 @@ const Trash = styled(TrashSvg)`
 fill: var(--red);
 `
 
-const Brand = styled(BrandSvg)`
-color: var(--red);
+const BrandHeader = styled(BrandSvg)`
+fill: #000;
 `
 
-export function BrandIcon() {
-    return <Brand />
+const BrandFooter = styled(BrandSvg)`
+fill:#EAEAEA;
+`
+
+const Github = styled(GithubSvg)`
+   width: 20px;
+   height: 20px;
+   fill: #faf5f5;
+   display: flex;
+`
+
+
+
+const Linkedin = styled(LinkedinSvg)`
+    width: 20px;
+   height: 20px;
+   fill: #faf5f5;
+   display: flex;
+`
+const Gmail=styled(GmailSvg)`
+ width: 20px;
+   height: 20px;
+ display: flex;
+ fill: #faf5f5;   
+`
+
+export function BrandHeaderIcon() {
+    return <BrandHeader />
 }
+
+
+export function BrandFooterIcon() {
+    return <BrandFooter />
+}
+
 
 export function SmartPhoneIcon() {
     return <SmartPhone />
@@ -137,3 +173,16 @@ export function TrashIcon() {
     return <Trash />
 }
 
+
+
+export function GithubIcon() {
+    return <Github />
+}
+
+export function LinkedinIcon() {
+    return <Linkedin />
+}
+
+export function GmailIcon() {
+    return <Gmail />
+}

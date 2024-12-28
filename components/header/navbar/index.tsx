@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { NavBody, NavContainer, LogoContainer, HamburguerMenu, MenuContainer, ItemListMenu, LinkItemList, ButtonsContainer, UserContainer, SessionContainer } from "./styles"
-import { UserIcon, CartIcon, BrandIcon, CloseHamburguerIcon, HamburguerIcon } from "ui/icons"
+import { UserIcon, CartIcon, BrandHeaderIcon, CloseHamburguerIcon, HamburguerIcon } from "ui/icons"
 import { Paragraph } from "@/ui/typography"
 import { LoginButton, LogoutButton } from "@/ui/buttons"
 import { useNavbar } from "@/utils/components/useNavbar"
@@ -13,7 +13,7 @@ export function NavBar() {
       <NavContainer>
         <LogoContainer>
           <Link href={"/"}>
-            <BrandIcon />
+            <BrandHeaderIcon />
           </Link>
         </LogoContainer>
 
