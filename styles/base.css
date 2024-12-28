@@ -6,15 +6,20 @@
 
 
 body {
+    background-color: var(--background-body);
     font-size: 16px;
     font-family: var(--font-family-Montserrat);
     font-weight: var(--font-weight);
-    background-color: var(--background-body);
+}
+
+a{
+    text-decoration: none;
 }
 
 :root {
+    --background-body: #F2F4F5;
     --blue: #007bff;
-    --blue-dark:#08344e;
+    --blue-dark: #08344e;
     --indigo: #6610f2;
     --purple: #6f42c1;
     --pink: #e83e8c;
@@ -35,13 +40,15 @@ body {
     --danger: #dc3545;
     --light: #f8f9fa;
     --dark: #343a40;
+    /*Breakpoints Responsive*/
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-Montserrat: "Monserrat", system-ui;
+    /*Fonts*/
+    --font-family: "Kanit", system-ui;
     --font-weight: 400;
-    --font-weight-bold:700;
-    --background-body:#F2F4F5;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
 }

@@ -13,7 +13,8 @@ export const FooterBody = styled.div`
     padding-top:20px ;
     color: #fff;
     font-size: 16px;
-
+    font-weight: 500;
+font-style: italic;
     a{
       text-decoration: none;
       color: #fff;
