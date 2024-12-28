@@ -9,17 +9,23 @@ export const FooterBody = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     padding-top:20px ;
     color: #fff;
-font-size: 16px;
+    font-size: 16px;
 
     a{
-        text-decoration: none;
-        color: #fff;
+      text-decoration: none;
+      color: #fff;
     }
 
+   
+ 
+@media (min-width:769px){
+  padding-top: 20px;
+  align-items: center;
 
+}
 
 `
 
@@ -28,22 +34,23 @@ export const FooterContainer = styled.div`
  width: 100%;
   max-width: 1500px;
   height: 500px;
-  padding:20px 25px 0px;
+  padding:20px 25px;
   margin:20px 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   border-top: solid 1px var(--grey);
 
 @media (min-width:769px) {
    
-       flex-direction: row;
-height: fit-content;
+    flex-direction: row;
+    height: fit-content;
     max-width: 810px;
     padding:20px 20px;
     margin:20px 0 0;
+    align-items: center;
 }
 
 
@@ -70,16 +77,12 @@ export const CopyrightContainer = styled.div`
 export const SocialLinksContainer = styled.div`
   width:auto;
   height:fit-content;
-  /* background-color: rgb(238, 238, 238); */
   display: flex;
   flex-direction: column;
   align-items: left;
   flex-direction: column;
   justify-content: center;
-  padding: 5px 10px;
-  gap: 20px;
-  /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055); */
-  /* border: solid 1px var(--grey); */
+  padding: 5px 0;
   border-radius: 15px;
   gap:10px;
 
@@ -110,6 +113,7 @@ export const SocialLinksContainer = styled.div`
 
   @media(min-width:769px){
     flex-direction: column;
+    padding: 5px 10px;
   }
 `
 

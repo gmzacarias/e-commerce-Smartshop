@@ -1,10 +1,10 @@
 import { FooterBody, CopyrightContainer, FooterContainer, SocialLinksContainer, LinksContainer, PagesContainer } from "./styles"
 import { BrandFooterIcon, GithubIcon, LinkedinIcon, GmailIcon } from "@/ui/icons"
 import Link from "next/link"
+
+
 export function Footer() {
-
   const getDate = new Date().getFullYear()
-
 
   return (
     <FooterBody>
@@ -12,40 +12,36 @@ export function Footer() {
         <BrandFooterIcon />
       </Link>
       <FooterContainer>
-        <PagesContainer>
+        <PagesContainer className="">
           <h3>Mi perfil</h3>
           <span className="span"></span>
-          <Link href={"/"} className="linksPages">
+          <Link href={"/me"}>
             <p>Mi cuenta</p>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/me/myorders"}>
             <p>Mis ordenes</p>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/cart"}>
             <p>Mi carrito</p>
           </Link>
         </PagesContainer>
         <PagesContainer>
-
           <h3>Productos</h3>
           <span className="span"></span>
-          <Link href={"/"}>
+          <Link href={"/search?q=motorola"}>
             <p>Motorola</p>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/search?q=samsung"}>
             <p>Samsung</p>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/search?q=xiaomi"}>
             <p>Xioami</p>
           </Link>
         </PagesContainer>
 
         <SocialLinksContainer>
           <h3>Contacto</h3>
-
           <span className="span"></span>
-
-
           <LinksContainer  >
             <Link href={"https://github.com/gmzacarias"} >
               <GithubIcon />

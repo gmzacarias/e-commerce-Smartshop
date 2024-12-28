@@ -92,6 +92,11 @@ fill: #000;
 
 const BrandFooter = styled(BrandSvg)`
 fill:#EAEAEA;
+margin-left: 20px;
+
+@media(min-width: 769px){
+    margin:none;
+}
 `
 
 const Github = styled(GithubSvg)`
