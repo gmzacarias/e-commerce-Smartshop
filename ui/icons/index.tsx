@@ -1,4 +1,4 @@
-import {BrandHeader,BrandFooter,SmartPhone,CartContainer,CountContainer,CartText,Cart,User,Login,Logout,Hamburguer,CloseHamburguer,Trash,Github,Linkedin,Gmail} from "./styles"
+import {BrandHeader,BrandFooter,SmartPhone,CartContainer,CountContainer,CartText,Cart,User,Login,Logout,Hamburguer,CloseHamburguer,Trash,Github,Linkedin,Gmail,Sun,Moon} from "./styles"
 
 
 
@@ -7,9 +7,6 @@ export function BrandHeaderIcon() {
 }
 
 
-export function BrandFooterIcon() {
-    return <BrandFooter />
-}
 
 
 export function SmartPhoneIcon() {
@@ -59,7 +56,20 @@ export function TrashIcon() {
     return <Trash />
 }
 
+/*Header*/
+export function SunIcon(){
+    return <Sun/>
+}
 
+export function MoonIcon(){
+    return <Moon/>
+}
+
+
+/*Footer*/
+export function BrandFooterIcon() {
+    return <BrandFooter />
+}
 
 export function GithubIcon() {
     return <Github />

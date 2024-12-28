@@ -10,6 +10,8 @@ import BrandSvg from "./brand.svg"
 import GithubSvg from "./github.svg"
 import LinkedinSvg from "./linkedin.svg"
 import GmailSvg from "./gmail.svg"
+import SunSvg from "./sun.svg"
+import MoonSvg from "./moon.svg"
 
 
 import { FaBars, FaTimes, } from "react-icons/fa";
@@ -90,7 +92,13 @@ export const BrandHeader = styled(BrandSvg)`
 fill: #000;
 `
 
-
+/*Header*/
+export const Sun=styled(SunSvg)`
+  font-size:24px;
+`
+export const Moon=styled(MoonSvg)`
+  font-size:24px
+`
 
 /*Footer*/
 export const BrandFooter = styled(BrandSvg)`
