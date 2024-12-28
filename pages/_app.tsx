@@ -5,14 +5,25 @@ import { Toaster } from "sonner"
 import "styles/base.css"
 import { Suspense } from "react";
 
-export default function App({ Component, pageProps }: AppProps) {
+import { useTheme, ThemeProvider, ThemeConsumer } from "@/utils/darkMode/themeContext";
 
+
+
+
+export default function App({ Component, pageProps }: AppProps) {
+  const { isDarkMode } = useTheme();
   return (
     <Suspense>
       <RecoilRoot>
-        <Toaster expand={true} richColors position="bottom-right" />
-        <link rel="icon" href="/favicon.png" sizes="any" />
-        <Component {...pageProps} />
+        <ThemeProvider>
+          <ThemeConsumer>
+            <Toaster expand={true} richColors position="bottom-right" />
+            <link rel="icon" href="/favicon.png" sizes="any" />
+            <Component {...pageProps} />
+
+          </ThemeConsumer>
+
+        </ThemeProvider>
       </RecoilRoot>
     </Suspense>
   )
