@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Search } from "ui/icons"
+import { Search } from "ui/icons/styles"
 
 type inputProps = {
     type: "text" | "number" | "search" | "email" | "password",
