@@ -7,12 +7,13 @@
 
 body {
     background-color: var(--background-body);
+    font-family: var(--font-family);
     font-size: 16px;
-    font-family: var(--font-family-Montserrat);
     font-weight: var(--font-weight);
+    letter-spacing: 1px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -40,14 +41,8 @@ a{
     --danger: #dc3545;
     --light: #f8f9fa;
     --dark: #343a40;
-    /*Breakpoints Responsive*/
-    --breakpoint-xs: 0;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
     /*Fonts*/
-    --font-family: "Kanit", system-ui;
+    --font-family: 'Roboto Condensed', sans-serif;
     --font-weight: 400;
     --font-weight-medium: 500;
     --font-weight-bold: 700;

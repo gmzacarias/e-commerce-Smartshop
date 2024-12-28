@@ -12,9 +12,7 @@ export const FooterBody = styled.div`
     align-items: left;
     padding-top:20px ;
     color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-font-style: italic;
+
     a{
       text-decoration: none;
       color: #fff;
@@ -25,7 +23,6 @@ font-style: italic;
 @media (min-width:769px){
   padding-top: 20px;
   align-items: center;
-
 }
 
 `
