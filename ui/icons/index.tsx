@@ -1,4 +1,4 @@
-import {BrandHeader} from "./styles"
+import {BrandHeader,BrandFooter,SmartPhone,CartContainer,CountContainer,CartText,Cart,User,Login,Logout,Hamburguer,CloseHamburguer,Trash,Github,Linkedin,Gmail} from "./styles"
 
 
 
