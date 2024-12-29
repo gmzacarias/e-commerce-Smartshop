@@ -24,7 +24,7 @@ export function ThemeToggle() {
 
     return (
       <StyledButton onClick={toggleTheme}>
-        {isDarkMode ? 'Modo Claro' : 'Modo Oscuro'}
+        {isDarkMode ? 'Activar Modo Claro' : ' Activar Modo Oscuro'}
       </StyledButton>
     );
 

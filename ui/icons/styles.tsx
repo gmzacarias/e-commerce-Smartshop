@@ -89,7 +89,7 @@ fill: var(--red);
 `
 
 export const BrandHeader = styled(BrandSvg)`
-fill: #000;
+fill:${({ theme }) => theme.logoBg};
 `
 
 /*Header*/
@@ -102,7 +102,7 @@ export const Moon=styled(MoonSvg)`
 
 /*Footer*/
 export const BrandFooter = styled(BrandSvg)`
-  fill:#EAEAEA;
+  fill:${({ theme }) => theme.logoBg};
   margin-left: 25px;
 
   @media (min-width: 769px){

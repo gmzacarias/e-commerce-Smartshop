@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const NavBody = styled.div`
-  background-color: var(--light);
-  border-bottom:solid 1px var(--grey);
+  background-color: ${({ theme }) => theme.backgroundSecondary};
+  border-bottom:solid 1px ${({ theme }) => theme.border};
   width: 100%;
   height: fit-content;
   margin-bottom: 10px;
@@ -35,24 +35,24 @@ export const UserContainer = styled.div`
   }
 
   .link{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 100%;
-     padding: 5px 10px;
-     color: var(--grey);
-     text-decoration: none;
-     cursor: pointer;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 5px 10px;
+    color: var(--grey);
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-    .link:hover {
-      color: var(--grey-dark);
-    }
+  .link:hover {
+    color: var(--grey-dark);
+  }
 `
 
 export const MenuContainer = styled.ul<{ open: any }>`
-  background-color: var(--light);
-  border-bottom:solid 1px var(--grey);
+  background-color: ${({ theme }) => theme.backgroundSecondary};
+  border-bottom:solid 1px ${({ theme }) => theme.border};
   width: 100%;
   height: fit-content;
   padding:10px 0 ;

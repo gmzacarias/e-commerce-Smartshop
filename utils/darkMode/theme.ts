@@ -1,12 +1,20 @@
 
 export const LightTheme = {
-  background: '#3b83bd',
+  background: "var(--background-body)",
+  backgroundSecondary:"var(--background-navfoot)",
   color: '#000',
   buttonBg: '#FFF',
+  logoBg:"#121212",
+  border:"var(--border)"
 };
 
 export const DarkTheme = {
-  background: '#Fe8a18',
+  background: "var(--dark-background-body)",
+  backgroundSecondary:"var(--dark-background-navfoot)",
   color: '#FFF',
-  buttonBg: '#292728',
+  buttonBg: 'var(--dark-navfoot)',
+  logoBg:"#Eaeaea",
+  border:"var(--dark-border)"
 };
+
+

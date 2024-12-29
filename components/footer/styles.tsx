@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const FooterBody = styled.div`
-  background-color:#292728;
+  background-color:${({ theme }) => theme.backgroundSecondary};
   width: 100%;
   height: fit-content;
   padding-top:20px ;
@@ -9,11 +9,11 @@ export const FooterBody = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
-  color:#fff;
+  color:${({ theme }) => theme.color};
 
   a{
     text-decoration: none;
-    color: #fff;
+    color: ${({ theme }) => theme.color};
   }
 
   @media (min-width:769px){
@@ -22,8 +22,8 @@ export const FooterBody = styled.div`
 `
 
 export const FooterContainer = styled.div`
-  background-color:#292728;
-  border-top: solid 1px var(--grey);
+  background-color:${({ theme }) => theme.backgroundSecondary};;
+  border-top: solid 1px ${({ theme }) => theme.border};
   width: 100%;
   max-width: 1500px;
   height: 500px;
@@ -46,7 +46,7 @@ export const FooterContainer = styled.div`
 `
 
 export const LogoContainer = styled.div`
-    background-color: azure;
+  background-color:${({ theme }) => theme.backgroundSecondary};
 `
 
 export const SectionContainer = styled.section`
@@ -75,7 +75,7 @@ export const LinksContainer = styled.div`
 export const CopyrightContainer = styled.div`    
   width: 100%;
   height: 45px;
-  border-top:solid 1px var(--dark-grey);
+  border-top:solid 1px ${({ theme }) => theme.border};
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -83,7 +83,7 @@ export const CopyrightContainer = styled.div`
 `
 
 export const Span = styled.div`
-  background-color:var(--grey);
+  background-color:${({ theme }) => theme.border};
   width: 100px;
   height: 1px;
 `
