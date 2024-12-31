@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.color};
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-family);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 

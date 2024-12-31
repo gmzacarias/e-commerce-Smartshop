@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { FeaturedProducts } from "@/components/featuredProducts"
 import { Title, SectionTitle } from "@/ui/typography"
 import { SearchQuery } from "../search"
-import { ThemeToggle } from "@/utils/darkMode/button"
+
 import { PurchaseByBrand } from "../purchaseByBrand"
 
 const HomeBody = styled.div`
@@ -20,7 +20,6 @@ export function Home() {
             <Title>Bievenido a Smartshop</Title>
             <SectionTitle>Encontra los mejores celulares del mercado</SectionTitle>
             <SearchQuery ></SearchQuery>
-            <ThemeToggle />
             <PurchaseByBrand/>
             <FeaturedProducts></FeaturedProducts>
         </HomeBody>

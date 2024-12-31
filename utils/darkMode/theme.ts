@@ -7,8 +7,8 @@ export const LightTheme = {
   buttonBg: '#FFF',
   logoBg:"#121212",
   border:"var(--border)",
-  iconBG:"var(--grey)",
-  iconBGSecondary:"var(--dark-grey)",
+  strokeBg:"var(--dark-grey)",
+ 
 
 };
 
@@ -20,8 +20,8 @@ export const DarkTheme = {
   buttonBg: 'var(--dark-navfoot)',
   logoBg:"#Eaeaea",
   border:"var(--dark-border)",
-  iconBG:"var(--grey)",
-  iconBGSecondary:"var(--dark-grey)",
+  strokeBg:"#eaeaea",
+
 };
 
 

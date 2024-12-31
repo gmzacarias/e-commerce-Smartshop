@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-
 export const PurchaseByBrandBody = styled.section`
   background-color:${({ theme }) => theme.backgroundSecondary};
   width:100%;
@@ -24,10 +23,10 @@ export const BrandContainer = styled.div`
 
   a{
      cursor:pointer
-   }
+  }
 
    @media(min-width:769px){
      height: fit-content;
      flex-direction: row;
-   }
+  }
 `

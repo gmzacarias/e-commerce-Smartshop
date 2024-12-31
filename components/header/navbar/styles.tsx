@@ -13,41 +13,27 @@ export const NavContainer = styled.div`
   width: 100%;
   max-width: 1500px;
   height: 100%;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+
+  a{
+    text-decoration: none;
+  }
 `;
 
-export const LogoContainer = styled.div`
-  width:fit-content;
-  height:fit-content;
-`;
+
 
 export const UserContainer = styled.div`
+  width: fit-content;
+  height: 40px;
   display:flex;
   flex-direction: row;
   justify-content: center;
-  align-items:center;
-
-  svg{
-    display: flex;
-  }
-
-  .link{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 5px 10px;
-    color: var(--grey);
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .link:hover {
-    color: var(--grey-dark);
-  }
+  align-items:baseline;
+  gap:10px;
 `
 
 export const MenuContainer = styled.ul<{ open: any }>`
@@ -60,7 +46,7 @@ export const MenuContainer = styled.ul<{ open: any }>`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 10px;
+  gap:10px;
   position: absolute;
   top: 73px;
   left:  ${({ open }) => (open ? "0" : "-100%")};
@@ -90,87 +76,29 @@ export const ItemListMenu = styled.li`
 `;
 
 export const LinkItemList = styled.div`
-  display: flex;
-  margin-left:15px;
-
-    svg {
-     display: flex;
-    } 
-    
-    .link{
+  .links{
      display: flex;
      justify-content: center;
      align-items: center;
      height: 100%;
      padding: 5px 10px;
-     color: var(--grey);
-     text-decoration: none;
+     color:${({ theme }) => theme.color};
+     
      cursor: pointer;
-    }
-
-    .link:hover {
-      color: var(--grey-dark);
-    }
-
-    .linkMobile{
-      display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 100%;
-     padding: 5px 10px;
-     color: var(--grey);
-     text-decoration: none;
-     cursor: pointer;
-    }
-
-  @media(min-width: 769px)
-   {
-    margin-left: unset;
-  }
-  .linkMobile{
-    display: none;
-  }
+     gap:5px;
+  } 
 `;
 
 export const HamburguerMenu = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  
-  svg {
-    fill:var(--grey);
-    margin-left: 10px;
-  }
-
-    svg:hover{
-      fill:var(--grey-dark);
-    }
-
-  @media(min-width: 769px) {
-    display:none;
-    
-      svg{
-       display: none;
-      }
-    }
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-left: 15px;
-    
-  @media(min-width:1000px){
-    &{
-      margin-left: unset;
-    }
-  }
+  gap:10px;
 `;
 
-export const SessionContainer = styled.div`
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
-`

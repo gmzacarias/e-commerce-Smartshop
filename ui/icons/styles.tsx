@@ -15,72 +15,32 @@ import MoonSvg from "./moon.svg"
 import MotorolaSvg from "./motorola.svg"
 import SamsungSvg from "./samsung.svg"
 import XiaomiSvg from "./xiaomi.svg"
-
-
-import { FaBars, FaTimes, } from "react-icons/fa";
+import HamburguerSvg from "./hamburguer.svg"
+import CloseHamburguerSvg from "./closeHamburguer.svg"
 
 export const User = styled(UserSvg)`
-     font-size:24px;
+  stroke: ${({ theme }) => theme.strokeBg};
+  width:24px;
+  height:24px;
+    
+  @media(min-width:769px){
+    width:32px;
+    height: 32px;
+  }
 `;
 
 export const Login = styled(LoginSvg)`
      font-size:24px;
 `;
 
-export const Logout = styled(LogoutSvg)`
-     font-size:24px;    
-     padding   :0 ;
-`;
 
 
 
 
-export const Hamburguer = styled(FaBars)`
-    font-size: 24px;
-`;
-
-export const CloseHamburguer = styled(FaTimes)`
-  font-size:24px;
-`;
 
 export const SmartPhone = styled(SmartPhoneSvg)`
      font-size:24px;
 `;
-export const Cart = styled(CartSvg)`
-     font-size:28px;
-      display:flex;
-position:relative;
-`;
-
-export const CartContainer = styled.div`
-    display:flex;
-    flex-direction: column;
-    width:30px;
-    height:30px;
-position:relative;
-`
-export const CartText = styled.p`
-    font-size: 12px;
-    font-weight: bold;
-    color:#dee3e8e1;
-    /* position:absolute;
-    z-index: 2;
-top:-6px;
-left:20px; */
-`
-export const CountContainer = styled.div`
-    background-color:#137be4;
-    width:20px;
-    height:20px;
-    border-radius: 50%;
-    position:absolute;
-    z-index: 1;
-    top:-8px;
-    left:16px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
- `
 
 
 export const Search = styled(SearchSvg)`
@@ -99,11 +59,11 @@ export const Motorola = styled(MotorolaSvg)`
   path:nth-child(2){
     fill:${({ theme }) => theme.backgroundSecondary};
   }
-
+  
   path:first-child:hover{
     fill:#33A1FD;
   }
-`
+  `
 
 export const Samsung = styled(SamsungSvg)`
   width: 200px;
@@ -111,9 +71,9 @@ export const Samsung = styled(SamsungSvg)`
   fill:var(--grey);
   
   :hover{
-    fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA": "#1428a0"};
+    fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "#1428a0"};
   }
-`
+  `
 
 export const Xiaomi = styled(XiaomiSvg)`
   width: 75px;
@@ -121,13 +81,13 @@ export const Xiaomi = styled(XiaomiSvg)`
   fill:var(--grey);
   
   :hover{
-   fill:#FF6900;
+    fill:#FF6900;
   }
   
   path:nth-child(2){
     fill:${({ theme }) => theme.backgroundSecondary};
   }
-`;
+  `;
 
 
 
@@ -137,22 +97,93 @@ export const BrandHeader = styled(BrandSvg)`
 `
 
 export const Sun = styled(SunSvg)`
- width: 32px;
-  height: 32px;
-  stroke: var(--grey);
-  
+ stroke: ${({ theme }) => theme.strokeBg};
+ width: 24px;
+ height: 24px;
+
+ @media(min-width:769px){
+   width: 32px;
+   height: 32px;
+  }
 `
+
 export const Moon = styled(MoonSvg)`
+  stroke: ${({ theme }) => theme.strokeBg};
+  width: 24px;
+  height: 24px;
+
+  @media(min-width:769px){
+   width: 32px;
+   height: 32px;
+  }
+`
+
+export const Hamburguer = styled(HamburguerSvg)`
+  stroke: ${({ theme }) => theme.strokeBg}; 
   width: 32px;
   height: 32px;
-  stroke: var(--grey);
-  
- :hover{
-  stroke: "#000";
-
- }
-
 `
+
+export const CloseHamburguer = styled(CloseHamburguerSvg)`
+  stroke: ${({ theme }) => theme.strokeBg}; 
+  width: 32px;
+  height: 32px;
+  
+  @media(min-width){
+   width: 24px;
+   height: 24px;
+  }
+`
+
+export const Logout = styled(LogoutSvg)`
+  stroke: ${({ theme }) => theme.strokeBg}; 
+  width: 24px;
+  height: 24px;
+  
+  @media(min-width:769px){
+   width: 32px;
+   height: 32px;
+  }
+`
+
+export const CartContainer = styled.div`
+  display:flex;
+  flex-direction: column;
+  
+`
+
+export const Cart = styled(CartSvg)`
+  stroke: ${({ theme }) => theme.strokeBg}; 
+  width:32px;
+  height: 32px;
+  display:flex;
+  position:relative;   
+`
+
+
+
+export const CartText = styled.p`
+      font-size: 12px;
+      font-weight: bold;
+      color:#dee3e8e1;
+      /* position:absolute;
+      z-index: 2;
+      top:-6px;
+      left:20px; */
+      `
+export const CountContainer = styled.div`
+      background-color:#137be4;
+      width:20px;
+      height:20px;
+      border-radius: 50%;
+      position:absolute;
+      z-index: 1;
+      top:-8px;
+      left:16px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      `
 
 /*Footer*/
 export const BrandFooter = styled(BrandSvg)`

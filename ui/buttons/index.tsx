@@ -1,11 +1,19 @@
 import styled from "styled-components"
 import { LoginIcon, LogoutIcon, TrashIcon } from "ui/icons"
 import { useAppDataValue } from "lib/atoms"
+import { ReactNode } from "react"
+import { Title } from "../typography"
+import { useTheme } from 'utils/darkMode/themeContext';
+import { useContext, useState } from "react"
+
+import { SunIcon, MoonIcon } from "ui/icons"
+
 
 type buttonProps = {
-    children?: string | any,
+    children?: ReactNode,
     type?: "button" | "reset" | "submit",
-    onClick?: (e) => void | any,
+    onClick?: (e: any) => void | any,
+    title?: string | any,
 
 }
 
@@ -81,39 +89,73 @@ const TrashIconContainer = styled.div`
 const Session = styled.button`
    background: none;
    border:none;
-   border-radius: 4px;
    width: 100%;
    height: 100%;
    display: flex;
+   padding:5px 10PX;
    justify-content:center;
    align-items: center;
-   padding:5px 10px;
-   font-family:var(--font-family-Montserrat);
-   color: var(--grey);
+   font-family:var(--font-family);
+   color:${({ theme }) => theme.color};
    cursor: pointer;
-   
-  &:hover {
-       color:var(--dark-grey)
-  }
+   gap:5px;
+
 `
 
-export function LoginButton({ onClick, type, children }: buttonProps) {
+const ToggleButton = styled(Session)`
+   
+   justify-content:flex-start;
+   @media (min-width:769px){
+    padding:unset;
+   }
+
+
+
+        `;
+
+
+export function SessionButton({ onClick, title, children }: buttonProps) {
     return (
-        <Session type={type} onClick={onClick}>
-            <LoginIcon></LoginIcon>
+        <Session onClick={onClick} title={title}>
             {children}
         </Session>
     )
 }
 
-export function LogoutButton({ onClick, type, children }: buttonProps) {
+
+
+
+
+export function ThemeToggleButton({ onClick, title, children }: buttonProps) {
     return (
-        <Session type={type} onClick={onClick} >
-            <LogoutIcon />
+        <ToggleButton onClick={onClick} title={title}>
             {children}
-        </Session>
-    )
+        </ToggleButton>
+    );
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
