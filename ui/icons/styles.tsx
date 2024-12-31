@@ -12,6 +12,9 @@ import LinkedinSvg from "./linkedin.svg"
 import GmailSvg from "./gmail.svg"
 import SunSvg from "./sun.svg"
 import MoonSvg from "./moon.svg"
+import MotorolaSvg from "./motorola.svg"
+import SamsungSvg from "./samsung.svg"
+import XiaomiSvg from "./xiaomi.svg"
 
 
 import { FaBars, FaTimes, } from "react-icons/fa";
@@ -88,15 +91,55 @@ export const Trash = styled(TrashSvg)`
 fill: var(--red);
 `
 
-export const BrandHeader = styled(BrandSvg)`
-fill:${({ theme }) => theme.logoBg};
+export const Motorola = styled(MotorolaSvg)`
+  width:75px;
+  height:75px;
+  fill:var(--grey);
+  
+  path:nth-child(2){
+    fill:${({ theme }) => theme.backgroundSecondary};
+  }
+
+  path:first-child:hover{
+    fill:#33A1FD;
+  }
 `
 
+export const Samsung = styled(SamsungSvg)`
+  width: 200px;
+  height: 50px;
+  fill:var(--grey);
+  
+  :hover{
+    fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA": "#1428a0"};
+  }
+`
+
+export const Xiaomi = styled(XiaomiSvg)`
+  width: 75px;
+  height: 75px;
+  fill:var(--grey);
+  
+  :hover{
+   fill:#FF6900;
+  }
+  
+  path:nth-child(2){
+    fill:${({ theme }) => theme.backgroundSecondary};
+  }
+`;
+
+
+
 /*Header*/
-export const Sun=styled(SunSvg)`
+export const BrandHeader = styled(BrandSvg)`
+  fill:${({ theme }) => theme.logoBg};
+`
+
+export const Sun = styled(SunSvg)`
   font-size:24px;
 `
-export const Moon=styled(MoonSvg)`
+export const Moon = styled(MoonSvg)`
   font-size:24px
 `
 
@@ -120,7 +163,8 @@ export const Linkedin = styled(LinkedinSvg)`
   width: 20px;
   height: 20px;
 `
-export const Gmail=styled(GmailSvg)`  
+export const Gmail = styled(GmailSvg)`  
   width: 20px;
   height: 20px;
 `
+

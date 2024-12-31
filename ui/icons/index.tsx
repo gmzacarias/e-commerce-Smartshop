@@ -1,4 +1,4 @@
-import {BrandHeader,BrandFooter,SmartPhone,CartContainer,CountContainer,CartText,Cart,User,Login,Logout,Hamburguer,CloseHamburguer,Trash,Github,Linkedin,Gmail,Sun,Moon} from "./styles"
+import {BrandHeader,BrandFooter,SmartPhone,CartContainer,CountContainer,CartText,Cart,User,Login,Logout,Hamburguer,CloseHamburguer,Trash,Github,Linkedin,Gmail,Sun,Moon,Motorola,Samsung,Xiaomi} from "./styles"
 
 
 
@@ -55,6 +55,20 @@ export function CloseHamburguerIcon() {
 export function TrashIcon() {
     return <Trash />
 }
+
+/*Purchase by brand */
+export function MotorolaIcon(){
+    return <Motorola/>
+}
+
+export function SamsungIcon(){
+    return <Samsung/>
+}
+
+export function XiaomiIcon(){
+return <Xiaomi/>
+}
+
 
 /*Header*/
 export function SunIcon(){
