@@ -4,6 +4,7 @@ import { UserIcon, CartIcon, BrandHeaderIcon, CloseHamburguerIcon, HamburguerIco
 import { Paragraph } from "@/ui/typography"
 import { LoginButton, LogoutButton } from "@/ui/buttons"
 import { useNavbar } from "@/utils/components/useNavbar"
+import {ThemeToggle} from "utils/darkMode/button"
 
 export function NavBar() {
   const { showMobileMenu, isLogged, valueCart, isMobile, setShowMenu, handleLogin, handleLogOut } = useNavbar()
@@ -32,6 +33,7 @@ export function NavBar() {
                 <ButtonsContainer>
                  {isLogged? <LogoutButton onClick={handleLogOut}><Paragraph>SALIR</Paragraph></LogoutButton>: <></> } 
                 </ButtonsContainer>
+                <ThemeToggle/>
             </SessionContainer>
           </UserContainer>
         )}

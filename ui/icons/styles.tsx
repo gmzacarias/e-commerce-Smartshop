@@ -137,10 +137,21 @@ export const BrandHeader = styled(BrandSvg)`
 `
 
 export const Sun = styled(SunSvg)`
-  font-size:24px;
+ width: 32px;
+  height: 32px;
+  stroke: var(--grey);
+  
 `
 export const Moon = styled(MoonSvg)`
-  font-size:24px
+  width: 32px;
+  height: 32px;
+  stroke: var(--grey);
+  
+ :hover{
+  stroke: "#000";
+
+ }
+
 `
 
 /*Footer*/
