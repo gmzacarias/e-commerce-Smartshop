@@ -41,8 +41,20 @@ export const SmartPhone = styled(SmartPhoneSvg)`
 `;
 
 
+
 export const Search = styled(SearchSvg)`
-     font-size:24px;
+ stroke: ${({ theme }) => theme.strokeBg};
+ width: 24px;
+ height: 24px;
+ position:absolute;
+ top: 10px;
+ right: 10px;
+ cursor:pointer;
+
+ @media(min-width:769px){
+   width: 32px;
+   height: 32px;
+  }
      `
 
 export const Trash = styled(TrashSvg)`

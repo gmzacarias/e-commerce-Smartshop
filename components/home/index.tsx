@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { FeaturedProducts } from "@/components/featuredProducts"
 import {Title,SubTitle } from "@/ui/typography"
-import { SearchQuery } from "../search"
+import { Search} from "../search"
 import { PurchaseByBrand } from "../purchaseByBrand"
 
 const HomeBody = styled.div`
@@ -18,7 +18,7 @@ export function Home() {
         <HomeBody>
             <Title>Bienvenido a Smartshop</Title>
             <SubTitle>Encontra los mejores celulares del mercado</SubTitle>            
-            <SearchQuery ></SearchQuery>
+            <Search/>
             <PurchaseByBrand/>
             <FeaturedProducts></FeaturedProducts>
         </HomeBody>

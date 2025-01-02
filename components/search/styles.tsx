@@ -17,7 +17,7 @@ flex-direction: column;
 `
 
 
-export const InputSearch = styled.input`
+export const InputSearch2 = styled.input`
 
 width: 250px;
 min-width: 200px;

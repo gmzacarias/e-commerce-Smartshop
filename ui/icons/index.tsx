@@ -1,5 +1,12 @@
-import {BrandHeader,BrandFooter,SmartPhone,CartContainer,CountContainer,CartText,Cart,User,Login,Logout,List,Hamburguer,CloseHamburguer,Trash,Github,Linkedin,Gmail,Sun,Moon,Motorola,Samsung,Xiaomi} from "./styles"
+import { BrandHeader, BrandFooter, SmartPhone, CartContainer, CountContainer, CartText, Cart, User, Login, Logout, List, Hamburguer, CloseHamburguer, Trash, Github, Linkedin, Gmail, Sun, Moon, Motorola, Samsung, Xiaomi, Search } from "./styles"
 
+type SearchProps = {
+    onClick: () => void
+}
+
+export function SearchIcon({onClick}:SearchProps) {
+    return <Search onClick={onClick}/>
+}
 
 
 export function BrandHeaderIcon() {
@@ -44,8 +51,8 @@ export function LogoutIcon() {
     return <Logout />
 }
 
-export function ListIcon(){
-    return <List/>
+export function ListIcon() {
+    return <List />
 }
 
 export function HamburguerIcon() {
@@ -61,26 +68,26 @@ export function TrashIcon() {
 }
 
 /*Purchase by brand */
-export function MotorolaIcon(){
-    return <Motorola/>
+export function MotorolaIcon() {
+    return <Motorola />
 }
 
-export function SamsungIcon(){
-    return <Samsung/>
+export function SamsungIcon() {
+    return <Samsung />
 }
 
-export function XiaomiIcon(){
-return <Xiaomi/>
+export function XiaomiIcon() {
+    return <Xiaomi />
 }
 
 
 /*Header*/
-export function SunIcon(){
-    return <Sun/>
+export function SunIcon() {
+    return <Sun />
 }
 
-export function MoonIcon(){
-    return <Moon/>
+export function MoonIcon() {
+    return <Moon />
 }
 
 
