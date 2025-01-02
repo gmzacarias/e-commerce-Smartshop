@@ -6,6 +6,9 @@ import { deleteToken } from "@/lib/api"
 import { useSetUserData, useReset, useAppData, useCartValue } from "lib/atoms"
 import { logoutToast } from "@/lib/sonner"
 import { useIsMobile } from "@/utils/useIsMobile"
+import { useTheme } from "@/utils/darkMode/themeContext"
+import { TiCogOutline } from "react-icons/ti"
+{}
 
 export function useNavbar() {
     const [data, setData] = useAppData()
@@ -16,6 +19,8 @@ export function useNavbar() {
     const resetCart = useReset()
     const isMobile = useIsMobile(768)
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const { isDarkMode, toggleTheme } = useTheme();
+    
 
     useEffect(() => {
         if (currentCart) {
@@ -61,7 +66,7 @@ export function useNavbar() {
         logoutToast()
     }
 
-    return { showMobileMenu, isLogged, valueCart, isMobile, setShowMenu, handleLogin, handleLogOut }
+    return { showMobileMenu, isLogged, valueCart, isMobile,isDarkMode, setShowMenu, handleLogin, handleLogOut ,toggleTheme }
 
 
 }

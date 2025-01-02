@@ -5,11 +5,10 @@ import { Paragraph } from "@/ui/typography"
 import { SessionButton, ThemeToggleButton } from "@/ui/buttons"
 import { useNavbar } from "@/utils/components/useNavbar"
 
-import { useTheme } from '@/utils/darkMode/themeContext'
+
 
 export function NavBar() {
-  const { showMobileMenu, isLogged, valueCart, isMobile, setShowMenu, handleLogin, handleLogOut } = useNavbar()
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { showMobileMenu, isLogged, valueCart, isMobile,isDarkMode, setShowMenu, handleLogin, handleLogOut,toggleTheme } = useNavbar()
 
   return (
     <NavBody>
