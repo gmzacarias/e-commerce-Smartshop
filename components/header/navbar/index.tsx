@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { NavBody, NavContainer, HamburguerMenu, MenuContainer, ItemListMenu, LinkItemList, ButtonsContainer, UserContainer } from "./styles"
-import { UserIcon, CartIcon, BrandHeaderIcon, CloseHamburguerIcon, HamburguerIcon, LogoutIcon, LoginIcon, SunIcon, MoonIcon } from "ui/icons"
+import { UserIcon, CartIcon, BrandHeaderIcon, CloseHamburguerIcon, HamburguerIcon, LogoutIcon, LoginIcon,ListIcon, SunIcon, MoonIcon } from "ui/icons"
 import { Paragraph } from "@/ui/typography"
 import { SessionButton, ThemeToggleButton } from "@/ui/buttons"
 import { useNavbar } from "@/utils/components/useNavbar"
@@ -54,7 +54,7 @@ export function NavBar() {
             <ItemListMenu>
               <LinkItemList onClick={setShowMenu}>
                 <Link href={isLogged ? "/me/myorders" : "/login"} className="links" title="mis ordenes de compra">
-                  <UserIcon />
+                  <ListIcon />
                   <Paragraph>MIS ORDENES</Paragraph>
                 </Link>
               </LinkItemList>

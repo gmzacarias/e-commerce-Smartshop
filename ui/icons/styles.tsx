@@ -17,6 +17,7 @@ import SamsungSvg from "./samsung.svg"
 import XiaomiSvg from "./xiaomi.svg"
 import HamburguerSvg from "./hamburguer.svg"
 import CloseHamburguerSvg from "./closeHamburguer.svg"
+import ListSvg from "./list.svg"
 
 export const User = styled(UserSvg)`
   stroke: ${({ theme }) => theme.strokeBg};
@@ -29,9 +30,6 @@ export const User = styled(UserSvg)`
   }
 `;
 
-export const Login = styled(LoginSvg)`
-     font-size:24px;
-`;
 
 
 
@@ -45,7 +43,7 @@ export const SmartPhone = styled(SmartPhoneSvg)`
 
 export const Search = styled(SearchSvg)`
      font-size:24px;
-`
+     `
 
 export const Trash = styled(TrashSvg)`
 fill: var(--red);
@@ -122,7 +120,7 @@ export const Hamburguer = styled(HamburguerSvg)`
   stroke: ${({ theme }) => theme.strokeBg}; 
   width: 32px;
   height: 32px;
-`
+  `
 
 export const CloseHamburguer = styled(CloseHamburguerSvg)`
   stroke: ${({ theme }) => theme.strokeBg}; 
@@ -130,12 +128,36 @@ export const CloseHamburguer = styled(CloseHamburguerSvg)`
   height: 32px;
   
   @media(min-width){
-   width: 24px;
-   height: 24px;
+    width: 24px;
+    height: 24px;
+  }
+  `
+export const Login = styled(LoginSvg)`
+  stroke: ${({ theme }) => theme.strokeBg}; 
+  width: 24px;
+  height: 24px;
+  
+  @media(min-width:769px){
+   width: 32px;
+   height: 32px;
+  }
+`;
+
+
+
+
+export const Logout = styled(LogoutSvg)`
+  stroke: ${({ theme }) => theme.strokeBg}; 
+  width: 24px;
+  height: 24px;
+  
+  @media(min-width:769px){
+   width: 32px;
+   height: 32px;
   }
 `
 
-export const Logout = styled(LogoutSvg)`
+export const List=styled(ListSvg)`
   stroke: ${({ theme }) => theme.strokeBg}; 
   width: 24px;
   height: 24px;

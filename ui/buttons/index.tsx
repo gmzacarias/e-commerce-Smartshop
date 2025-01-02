@@ -93,13 +93,11 @@ const Session = styled.button`
    height: 100%;
    display: flex;
    padding:5px 10PX;
-   justify-content:center;
    align-items: center;
+   gap:5px;
    font-family:var(--font-family);
    color:${({ theme }) => theme.color};
    cursor: pointer;
-   gap:5px;
-
 `
 
 const ToggleButton = styled(Session)`

@@ -1,4 +1,4 @@
-import {BrandHeader,BrandFooter,SmartPhone,CartContainer,CountContainer,CartText,Cart,User,Login,Logout,Hamburguer,CloseHamburguer,Trash,Github,Linkedin,Gmail,Sun,Moon,Motorola,Samsung,Xiaomi} from "./styles"
+import {BrandHeader,BrandFooter,SmartPhone,CartContainer,CountContainer,CartText,Cart,User,Login,Logout,List,Hamburguer,CloseHamburguer,Trash,Github,Linkedin,Gmail,Sun,Moon,Motorola,Samsung,Xiaomi} from "./styles"
 
 
 
@@ -42,6 +42,10 @@ export function LoginIcon() {
 
 export function LogoutIcon() {
     return <Logout />
+}
+
+export function ListIcon(){
+    return <List/>
 }
 
 export function HamburguerIcon() {
