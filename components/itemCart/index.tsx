@@ -1,7 +1,7 @@
 import { CartImageProduct } from "@/ui/images";
 import { ParagraphBold, Small } from "ui/typography"
 import styled from "styled-components"
-import {CountInputCart} from "ui/inputs"
+// import {CountInputCart} from "ui/inputs"
 import { useState, useEffect } from "react"
 import { useUpdateQuantity } from "lib/atoms"
 import {CountButton,TrashButton} from "ui/buttons"
@@ -86,7 +86,7 @@ export function ItemCart({ key, id, photo, model, brand, colour, price, quantity
 
             <CountContainer>
                 <CountButton type="button" onClick={handleDecrement}>-</CountButton>
-                <CountInputCart type="number" min={1} max={10} value={count} onChange={handleChange} />
+                {/* <CountInputCart type="number" min={1} max={10} value={count} onChange={handleChange} /> */}
                 <CountButton type="button" onClick={handleIncrement}>+</CountButton>
             </CountContainer>
             <ParagraphBold>${totalPrice}</ParagraphBold>
