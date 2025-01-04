@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const PurchaseByBrandBody = styled.section`
+export const PurchaseByBrandSection = styled.section`
   background-color:${({ theme }) => theme.backgroundSecondary};
   width:100%;
   height: fit-content;
