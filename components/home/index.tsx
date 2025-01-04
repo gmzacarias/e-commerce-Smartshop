@@ -16,11 +16,10 @@ export function Home() {
 
     return (
         <HomeBody>
-            <Title>Bienvenido a Smartshop</Title>
-            <SubTitle>Encontra los mejores celulares del mercado</SubTitle>            
+            <Title>Bienvenido a Smartshop</Title>            
             <Search/>
-            <PurchaseByBrand/>
             <FeaturedProducts></FeaturedProducts>
+            <PurchaseByBrand/>
         </HomeBody>
 
     )
