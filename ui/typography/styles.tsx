@@ -9,8 +9,8 @@ export const TitleText = styled.h1`
 `
 
 export const SubTitleText = styled.h2`
-  font-size:clamp(24px,4vw,32px);
-  font-weight: var(--font-weight-medium);
+  font-size:clamp(24px,4vw,36px);
+  font-weight: var(--font-weight-bold);
   color:${({ theme }) => theme.color};
   text-align: center;
   word-wrap: break-word;

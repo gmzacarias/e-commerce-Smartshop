@@ -1,12 +1,12 @@
 import { BrandContainer, PurchaseByBrandSection } from "./styles"
 import { MotorolaIcon, SamsungIcon, XiaomiIcon } from "ui/icons"
-import {SubTitle} from "ui/typography"
+import {SubTitle, Title} from "ui/typography"
 import Link from "next/link"
 
 export function PurchaseByBrand() {
     return (
         <PurchaseByBrandSection>
-            <SubTitle>Compra por marca</SubTitle>
+            <SubTitle>Comprá por Marca</SubTitle>
             <BrandContainer>
                 <Link href={"/search?q=motorola&offset=0&limit=10"} className="links" title="productos Motorola">
                     <MotorolaIcon />

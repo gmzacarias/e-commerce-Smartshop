@@ -64,42 +64,53 @@ fill: var(--red);
 export const Motorola = styled(MotorolaSvg)`
   width:75px;
   height:75px;
-  fill:var(--grey);
+  fill:#33a1fd;
   
   path:nth-child(2){
     fill:${({ theme }) => theme.backgroundSecondary};
   }
   
-  path:first-child:hover{
-    fill:#33A1FD;
+  @media(min-width:769px){
+    fill:var(--grey);
+  
+    path:first-child:hover{
+      fill:#33A1FD;
+   } 
   }
-  `
+`
 
+/*Purchase by brand*/
 export const Samsung = styled(SamsungSvg)`
   width: 200px;
   height: 50px;
-  fill:var(--grey);
+  fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "#1428a0"};
   
-  :hover{
-    fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "#1428a0"};
+  @media(min-width:769px){
+    fill:var(--grey);
+    
+    :hover{
+      fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "#1428a0"};
+    }
   }
-  `
+`
 
 export const Xiaomi = styled(XiaomiSvg)`
   width: 75px;
   height: 75px;
-  fill:var(--grey);
-  
-  :hover{
-    fill:#FF6900;
-  }
+  fill:#FF6900;
   
   path:nth-child(2){
     fill:${({ theme }) => theme.backgroundSecondary};
   }
-  `;
-
-
+  
+  @media(min-width:769px){
+    fill:var(--grey);
+  
+    :hover{
+      fill:#FF6900;
+    }
+  }
+`
 
 /*Header*/
 export const BrandHeader = styled(BrandSvg)`
@@ -143,7 +154,8 @@ export const CloseHamburguer = styled(CloseHamburguerSvg)`
     width: 24px;
     height: 24px;
   }
-  `
+`
+
 export const Login = styled(LoginSvg)`
   stroke: ${({ theme }) => theme.strokeBg}; 
   width: 24px;
@@ -153,10 +165,7 @@ export const Login = styled(LoginSvg)`
    width: 32px;
    height: 32px;
   }
-`;
-
-
-
+`
 
 export const Logout = styled(LogoutSvg)`
   stroke: ${({ theme }) => theme.strokeBg}; 
@@ -169,7 +178,7 @@ export const Logout = styled(LogoutSvg)`
   }
 `
 
-export const List=styled(ListSvg)`
+export const List = styled(ListSvg)`
   stroke: ${({ theme }) => theme.strokeBg}; 
   width: 24px;
   height: 24px;
