@@ -1,12 +1,13 @@
-import { ProductsContainer, ProductCard, PhotoCard, ButtonCard } from "@/components/featuredProducts/styles"
 import { useProductsList } from "@/lib/hooks"
 import router from "next/router"
 import Skeleton from "react-loading-skeleton"
+import { ProductsContainer, ProductCard, PhotoCard, ButtonCard } from "./styles"
 
 
 export function FeaturedProductsCard() {
     const data = useProductsList()
     console.log("data destacada", data)
+
 
 
     function handleRedirect(id) {
