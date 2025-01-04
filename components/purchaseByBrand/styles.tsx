@@ -9,6 +9,7 @@ export const PurchaseByBrandSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom: solid 1px var(--grey);
 `
 
 export const BrandContainer = styled.div`
@@ -25,7 +26,7 @@ export const BrandContainer = styled.div`
      cursor:pointer
   }
 
-   @media(min-width:769px){
+  @media(min-width:769px){
      height: fit-content;
      flex-direction: row;
   }
