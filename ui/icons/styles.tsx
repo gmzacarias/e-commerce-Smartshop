@@ -71,7 +71,7 @@ export const Motorola = styled(MotorolaSvg)`
   }
   
   @media(min-width:769px){
-    fill:var(--grey);
+    fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "var(--grey)"};
   
     path:first-child:hover{
       fill:#33A1FD;
@@ -83,13 +83,13 @@ export const Motorola = styled(MotorolaSvg)`
 export const Samsung = styled(SamsungSvg)`
   width: 200px;
   height: 50px;
-  fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "#1428a0"};
+  fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "#1033f5"};
   
   @media(min-width:769px){
-    fill:var(--grey);
+    fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "var(--grey)"};
     
     :hover{
-      fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "#1428a0"};
+      fill:#1033f5;
     }
   }
 `
@@ -104,7 +104,7 @@ export const Xiaomi = styled(XiaomiSvg)`
   }
   
   @media(min-width:769px){
-    fill:var(--grey);
+    fill:${({ theme }) => theme.mode === "dark" ? "#EAEAEA" : "var(--grey)"};
   
     :hover{
       fill:#FF6900;
