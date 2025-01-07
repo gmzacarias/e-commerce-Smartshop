@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { useSearch } from "lib/hooks"
+import { useProductSearch } from "lib/hooks"
 import { SearchProductCard } from "../searchProductCard"
 import router from "next/router"
 import { SearchInputIndex } from "ui/inputs"
@@ -62,7 +62,7 @@ gap: 5px;
 
 export function SearchProduct({ query, offset, limit }) {
     const [search, setSearch] = useState('');
-    const data = useSearch(query, offset, limit)
+    const {data} = useProductSearch(query, offset, limit)
     console.log("busqueda", data)
     const totalResults = data?.pagination.totalResults as any
     const totalPages = totalResults ? Math.ceil(totalResults / 10) : 0
