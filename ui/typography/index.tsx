@@ -38,3 +38,4 @@ export function Label({ children }:TextProps) {
         {children}
     </LabelText >
 }
+

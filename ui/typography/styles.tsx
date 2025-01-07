@@ -28,7 +28,9 @@ export const SectionTextBold = styled(SectionText)`
 `
 
 export const ParagraphText = styled.p`
+  font-weight: var(--font-weight-medium);
   color:${({ theme }) => theme.color};
+  word-wrap: break-word;
 `
 export const ParagraphTextBold = styled(ParagraphText)`
   font-weight: var(--font-weight-bold);
@@ -40,7 +42,6 @@ export const LabelText = styled.label`
 `
 
 export const SmallText = styled.h5`
-  font-size:12px;
-  color:${({ theme }) => theme.color};  
-`
+  font-size:16px;
+  `
 

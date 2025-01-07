@@ -1,62 +1,52 @@
+import { ThemeConsumer } from "@/utils/darkMode/themeContext"
 import styled from "styled-components"
 
 export const ProductsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:30px;
 
-
-    @media screen and (min-width:769px) and (max-width:1023px) {
-        &{
-          flex-direction:row;
-          justify-content: flex-start;
-          margin-left: auto;
-          margin-right: auto;
-        }   
-    }
-    
-    @media screen and (min-width: 1024px){
-        &{
-        flex-direction: row;
-        }
-    }
-
-
+  @media (min-width:769px){
+        flex-direction:row;
+        justify-content: flex-start;
+        margin-left: auto;
+        margin-right: auto;    
+    } 
 `
 
 export const ProductCard = styled.div`
-background-color: #eaeaea;
-
+background-color:${({theme})=> theme.mode === "dark" ? "#121212" : "#f2f4f5"};
+border-radius: 20px;
+/* box-shadow: 0 2px 6px 1px ${({theme})=> theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"}; */
+border: 1px solid ${({theme})=> theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"} ;
 width: 100%;
-min-width: 200px;
-max-width: 255px;
-height: 340px;
-margin: 10px 5px;
-padding: 15px 5px;
+max-width: 220px;
+height:fit-content;
+padding: 15px;
 display:flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
-border-radius: 4px;
-box-shadow: 0 2px 6px 1px #0000001a;
-gap:5px
-    
+gap:10px;    
+text-align: left;
+
 `
 
 export const PhotoCard = styled.img`
 width:200px;
-height:180px;
-
+height:200px;
+aspect-ratio:1/1;
 `
 
 export const ButtonCard = styled.button`
     width: 100%;
     min-width: 130px;
+    max-width: 220px;
     height: 44px;
     padding: 8px 32px;
-    background-color: #0076c7;
+    background-color: #4697e8;
     font-size: 14px;
     color: #eaeaea;
     border-radius: 4px;

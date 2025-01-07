@@ -2,13 +2,20 @@ import { useProductsList } from "@/lib/hooks"
 import router from "next/router"
 import Skeleton from "react-loading-skeleton"
 import { ProductsContainer, ProductCard, PhotoCard, ButtonCard } from "./styles"
+import { Paragraph, ParagraphBold } from "@/ui/typography"
 
 
 export function FeaturedProductsCard() {
     const data = useProductsList()
     console.log("data destacada", data)
 
-
+    function formatPrice(price) {
+        return new Intl.NumberFormat('es-ES', {
+            style: "decimal",
+            minimumFractionDigits: 2,
+        }
+        ).format(price)
+    }
 
     function handleRedirect(id) {
         confirm(`redirigir al producto ${id}`)
@@ -21,10 +28,13 @@ export function FeaturedProductsCard() {
             {data ? (
                 data.map((item) => (
                     <ProductCard key={item.id}>
-                        <PhotoCard src={item.photo} />
-                        <h3 style={{ fontSize: 14, fontWeight: "normal" }}>{`${item.brand} ${item.model} ${item.storage}`}</h3>
-                        <h3 style={{ fontSize: 16, fontWeight: "bold" }}>{`$${item.price}`}</h3>
-                        <ButtonCard onClick={() => handleRedirect(item.id)}>¡Lo quiero!</ButtonCard>
+                        <PhotoCard src={item.photo} title={`${item.brand} ${item.model}`} />
+                        <ParagraphBold>{item.brand}</ParagraphBold>
+                        <Paragraph>{`${item.model} ${item.storage}`}</Paragraph>
+                        <ParagraphBold>${formatPrice(item.price)}</ParagraphBold>
+                        <ButtonCard onClick={() => handleRedirect(item.id)}>
+                            <ParagraphBold>COMPRAR</ParagraphBold>
+                        </ButtonCard>
                     </ProductCard>
 
                 ))
