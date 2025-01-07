@@ -43,12 +43,6 @@ export const ProductCard = styled.div`
   gap:10px;    
 `
 
-export const PhotoCard = styled.img`
-  width:200px;
-  height:200px;
-  aspect-ratio:1/1;
-`
-
 export const ButtonCard = styled.button`
   background-color: #4697e8;
   border-radius: 4px;
