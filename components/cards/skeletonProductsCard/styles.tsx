@@ -17,16 +17,16 @@ export const SkeletonContainer = styled.div`
 `
 
 export const SkeletonImage = styled(Skeleton)`
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 `
 
 export const SkeletonText = styled(Skeleton)`
-    width: 130px;
-    height: 18px;
+  width: 130px;
+  height: 18px;
 `
 
 export const SkeletonButton=styled(Skeleton)`
-    width: 190px;
-    height: 44px;
+  width: 190px;
+  height: 44px;
 `
