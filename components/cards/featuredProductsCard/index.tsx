@@ -38,14 +38,14 @@ export function FeaturedProductsCard() {
                     </ProductCard>
 
                 ))
-
+        
             ) : (
                 Array.from({ length: 3 }).map((_, index) => (
                     <ProductCard key={index}>
-                        <Skeleton width={200} height={180} borderRadius={5} baseColor="#fff" />
-                        <Skeleton width={150} height={27} borderRadius={5} baseColor="#fff" />
-                        <Skeleton width={80} height={27} borderRadius={5} baseColor="#fff" />
-                        <Skeleton width={158} height={44} borderRadius={4} baseColor="#fff" />
+                        <Skeleton width={200} height={200} borderRadius={5} baseColor="#eaeaea" />
+                        <Skeleton width={80} height={20} borderRadius={5} baseColor="#eaeaea" />
+                        <Skeleton width={120} height={20} borderRadius={5} baseColor="#eaeaea" />
+                        <Skeleton width={190} height={44} borderRadius={4} baseColor="#eaeaea" />
                     </ProductCard>
                 ))
             )}

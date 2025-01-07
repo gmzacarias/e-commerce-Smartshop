@@ -19,8 +19,8 @@ export const ProductsContainer = styled.div`
 export const ProductCard = styled.div`
 background-color:${({theme})=> theme.mode === "dark" ? "#121212" : "#f2f4f5"};
 border-radius: 20px;
-/* box-shadow: 0 2px 6px 1px ${({theme})=> theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"}; */
-border: 1px solid ${({theme})=> theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"} ;
+box-shadow: 0 2px 6px 1px ${({theme})=> theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
+/* border: 1px solid ${({theme})=> theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"} ; */
 width: 100%;
 max-width: 220px;
 height:fit-content;
