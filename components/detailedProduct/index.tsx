@@ -1,4 +1,4 @@
-import { useProduct } from "lib/hooks"
+import { useProductById } from "lib/hooks"
 import { DetailedProductCard } from "components/detailedProductCard"
 import styled from "styled-components"
 import Skeleton from 'react-loading-skeleton'
@@ -17,7 +17,7 @@ padding: 20px;
 
 
 export function DetailedProduct({ productId }) {
-    const productData = useProduct(productId) as any
+    const productData = useProductById(productId) as any
     const isLoading = !productData
 
     console.log("datita", productData)
