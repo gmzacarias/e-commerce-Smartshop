@@ -11,7 +11,7 @@ export function useMe() {
     return data?.data
 }
 
-export function useProductByID(id: string) {
+export function useProductById(id: string) {
     //usan la funcion inmutable de swr,por que los productos no suelen variar.
     const { data, error } = useSWRImmutable(`/product/${id}`, fetchApi as any)
     // console.log("id",id)
