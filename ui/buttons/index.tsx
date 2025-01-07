@@ -1,13 +1,7 @@
 import styled from "styled-components"
-import { LoginIcon, LogoutIcon, TrashIcon } from "ui/icons"
-import { useAppDataValue } from "lib/atoms"
 import { ReactNode } from "react"
-import { Title } from "../typography"
-import { useTheme } from 'utils/darkMode/themeContext';
-import { useContext, useState } from "react"
-
-import { SunIcon, MoonIcon } from "ui/icons"
-
+import { TrashIcon } from "ui/icons"
+import {SessionButton,ToggleButton} from "./styles"
 
 type buttonProps = {
     children?: ReactNode,
@@ -85,38 +79,14 @@ const TrashIconContainer = styled.div`
 
 `
 
-/*Button Login/Logout */
-const Session = styled.button`
-   background: none;
-   border:none;
-   width: 100%;
-   height: 100%;
-   display: flex;
-   padding:5px 10PX;
-   align-items: center;
-   gap:5px;
-   font-family:var(--font-family);
-   color:${({ theme }) => theme.color};
-   cursor: pointer;
-`
-
-const ToggleButton = styled(Session)`
-   
-   justify-content:flex-start;
-   @media (min-width:769px){
-    padding:unset;
-   }
 
 
 
-        `;
-
-
-export function SessionButton({ onClick, title, children }: buttonProps) {
+export function userSessionButton({ onClick, title, children }: buttonProps) {
     return (
-        <Session onClick={onClick} title={title}>
+        <SessionButton onClick={onClick} title={title}>
             {children}
-        </Session>
+        </SessionButton>
     )
 }
 
