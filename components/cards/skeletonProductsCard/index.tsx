@@ -1,23 +1,28 @@
-import Skeleton from "react-loading-skeleton"
-import {SkeletonContainer,SkeletonImage,SkeletonBrand,SkeletonModel,SkeletonPrice,SkeletonButton} from "./styles"
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+import { SkeletonContainer,SkeletonImage, SkeletonText,SkeletonButton } from "./styles"
+import { useTheme } from "@/utils/darkMode/themeContext"
 
 type LengthProps = {
     length: number
 }
 
-export function SkelentonProductsCard({ length }: LengthProps) {
-
+export function SkeletonProductsCard({ length }: LengthProps) {
+ const {isDarkMode}=useTheme()
+    const baseColor = isDarkMode ? "#000" : "#d0d0d0"
+    const highlightColor=isDarkMode ? "#292728" : "#f5f5f5"
+  
     return (
-        Array.from({ length: length }).map((_, index) => (
-            <SkeletonContainer key={index}>
-                <SkeletonImage baseColor="#eaeaea"  />
-                <SkeletonBrand  baseColor="#eaeaea" />
-                <SkeletonModel  baseColor="#eaeaea" />
-                <SkeletonPrice  baseColor="#eaeaea" />
-                <SkeletonButton  baseColor="#eaeaea" />
-            </SkeletonContainer>
-        ))
-    )
-
-
-}
+      <SkeletonTheme borderRadius={5} baseColor={baseColor} highlightColor={highlightColor}>
+        {Array.from({ length }).map((_, index) => (
+          <SkeletonContainer key={index}>
+            <SkeletonImage />
+            <SkeletonText />
+            <SkeletonText />
+            <SkeletonText />
+            <SkeletonButton />
+          </SkeletonContainer>
+        ))}
+      </SkeletonTheme>
+    );
+  }
+  

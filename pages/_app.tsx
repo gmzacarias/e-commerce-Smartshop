@@ -4,6 +4,7 @@ import { RecoilRoot } from 'recoil';
 import { ThemeProvider, ThemeConsumer } from "@/utils/darkMode/themeContext";
 import { Toaster } from "sonner"
 import "styles/base.css"
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function App({ Component, pageProps }: AppProps) {
 
