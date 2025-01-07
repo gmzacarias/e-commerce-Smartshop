@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+import Skeleton from "react-loading-skeleton"
 
 export const SkeletonContainer = styled.div`
   background-color:${({ theme }) => theme.mode === "dark" ? "#121212" : "#f2f4f5"};
