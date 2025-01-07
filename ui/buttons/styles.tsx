@@ -24,14 +24,16 @@ export const ToggleButton = styled(SessionButton)`
 `
 
 export const CardBtn = styled.button`
-  background-color: #4697e8;
+  background-color: #007bff;
+  border:solid 1px  #007bff;
   border-radius: 4px;
   width: 100%;
   min-width: 130px;
   max-width: 220px;
   height: 44px;
   padding: 8px 32px;
-  font-size: 14px;
+  font-family: var(--font-family);
+  font-size: 16px;
   color:#eaeaea;
   text-decoration: none;
   cursor:pointer;

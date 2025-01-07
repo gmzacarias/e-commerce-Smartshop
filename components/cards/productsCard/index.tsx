@@ -3,7 +3,7 @@ import { SkeletonProductsCard } from "@/components/cards/skeletonProductsCard"
 import { Paragraph, ParagraphBold } from "@/ui/typography"
 import { ImageProductCard } from "@/ui/images"
 import { CardButton } from "@/ui/buttons"
-import { ProductsContainer,ErrorContainer, ProductCard} from "./styles"
+import { ProductsContainer, ErrorContainer, ProductCard } from "./styles"
 
 
 export function ProductsCard() {
@@ -20,8 +20,8 @@ export function ProductsCard() {
         return (
             <ProductsContainer>
                 <ErrorContainer>
-                <ParagraphBold>Hubo un error al cargar los productos:</ParagraphBold>
-                <Paragraph>{error.message}</Paragraph>
+                    <ParagraphBold>Hubo un error al cargar los productos:</ParagraphBold>
+                    <Paragraph>{error.message}</Paragraph>
                 </ErrorContainer>
             </ProductsContainer>
         )
@@ -35,9 +35,7 @@ export function ProductsCard() {
                     <ParagraphBold>{item.brand}</ParagraphBold>
                     <Paragraph>{`${item.model} ${item.storage}`}</Paragraph>
                     <ParagraphBold>${formatPrice(item.price)}</ParagraphBold>
-                    <CardButton onClick={() => handleRedirect(item.id)} title="ver mas">
-                        <ParagraphBold>Ver mas</ParagraphBold>
-                    </CardButton>
+                    <CardButton onClick={() => handleRedirect(item.id)} title="lo quiero">¡Lo quiero!</CardButton>
                 </ProductCard>
 
             ))}
