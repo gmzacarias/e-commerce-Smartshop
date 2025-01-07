@@ -82,7 +82,7 @@ const TrashIconContainer = styled.div`
 
 
 
-export function userSessionButton({ onClick, title, children }: buttonProps) {
+export function UserSessionButton({ onClick, title, children }: buttonProps) {
     return (
         <SessionButton onClick={onClick} title={title}>
             {children}

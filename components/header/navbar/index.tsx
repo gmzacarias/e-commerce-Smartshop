@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { NavBody, NavContainer, HamburguerMenu, MenuContainer, ItemListMenu, LinkItemList, ButtonsContainer, UserContainer } from "./styles"
 import { UserIcon, CartIcon, BrandHeaderIcon, CloseHamburguerIcon, HamburguerIcon, LogoutIcon, LoginIcon,ListIcon, SunIcon, MoonIcon } from "ui/icons"
 import { Paragraph } from "@/ui/typography"
-import { SessionButton, ThemeToggleButton } from "@/ui/buttons"
+import { UserSessionButton, ThemeToggleButton } from "@/ui/buttons"
 import { useNavbar } from "@/utils/components/useNavbar"
 
 
@@ -73,7 +73,7 @@ export function NavBar() {
                   </>
                 }
               </ThemeToggleButton>
-              <SessionButton onClick={isLogged ? handleLogOut : handleLogin} title={isLogged ? "cerrar sesion" : "ingresar o registrarse"}>
+              <UserSessionButton onClick={isLogged ? handleLogOut : handleLogin} title={isLogged ? "cerrar sesion" : "ingresar o registrarse"}>
                 {isLogged ?
                   <>
                     <LogoutIcon />
@@ -85,7 +85,7 @@ export function NavBar() {
                     <Paragraph>INGRESAR</Paragraph>
                   </>
                 }
-              </SessionButton>
+              </UserSessionButton>
             </ButtonsContainer>
           </MenuContainer>
         )}
