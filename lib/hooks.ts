@@ -11,7 +11,7 @@ export function useMe() {
     return data?.data
 }
 
-export function useProduct(id: string) {
+export function useProductByID(id: string) {
     //usan la funcion inmutable de swr,por que los productos no suelen variar.
     const { data, error } = useSWRImmutable(`/product/${id}`, fetchApi as any)
     // console.log("id",id)
@@ -22,16 +22,27 @@ export function useProduct(id: string) {
     return products
 }
 
-export function useSearch(query: string, offset?: string, limit?: string) {
-    // console.log("query",query)
-    const { data, error } = useSWR(`/search?q=${query}&offset=${offset}&limit=${limit}`, fetchApi as any)
-    if (error) {
-        return error
+export function useProductSearch(query: string, offset?: string, limit?: string) {
+    const { data, error,isLoading } = useSWR(`/search?q=${query}&offset=${offset}&limit=${limit}`, fetchApi as any)
+    return {
+        data,
+        isLoading,
+        isError:!!error,
+        error
     }
-    const response = data as any
-    // console.log(response)
-    return response
 }
+
+export function useProductsList(){
+    const {data,error,isLoading}=useSWR("/product",fetchApi as any)
+    return {
+        data,
+        isLoading,
+        isError:!!error,
+        error
+    }
+}
+
+
 
 export function useCart() {
     const { data, error } = useSWR("/me/cart", fetchApi as any)
@@ -66,14 +77,5 @@ return response
 
 
 
-export function useProductsList(){
-    const {data,error,isLoading}=useSWR("/product",fetchApi as any)
-    return {
-        data,
-        isLoading,
-        isError:!!error,
-        error
-    }
-}
 
 
