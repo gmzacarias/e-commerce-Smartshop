@@ -6,7 +6,7 @@ import { Paragraph, ParagraphBold } from "@/ui/typography"
 
 
 export function FeaturedProductsCard() {
-    const data = useProductsList()
+    const {data,isLoading,error,isError} = useProductsList()
     console.log("data destacada", data)
 
     function formatPrice(price) {

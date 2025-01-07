@@ -67,13 +67,13 @@ return response
 
 
 export function useProductsList(){
-    const {data,error}=useSWR("/product",fetchApi as any)
-    if (error) {
-        return error
+    const {data,error,isLoading}=useSWR("/product",fetchApi as any)
+    return {
+        data,
+        isLoading,
+        isError:!!error,
+        error
     }
-    const response= data
-    console.log("listado de productos destacados",data)
-    return response
 }
 
 
