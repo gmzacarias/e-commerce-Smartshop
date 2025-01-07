@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import { PhotoCard } from "./styles"
 
-
-type imgProps = {
+type imageProps = {
     src: string,
     alt: string,
+    title?: string,
 }
 
 const Images = styled.img`
@@ -27,14 +28,18 @@ const CartImages = styled(Images)`
     flex-shrink: 0;
 `
 
-export function ImageCardProduct({ src, alt }: imgProps) {
+export function ImageCardProduct({ src, alt }: imageProps) {
     return <Images src={src} alt={alt} />
 }
 
-export function DetailedImageProduct({ src, alt }: imgProps) {
+export function DetailedImageProduct({ src, alt }: imageProps) {
     return <DetailedImages src={src} alt={alt} />
 }
 
-export function CartImageProduct({ src, alt }: imgProps) {
+export function CartImageProduct({ src, alt }: imageProps) {
     return <CartImages src={src} alt={alt} />
+}
+
+export function ImageProductCard({ src, alt, title }: imageProps) {
+    return <PhotoCard src={src} alt={alt} title={title} />
 }
