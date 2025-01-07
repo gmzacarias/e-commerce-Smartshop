@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { useProduct } from "lib/hooks"
 import { DetailedImageProduct } from "ui/images"
 import { ParagraphBold, SectionTitle, SubTitle, Title, Paragraph } from "@/ui/typography"
 import { DefaultButton } from "ui/buttons"
