@@ -5,7 +5,7 @@ import { ProductsContainer, ProductCard, PhotoCard, ButtonCard } from "./styles"
 import { Paragraph, ParagraphBold } from "@/ui/typography"
 
 
-export function FeaturedProductsCard() {
+export function ProductsCard() {
     const {data,isLoading,error,isError} = useProductsList()
     console.log("data destacada", data)
 
