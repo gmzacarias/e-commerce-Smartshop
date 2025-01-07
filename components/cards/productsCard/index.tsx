@@ -2,7 +2,8 @@ import { useProducts } from "@/utils/components/useProducts"
 import { SkeletonProductsCard } from "@/components/cards/skeletonProductsCard"
 import { Paragraph, ParagraphBold } from "@/ui/typography"
 import { ImageProductCard } from "@/ui/images"
-import { ProductsContainer,ErrorContainer, ProductCard, ButtonCard } from "./styles"
+import { CardButton } from "@/ui/buttons"
+import { ProductsContainer,ErrorContainer, ProductCard} from "./styles"
 
 
 export function ProductsCard() {
@@ -34,9 +35,9 @@ export function ProductsCard() {
                     <ParagraphBold>{item.brand}</ParagraphBold>
                     <Paragraph>{`${item.model} ${item.storage}`}</Paragraph>
                     <ParagraphBold>${formatPrice(item.price)}</ParagraphBold>
-                    <ButtonCard onClick={() => handleRedirect(item.id)}>
-                        <ParagraphBold>COMPRAR</ParagraphBold>
-                    </ButtonCard>
+                    <CardButton onClick={() => handleRedirect(item.id)} title="ver mas">
+                        <ParagraphBold>Ver mas</ParagraphBold>
+                    </CardButton>
                 </ProductCard>
 
             ))}

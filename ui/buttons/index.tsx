@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { ReactNode } from "react"
 import { TrashIcon } from "ui/icons"
-import {SessionButton,ToggleButton} from "./styles"
+import {SessionButton,ToggleButton,CardBtn} from "./styles"
 
 type buttonProps = {
     children?: ReactNode,
@@ -105,7 +105,13 @@ export function ThemeToggleButton({ onClick, title, children }: buttonProps) {
 }
 
 
-
+export function CardButton({ onClick, title, children }: buttonProps){
+    return (
+        <CardBtn onClick={onClick} title={title}>
+            {children}
+        </CardBtn>
+    )
+}
 
 
 
@@ -142,9 +148,9 @@ export function OutlinedButton({ onClick, type, children }: buttonProps) {
     return <Outlined type={type} onClick={onClick}>{children}</Outlined>
 }
 
-export function CardButton({ onClick, type, children }: buttonProps) {
-    return <Card type={type} onClick={onClick}>{children}</Card>
-}
+// export function CardButton({ onClick, type, children }: buttonProps) {
+//     return <Card type={type} onClick={onClick}>{children}</Card>
+// }
 
 export function CountButton({ onClick, type, children }: buttonProps) {
     return <Count type={type} onClick={onClick}>{children}</Count>

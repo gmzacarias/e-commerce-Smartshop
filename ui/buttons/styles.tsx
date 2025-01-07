@@ -23,3 +23,16 @@ export const ToggleButton = styled(SessionButton)`
    }
 `
 
+export const CardBtn = styled.button`
+  background-color: #4697e8;
+  border-radius: 4px;
+  width: 100%;
+  min-width: 130px;
+  max-width: 220px;
+  height: 44px;
+  padding: 8px 32px;
+  font-size: 14px;
+  color:#eaeaea;
+  text-decoration: none;
+  cursor:pointer;
+`
