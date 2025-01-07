@@ -31,7 +31,6 @@ justify-content: space-between;
 align-items: center;
 gap:10px;    
 text-align: left;
-
 `
 
 export const PhotoCard = styled.img`
