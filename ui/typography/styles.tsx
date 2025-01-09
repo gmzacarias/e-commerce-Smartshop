@@ -28,6 +28,7 @@ export const SectionTextBold = styled(SectionText)`
 `
 
 export const ParagraphText = styled.p`
+  font-size: 16px;
   font-weight: var(--font-weight-medium);
   color:${({ theme }) => theme.color};
   word-wrap: break-word;
