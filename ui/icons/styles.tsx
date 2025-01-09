@@ -114,7 +114,12 @@ export const Xiaomi = styled(XiaomiSvg)`
 
 /*Header*/
 export const BrandHeader = styled(BrandSvg)`
-  fill:${({ theme }) => theme.logoBg};
+  
+     width:156px;
+     height:auto;
+
+   
+ fill:${({ theme }) => theme.logoBg};
 `
 
 export const Sun = styled(SunSvg)`
@@ -230,6 +235,8 @@ export const CountContainer = styled.div`
 
 /*Footer*/
 export const BrandFooter = styled(BrandSvg)`
+  width:156px;
+  height:auto;
   fill:${({ theme }) => theme.logoBg};
   margin-left: 25px;
 
@@ -253,3 +260,8 @@ export const Gmail = styled(GmailSvg)`
   height: 20px;
 `
 
+export const BrandPages=styled(BrandSvg)`
+width:228px;
+height:auto;
+margin-bottom: 13px;
+`

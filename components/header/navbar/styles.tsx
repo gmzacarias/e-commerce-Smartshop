@@ -5,7 +5,6 @@ export const NavBody = styled.div`
   border-bottom:solid 1px ${({ theme }) => theme.border};
   width: 100%;
   height: fit-content;
-  margin-bottom: 10px;
   padding:10px 20px;
 `;
 

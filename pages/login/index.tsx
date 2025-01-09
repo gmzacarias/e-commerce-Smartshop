@@ -5,10 +5,10 @@ import styled from "styled-components"
 import Head from "next/head"
 
 const LoginPageBody = styled.div`
-    display: flex;
+    /* display: flex;
     padding-top: 30px;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
 `
 
 const LoginPage: NextPage = () => {

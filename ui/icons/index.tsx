@@ -1,4 +1,4 @@
-import { BrandHeader, BrandFooter, SmartPhone, CartContainer, CountContainer, CartText, Cart, User, Login, Logout, List, Hamburguer, CloseHamburguer, Trash, Github, Linkedin, Gmail, Sun, Moon, Motorola, Samsung, Xiaomi, Search } from "./styles"
+import { BrandHeader, BrandFooter, SmartPhone, CartContainer, CountContainer, CartText, Cart, User, Login, Logout, List, Hamburguer, CloseHamburguer, Trash, Github, Linkedin, Gmail, Sun, Moon, Motorola, Samsung, Xiaomi, Search, BrandPages } from "./styles"
 
 type SearchProps = {
     onClick: () => void
@@ -88,6 +88,11 @@ export function SunIcon() {
 
 export function MoonIcon() {
     return <Moon />
+}
+
+/*Pages */
+export function BrandPagesIcon(){
+    return <BrandPages/>
 }
 
 
