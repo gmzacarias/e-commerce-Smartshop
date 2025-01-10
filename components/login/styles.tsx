@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Brand from "@/ui/icons/brand.svg"
+
 
 export const LoginBody = styled.div`
   width: 100%;

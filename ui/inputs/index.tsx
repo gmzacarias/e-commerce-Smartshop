@@ -115,9 +115,31 @@ export function SearchInputNav({ type, name, placeholder, value, onChange }: Inp
     )
 }
 
+
+
+const InputForm = styled(Input)`
+   width: 312px;
+   height: 48px;
+   padding:0 16px;
+   text-align:left;
+   border-radius: 4px;
+
+
+   `
+
+/*inputs */
 export function SearchInputIndex({ type, name, placeholder, value, onChange }: InputProps) {
     return <SearchInputHome type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
 }
+
+export function DefaultInput({ type, name, placeholder, value, onChange }: InputProps) {
+    return <InputForm type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+}
+
+
+
+
+
 
 export function InputDefault({ type, name, placeholder, value, onChange }: InputProps) {
     return <FormInputs type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />

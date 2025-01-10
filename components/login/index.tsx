@@ -6,8 +6,8 @@ import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast, forwardC
 import { useAppData } from "lib/atoms"
 import { LoginBody, LoginContainer, FormContainer, PageContainer } from "./styles";
 import { Title, SubTitle, Label, Small, Paragraph } from "ui/typography"
-import { InputDefault } from "@/ui/inputs"
-import { DefaultButton } from "ui/buttons"
+import { InputDefault ,DefaultInput} from "@/ui/inputs"
+import { DefaultButton, FormButton } from "ui/buttons"
 import { useEffect } from "react";
 import { BrandPagesIcon } from "@/ui/icons";
 
@@ -107,7 +107,7 @@ export function Login() {
                     <LoginContainer>
                         <form onSubmit={handleEmailSubmit(handleEmailForm, onErrorEmail)}>
                             <Label >Email
-                                <input type="text"{...registerEmail("email", {
+                                <DefaultInput type="email"{...registerEmail("email", {
                                     required: true,
                                     pattern: {
                                         value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
@@ -117,9 +117,9 @@ export function Login() {
                             )}
                             placeholder="example@mail.com" />
                             </Label>
-                            <DefaultButton>
-                                <Paragraph>CONTINUAR</Paragraph>
-                            </DefaultButton>
+                            <FormButton title="iniciar sesion">
+                               INGRESAR
+                            </FormButton>
                             <Small>*Ingrese un mail para continuar</Small>
                         </form>
                     </LoginContainer>

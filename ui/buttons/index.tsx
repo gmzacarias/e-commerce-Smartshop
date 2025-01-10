@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { ReactNode } from "react"
 import { TrashIcon } from "ui/icons"
-import {SessionButton,ToggleButton,CardBtn} from "./styles"
+import {SessionButton,ToggleButton,CardBtn, FormBtn} from "./styles"
 
 type buttonProps = {
     children?: ReactNode,
@@ -114,7 +114,13 @@ export function CardButton({ onClick, title, children }: buttonProps){
 }
 
 
-
+export function FormButton({ onClick, title, children }: buttonProps){
+    return (
+        <FormBtn onClick={onClick} title={title}>
+            {children}
+        </FormBtn>
+    )
+}
 
 
 
