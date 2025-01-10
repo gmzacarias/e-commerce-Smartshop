@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { sendCode, getToken, saveToken } from "lib/api"
 import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast, forwardCodeToast } from "lib/sonner"
 import { useAppData } from "lib/atoms"
-import { LoginBody, LoginContainer, FormContainer, LogoContainer } from "./styles";
+import { LoginBody, LoginContainer, FormContainer, PageContainer } from "./styles";
 import { Title, SubTitle, Label, Small, Paragraph } from "ui/typography"
 import { InputDefault } from "@/ui/inputs"
 import { DefaultButton } from "ui/buttons"
@@ -100,15 +100,13 @@ export function Login() {
         <LoginBody>
             {!emailCheck ? (
                 <>
-                    <LogoContainer>
+                    <PageContainer>
                         <BrandPagesIcon/>
-                        <SubTitle>registrate para comprar tu smartphone favorito</SubTitle>
-
-                    </LogoContainer>
+                        <SubTitle>Regístrate para comprar tu smartphone preferido</SubTitle>
+                    </PageContainer>
                     <LoginContainer>
                         <form onSubmit={handleEmailSubmit(handleEmailForm, onErrorEmail)}>
-                            <Label >
-                                <Small>Email</Small>
+                            <Label >Email
                                 <input type="text"{...registerEmail("email", {
                                     required: true,
                                     pattern: {
@@ -116,12 +114,13 @@ export function Login() {
                                         message: "Formato de email inválido",
                                     },
                                 }
-                                )}
-                                    placeholder="example@mail.com" />
+                            )}
+                            placeholder="example@mail.com" />
                             </Label>
                             <DefaultButton>
                                 <Paragraph>CONTINUAR</Paragraph>
                             </DefaultButton>
+                            <Small>*Ingrese un mail para continuar</Small>
                         </form>
                     </LoginContainer>
                 </>

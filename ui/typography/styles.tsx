@@ -12,7 +12,6 @@ export const SubTitleText = styled.h2`
   font-size:clamp(24px,4vw,36px);
   font-weight: var(--font-weight-bold);
   color:${({ theme }) => theme.color};
-  text-align: center;
   word-wrap: break-word;
 `
 
@@ -38,11 +37,19 @@ export const ParagraphTextBold = styled(ParagraphText)`
 `
 
 export const LabelText = styled.label`
+  font-weight: var(--font-weight-bold);
   color:${({ theme }) => theme.color};
   text-align: left;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `
 
 export const SmallText = styled.h5`
-  font-size:16px;
+  
+  font-size:12px;
+  color:${({ theme }) => theme.color};
+margin-bottom: 10px;
   `
 

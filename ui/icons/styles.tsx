@@ -264,4 +264,5 @@ export const BrandPages=styled(BrandSvg)`
 width:228px;
 height:auto;
 margin-bottom: 13px;
+fill:${({ theme }) => theme.logoBg};
 `
