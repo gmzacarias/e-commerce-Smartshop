@@ -22,17 +22,16 @@ export function useLogin() {
         handleSubmit: handleEmailSubmit,
         formState: { errors: emailErrors },
         control: controlEmail,
-        trigger: triggerEmail,
     } = useForm<EmailFormValue>({
         defaultValues: { email: "" },
-        mode: "onChange"
+        mode:"onSubmit"
     })
 
     const {
         handleSubmit: handleCodeSubmit,
         formState: { errors: codeErrors },
         control: controlCode,
-        trigger: triggerCode,
+
     } = useForm<CodeFormValue>({
         defaultValues: { code: 0 },
         mode: "onChange"
@@ -41,13 +40,6 @@ export function useLogin() {
 
     async function handleEmailForm(dataForm: EmailFormValue) {
         const { email } = dataForm
-        const isValid = await triggerEmail("email")
-        console.log("isValid",isValid)
-        if (!isValid) {
-            onErrorEmail()
-            return
-        }
-
         const cleanEmail = email.trim().toLowerCase()
         setData({
             ...data,
@@ -66,12 +58,6 @@ export function useLogin() {
     }
 
     async function handleCodeForm(dataForm: CodeFormValue) {
-        const isValid = await triggerCode("code")
-        if (!isValid) {
-            onErrorCode()
-            return
-        }
-
         const code = dataForm.code.toString()
         try {
             const res = await getToken(currentEmail, code)
@@ -103,5 +89,5 @@ export function useLogin() {
         }
     }
 
-    return { handleEmailSubmit,handleEmailForm,handleCodeSubmit, handleCodeForm,currentEmail,controlEmail,controlCode }
+    return { handleEmailSubmit,handleEmailForm,handleCodeSubmit, handleCodeForm,currentEmail,controlEmail,controlCode,onErrorEmail,onErrorCode }
 }

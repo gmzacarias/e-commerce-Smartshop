@@ -6,16 +6,8 @@ import { BrandPagesIcon } from "@/ui/icons";
 import { useLogin } from "@/utils/components/useLogin";
 import { Controller } from "react-hook-form";
 
-interface EmailFormValue {
-    email: string
-}
-
-interface CodeFormValue {
-    code: number
-}
-
 export function Login() {
-    const { currentEmail, controlEmail, controlCode,handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm } = useLogin()
+    const { currentEmail, controlEmail, controlCode,onErrorEmail,onErrorCode,handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm } = useLogin()
 
     return (
         <LoginBody>
@@ -26,12 +18,12 @@ export function Login() {
                         <SubTitle>Regístrate para comprar tu smartphone preferido</SubTitle>
                     </PageContainer>
                     <LoginContainer>
-                        <form onSubmit={handleEmailSubmit(handleEmailForm)}>
+                        <form onSubmit={handleEmailSubmit(handleEmailForm,onErrorEmail)}>
                             <Controller
                                 control={controlEmail}
                                 name="email"
                                 rules={{
-                                    required: "ingrese un email",
+                                    required: "ingrese un email valido",
                                     pattern: {
                                         value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
                                         message: "Formato de email inválido",
@@ -51,7 +43,7 @@ export function Login() {
                                     </Label>
                                 )}
                             />
-                            <FormButton title="iniciar sesion">
+                            <FormButton type="submit" title="iniciar sesion">
                                 INGRESAR
                             </FormButton>
                         </form>
