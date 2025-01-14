@@ -120,7 +120,6 @@ export function Login() {
                             <FormButton title="iniciar sesion">
                                INGRESAR
                             </FormButton>
-                            <Small>*Ingrese un mail para continuar</Small>
                         </form>
                     </LoginContainer>
                 </>

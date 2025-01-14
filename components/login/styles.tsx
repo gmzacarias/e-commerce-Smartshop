@@ -31,31 +31,31 @@ export const PageContainer = styled.section`
   text-align: left;
 
   @media(min-width:769px){
-      width: 50%;
-      height: 100%;
-      padding: 70px;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 10px;
-    }
+    width: 50%;
+    height: 100%;
+    padding: 70px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+  }
 `
 
 export const LoginContainer = styled(PageContainer)`
-    background-color:var(--background-navfoot);
-    background: none;
-    flex-direction: column;
-   justify-content: center;
-   align-items: center;
+  background-color:var(--background-navfoot);
+  background: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
     
-
-   @media(min-width:769px){
-      width: 50%;
-      height: 100%;
-      padding: 70px;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 10px;
-    }
+  @media(min-width:769px){
+    width: 50%;
+    height: 100%;
+    padding: 70px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
 `
 export const FormContainer = styled.form`
 flex-direction: column;
