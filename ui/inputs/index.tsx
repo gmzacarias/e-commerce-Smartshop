@@ -139,6 +139,30 @@ const InputForm = styled(Input)`
    }
 `
 
+const OTPForm=styled(Input)`
+    border-radius: 4px;
+   border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
+   outline: none;
+   width: 50px;
+   min-width: unset;
+   height: 50px;
+   padding: unset;
+   text-align:center;
+   font-size: 24px;
+
+   &:focus{
+    border-color:#0091ea;
+   }
+   
+   &:valid {
+     border-color:green;
+   }
+
+   &:invalid{
+     border-color: red;
+   }
+`
+
 /*inputs */
 export function SearchInputIndex({ type, name, placeholder, value, onChange }: InputProps) {
     return <SearchInputHome type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
@@ -148,6 +172,9 @@ export function DefaultInput({ type, name, placeholder, value, onChange }: Input
     return <InputForm type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
 }
 
+export function OTPInput({ type, name, placeholder, value, onChange }: InputProps){
+    return <OTPForm type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />  
+}
 
 
 
