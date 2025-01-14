@@ -53,5 +53,6 @@ export const FormBtn=styled.button`
   font-size: 16px;
   letter-spacing: 1px;
   color:#eaeaea;
+  cursor:pointer;
   
 `
