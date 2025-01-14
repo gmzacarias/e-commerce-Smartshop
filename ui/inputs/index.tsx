@@ -65,7 +65,7 @@ const CountInput = styled(Input)`
 
 
 
-export const SearchContainer=styled.div`
+export const SearchContainer = styled.div`
   display: flex;
 `
 
@@ -118,14 +118,26 @@ export function SearchInputNav({ type, name, placeholder, value, onChange }: Inp
 
 
 const InputForm = styled(Input)`
+   border-radius: 4px;
+   border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
+   outline: none;
    width: 312px;
    height: 48px;
    padding:0 16px;
    text-align:left;
-   border-radius: 4px;
 
+   &:focus{
+    border-color:#0091ea;
+   }
+   
+   &:valid {
+     border-color:green;
+   }
 
-   `
+   &:invalid{
+     border-color: red;
+   }
+`
 
 /*inputs */
 export function SearchInputIndex({ type, name, placeholder, value, onChange }: InputProps) {
@@ -151,8 +163,8 @@ export function InputDefault({ type, name, placeholder, value, onChange }: Input
 // }
 
 
-export function InputSearch({ type, placeholder,value,onChange}: InputProps) {
+export function InputSearch({ type, placeholder, value, onChange }: InputProps) {
     return (
-            <Search type={type} placeholder={placeholder} value={value} onChange={onChange}/>
+        <Search type={type} placeholder={placeholder} value={value} onChange={onChange} />
     )
 }
