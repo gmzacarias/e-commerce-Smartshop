@@ -57,6 +57,21 @@ export const LoginContainer = styled(PageContainer)`
     gap: 10px;
   }
 `
-export const FormContainer = styled.form`
-flex-direction: column;
-`
+
+export const OTPContainer=styled(PageContainer)`
+  background-color:var(--background-navfoot);
+  background: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding:unset;
+    
+  @media(min-width:769px){
+    width: 50%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+` 
+

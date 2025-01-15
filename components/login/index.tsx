@@ -1,4 +1,4 @@
-import { LoginBody, LoginContainer, PageContainer } from "./styles";
+import { LoginBody, LoginContainer, PageContainer,OTPContainer } from "./styles";
 import { SubTitle, Label, Small, Paragraph } from "ui/typography"
 import { DefaultInput, OTPInput } from "@/ui/inputs"
 import { DefaultButton, FormButton } from "ui/buttons"
@@ -61,6 +61,8 @@ export function Login() {
                             <Small>
                             Enviamos un código de verificación a email
                             </Small>
+                            <OTPContainer>
+
                             <OTPInput
                                 type="text"
                                 placeholder="-"
@@ -81,7 +83,14 @@ export function Login() {
                                 type="text"
                                 placeholder="-"
                             />
+                        </OTPContainer>
                         </Label>
+                        <FormButton title="iniciar sesion">
+                                INGRESAR
+                            </FormButton>
+                            <Small>
+                            ¿No recibiste el código?
+                            </Small>
                     </LoginContainer>
                 </>
             )

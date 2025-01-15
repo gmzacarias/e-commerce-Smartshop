@@ -143,7 +143,7 @@ const OTPForm=styled(Input)`
     border-radius: 4px;
    border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
    outline: none;
-   width: 50px;
+   width: 54px;
    min-width: unset;
    height: 50px;
    padding: unset;
