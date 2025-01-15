@@ -1,4 +1,4 @@
-import { LoginBody, LoginContainer, PageContainer,OTPContainer } from "./styles";
+import { LoginBody, LoginContainer, PageContainer, OTPContainer } from "./styles";
 import { SubTitle, Label, Small, Paragraph } from "ui/typography"
 import { DefaultInput, OTPInput } from "@/ui/inputs"
 import { DefaultButton, FormButton } from "ui/buttons"
@@ -56,45 +56,56 @@ export function Login() {
                         <SubTitle>Ingresa el codigo para entrar a tu cuenta</SubTitle>
                     </PageContainer>
                     <LoginContainer>
-                        <Label>
-                            Codigo
-                            <Small>
-                            Enviamos un código de verificación a email
-                            </Small>
-                            <OTPContainer>
-
-                            <OTPInput
-                                type="text"
-                                placeholder="-"
-                            />
-                             <OTPInput
-                                type="text"
-                                placeholder="-"
-                            />
-                             <OTPInput
-                                type="text"
-                                placeholder="-"
-                            />
-                             <OTPInput
-                                type="text"
-                                placeholder="-"
-                            />
-                             <OTPInput
-                                type="text"
-                                placeholder="-"
-                            />
-                        </OTPContainer>
-                        </Label>
-                        <FormButton title="iniciar sesion">
+                        <form onSubmit={handleCodeSubmit(handleCodeForm, onErrorCode)}>
+                            <Label>
+                                Codigo
+                                <Small>
+                                    Enviamos un código de verificación a email
+                                </Small>
+                                <OTPContainer>
+                                    {Array.from({ length: 5 }).map((_, index) => (
+                                        <Controller
+                                            key={index}
+                                            control={controlCode}
+                                            name={`otp.${index}`}
+                                            rules={{
+                                                required: "ingrese un codigo valido",
+                                                pattern: {
+                                                    value: /^\d+$/,
+                                                    message: "Formato de codigo inválido",
+                                                },
+                                            }
+                                            }
+                                            render={({ field: { onChange, value } }) => (
+                                                <OTPInput
+                                                    type="text"
+                                                    placeholder="-"
+                                                    onChange={onChange}
+                                                    value={value}
+                                                />
+                                            )
+                                            }
+                                        />
+                                    ))
+                                    }
+                                </OTPContainer>
+                            </Label>
+                            <FormButton title="iniciar sesion">
                                 INGRESAR
                             </FormButton>
-                            <Small>
+                        </form>
+                        <Small>
                             ¿No recibiste el código?
-                            </Small>
+                        </Small>
                     </LoginContainer>
                 </>
             )
             }
+
+
+
+
+
         </LoginBody >
     )
 }

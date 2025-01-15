@@ -11,7 +11,7 @@ interface EmailFormValue {
 }
 
 interface CodeFormValue {
-    code: number
+    otp: string[]
 }
 
 export function useLogin() {
@@ -33,8 +33,8 @@ export function useLogin() {
         control: controlCode,
 
     } = useForm<CodeFormValue>({
-        defaultValues: { code: 0 },
-        mode: "onChange"
+        defaultValues:{otp:["","","","",""]},
+        mode:"onSubmit"
     })
 
 
@@ -58,14 +58,15 @@ export function useLogin() {
     }
 
     async function handleCodeForm(dataForm: CodeFormValue) {
-        const code = dataForm.code.toString()
+        const code = dataForm.otp.join("")
+
         try {
             const res = await getToken(currentEmail, code)
             //agregar condicional si la respuesta es null, 
             //agregar toast y return
             if (res === undefined) {
                 console.log("error")
-                //toast error de codigo
+              await alert("codigo incorrecto")
                 return
             }
             setData({
@@ -84,8 +85,8 @@ export function useLogin() {
     }
 
     function onErrorCode() {
-        if (codeErrors.code) {
-            errorCodeToast(codeErrors.code.message)
+        if (codeErrors.otp) {
+            errorCodeToast(codeErrors.otp.message)
         }
     }
 
