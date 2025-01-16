@@ -24,7 +24,7 @@ export function useLogin() {
         control: controlEmail,
     } = useForm<EmailFormValue>({
         defaultValues: { email: "" },
-        mode:"onSubmit"
+        mode: "onSubmit"
     })
 
     const {
@@ -33,21 +33,23 @@ export function useLogin() {
         control: controlCode,
 
     } = useForm<CodeFormValue>({
-        defaultValues:{otp:["","","","",""]},
-        mode:"onSubmit"
+        defaultValues: { otp: ["", "", "", "", ""] },
+        mode: "onSubmit"
     })
 
+    function cleanEmail(email: string) {
+        return email.trim().toLowerCase()
+    }
 
     async function handleEmailForm(dataForm: EmailFormValue) {
         const { email } = dataForm
-        const cleanEmail = email.trim().toLowerCase()
+        const recipientEmail = cleanEmail(email)
         setData({
             ...data,
             email: cleanEmail,
         })
-
-        await sendCode(cleanEmail)
-        sendCodeToast(cleanEmail)
+        await sendCode(recipientEmail)
+        sendCodeToast(recipientEmail)
         return
     }
 
@@ -70,13 +72,13 @@ export function useLogin() {
             saveToken(token)
             router.push("/")
             return
-        } catch (error:any) {
-            if(error.message.includes("incorrecto")){
+        } catch (error: any) {
+            if (error.message.includes("incorrecto")) {
                 errorCodeToast(error.message)
             }
-            if(error.message.includes("expirado")){
+            if (error.message.includes("expirado")) {
                 errorCodeToast(error.message)
-            } 
+            }
         }
     }
 
@@ -86,5 +88,12 @@ export function useLogin() {
         }
     }
 
-    return { handleEmailSubmit,handleEmailForm,handleCodeSubmit, handleCodeForm,currentEmail,controlEmail,controlCode,onErrorEmail,onErrorCode }
+    async function resendCode() {
+        const recipientEmail = cleanEmail(currentEmail)
+        await sendCode(recipientEmail)
+        sendCodeToast(recipientEmail)
+        return
+    }
+
+    return { handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode }
 }

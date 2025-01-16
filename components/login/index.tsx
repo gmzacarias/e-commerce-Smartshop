@@ -7,7 +7,7 @@ import { useLogin } from "@/utils/components/useLogin";
 import { Controller } from "react-hook-form";
 
 export function Login() {
-    const { currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm } = useLogin()
+    const { currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode,resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm } = useLogin()
 
     return (
         <LoginBody>
@@ -97,8 +97,11 @@ export function Login() {
                             </FormButton>
                         </form>
                         <Small>
-                            ¿No recibiste el código?
+                            ¿No recibiste el código?  
                         </Small>
+                        <button onClick={resendCode} style={{background:"none",border:"none",cursor:"pointer"}}>
+                            reenviar codigo
+                        </button>
                     </LoginContainer>
                 </>
             )
