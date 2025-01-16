@@ -1,5 +1,3 @@
-import { error } from "console";
-
 const BASE_URL = "https://e-commerce-backend-lake.vercel.app/api"
 
 export async function fetchApi(
