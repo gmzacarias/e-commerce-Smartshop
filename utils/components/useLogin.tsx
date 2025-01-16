@@ -59,29 +59,24 @@ export function useLogin() {
 
     async function handleCodeForm(dataForm: CodeFormValue) {
         const code = dataForm.otp.join("")
-
         try {
             const response = await getToken(currentEmail, code)
-            if (response.includes("incorrecto")) {
-              alert("codigo incorrecto")
-                return
-            }else if (response.includes("expirado")){
-                alert("codigo incorrecto")
-                return  
-            }
-
             setData({
                 ...data,
                 isLogged: true,
             })
-
             const token: string = response.token
             loginToast()
             saveToken(token)
             router.push("/")
             return
-        } catch (error) {
-            console.error(error)
+        } catch (error:any) {
+            if(error.message.includes("incorrecto")){
+                alert(error.message)
+            }
+            if(error.message.includes("expirado")){
+                alert(error.message)
+            } 
         }
     }
 

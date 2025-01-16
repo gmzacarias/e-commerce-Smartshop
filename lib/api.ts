@@ -20,20 +20,18 @@ export async function fetchApi(
         newOptions.body = JSON.stringify(newOptions.body)
     }
 
-
     try {
-        const res = await fetch(url, newOptions)
-        console.log(res.url)
-        if (res.status >= 200 && res.status < 300) {
-            return res.json()
+        const response = await fetch(url, newOptions)
+        if (response.status >= 200 && response.status < 300) {
+            return response.json()
         } else {
-            throw {
-                message: "Hubo un error",
-                status: res.status
-            }
+            const errorData = await response.json();
+            const errorMessage = errorData?.message || `status:${response.status}`;
+            throw new Error(errorMessage);
         }
-    } catch (error) {
-        console.log("Hubo un problema con fetch api", error)
+    } catch (error: any) {
+        console.log(`Hubo un problema:${error.message}`)
+        throw error
     }
 }
 
@@ -65,12 +63,16 @@ export async function getToken(email: string, code: string) {
                 code: parseInt(code),
             },
         })
-        if (!response) {
-            throw new Error(`error del servidor:${response}`)
+        if (response.message.includes("incorrecto")) {
+            throw new Error(`error del servidor:${response.message}`)
+        }
+
+        if(response.message.includes("expirado")){
+            throw new Error(`error del servidor:${response.message}`)
         }
         return response
-    } catch (error) {
-        console.error(`Hubo un problema al obtener el token:${error}`)
+    } catch (error:any) {
+        console.log(`Hubo un problema al obtener el token:${error.message}`)
         throw error
     }
 }
