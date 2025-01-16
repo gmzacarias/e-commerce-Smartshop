@@ -72,10 +72,10 @@ export function useLogin() {
             return
         } catch (error:any) {
             if(error.message.includes("incorrecto")){
-                alert(error.message)
+                errorCodeToast(error.message)
             }
             if(error.message.includes("expirado")){
-                alert(error.message)
+                errorCodeToast(error.message)
             } 
         }
     }
