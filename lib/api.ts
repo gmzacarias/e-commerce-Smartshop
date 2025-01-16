@@ -47,7 +47,7 @@ export async function sendCode(email: string) {
             body: { email }
         },)
         if (!response) {
-            throw new Error(`error del servidor:${response.statusText}`)
+            throw new Error(`error del servidor:${response}`)
         }
         return response
     } catch (error) {
@@ -66,7 +66,7 @@ export async function getToken(email: string, code: string) {
             },
         })
         if (!response) {
-            throw new Error(`error del servidor:${response.statusText}`)
+            throw new Error(`error del servidor:${response}`)
         }
         return response
     } catch (error) {
