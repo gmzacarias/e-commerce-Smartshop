@@ -62,16 +62,14 @@ export const OTPContainer=styled(PageContainer)`
   background-color:var(--background-navfoot);
   background: none;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding:unset;
+  gap: 10px;
     
   @media(min-width:769px){
     width: 50%;
     height: 100%;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
   }
 ` 
 

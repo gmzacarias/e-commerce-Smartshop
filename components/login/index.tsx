@@ -81,6 +81,7 @@ export function Login() {
                                                 <OTPInput
                                                     type="text"
                                                     placeholder="-"
+                                                    maxlength={1}
                                                     onChange={onChange}
                                                     value={value}
                                                 />

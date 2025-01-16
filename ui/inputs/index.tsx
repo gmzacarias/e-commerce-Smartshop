@@ -11,6 +11,11 @@ type InputProps = {
     onChange?: (e?) => void
 };
 
+type OTPProps=InputProps &{
+    maxlength:number
+}
+
+
 
 const Input = styled.input`
 background-color: var(--white);
@@ -139,23 +144,20 @@ const OTPForm = styled(Input)`
     border-radius: 4px;
    border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
    outline: none;
-   width: 54px;
+   width: 44px;
    min-width: unset;
-   height: 50px;
+   height: 40px;
    padding: unset;
    text-align:center;
    font-size: 24px;
 
-   &:focus{
-    border-color:#0091ea;
+   &:focus {
+      border-color: #0091ea;
    }
    
-   &:focus:valid {
-     border-color:green;
-   }
-
-   &:invalid{
-     border-color: red;
+   @media(min-width:769px){
+      width:54px;
+      height:50px;
    }
 `
 
@@ -168,8 +170,8 @@ export function DefaultInput({ type, name, placeholder, value, required, onChang
     return <FormInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
 }
 
-export function OTPInput({ type, name, placeholder, value, onChange }: InputProps) {
-    return <OTPForm type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+export function OTPInput({ type, name, placeholder, value,maxlength,required, onChange }: OTPProps) {
+    return <OTPForm type={type} name={name} placeholder={placeholder} value={value} maxLength={maxlength} onChange={onChange} required={required} />
 }
 
 
