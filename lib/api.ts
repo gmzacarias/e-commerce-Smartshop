@@ -46,10 +46,10 @@ export async function sendCode(email: string) {
     try {
         const response = await fetchApi("/auth", {
             method: "POST",
-            body: {email}
+            body: { email }
         },)
-        if(!response.ok){
-            throw new error(`error del servidor:${response.statusText}`)
+        if (!response.ok) {
+            throw new Error(`error del servidor:${response.statusText}`)
         }
         return response
     } catch (error) {
@@ -59,19 +59,21 @@ export async function sendCode(email: string) {
 }
 
 export async function getToken(email: string, code: string) {
-    console.log(email, code)
     try {
-        const data = await fetchApi("/auth/token", {
+        const response = await fetchApi("/auth/token", {
             method: "POST",
             body: {
                 email,
                 code: parseInt(code),
             },
         })
-        console.log(data)
-        return data
+        if (!response.ok) {
+            throw new Error(`error del servidor:${response.statusText}`)
+        }
+        return response
     } catch (error) {
-        console.error("GetToken Error", error)
+        console.error(`Hubo un problema al obtener el token:${error}`)
+        throw error
     }
 }
 
@@ -96,7 +98,7 @@ export async function editProfile(userName?: string, email?: string, address?: s
 
 
 
-export async function addItemCart(productId: string,quantity:number) {
+export async function addItemCart(productId: string, quantity: number) {
     console.log("add cart", productId)
     try {
         const data = await fetchApi(`/me/cart?productId=${productId}`, {
@@ -140,7 +142,7 @@ export async function resetCart() {
     }
 }
 
-export async function createPurchaseOrder(additionalInfo?:string) {
+export async function createPurchaseOrder(additionalInfo?: string) {
 
     try {
         const data = await fetchApi(`/order`, {
