@@ -118,28 +118,20 @@ export function SearchInputNav({ type, name, placeholder, value, onChange }: Inp
 
 
 const FormInput = styled(Input)`
-   border-radius: 4px;
-   border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
-   outline: none;
-   width:260px;
-   height: 48px;
-   padding:0 16px;
-   text-align:left;
-
-   &:focus{
-    border-color:#0091ea;
-   }
+  border-radius: 4px;
+  border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
+  outline: none;
+  width:260px;
+  height: 48px;
+  padding:0 16px;
+  text-align:left;
    
-   &:valid {
-     border-color:green;
+  &:focus {
+      border-color: #0091ea;
    }
 
-   &:invalid{
-     border-color: red;
-   }
-
-   @media(min-width:769px){
-       width:312px;
+  @media(min-width:769px){
+      width:312px;
    }
 `
 
@@ -158,7 +150,7 @@ const OTPForm = styled(Input)`
     border-color:#0091ea;
    }
    
-   &:valid {
+   &:focus:valid {
      border-color:green;
    }
 
@@ -172,8 +164,8 @@ export function SearchInputIndex({ type, name, placeholder, value, onChange }: I
     return <SearchInputHome type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
 }
 
-export function DefaultInput({ type, name, placeholder, value, onChange }: InputProps) {
-    return <FormInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+export function DefaultInput({ type, name, placeholder, value, required, onChange }: InputProps) {
+    return <FormInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
 }
 
 export function OTPInput({ type, name, placeholder, value, onChange }: InputProps) {

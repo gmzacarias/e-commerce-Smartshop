@@ -35,6 +35,7 @@ export function Login() {
                                     <Label>
                                         Email
                                         <DefaultInput
+                                        required
                                             type="text"
                                             placeholder="example@email.com"
                                             onChange={onChange}
