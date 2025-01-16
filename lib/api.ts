@@ -1,3 +1,4 @@
+import { error } from "console";
 
 const BASE_URL = "https://e-commerce-backend-lake.vercel.app/api"
 
@@ -42,17 +43,18 @@ export async function fetchApi(
 
 
 export async function sendCode(email: string) {
-    console.log("email", email)
     try {
-        const data = await fetchApi("/auth", {
+        const response = await fetchApi("/auth", {
             method: "POST",
-            body: {
-                email,
-            }
+            body: {email}
         },)
-        return data
+        if(!response.ok){
+            throw new error(`error del servidor:${response.statusText}`)
+        }
+        return response
     } catch (error) {
-        console.error("SendCode Error", error)
+        console.error(`Hubo un problema al enviar el codigo:${error}`)
+        throw error
     }
 }
 
