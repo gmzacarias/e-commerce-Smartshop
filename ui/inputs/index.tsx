@@ -117,11 +117,11 @@ export function SearchInputNav({ type, name, placeholder, value, onChange }: Inp
 
 
 
-const InputForm = styled(Input)`
+const FormInput = styled(Input)`
    border-radius: 4px;
    border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
    outline: none;
-   width: 312px;
+   width:260px;
    height: 48px;
    padding:0 16px;
    text-align:left;
@@ -137,9 +137,13 @@ const InputForm = styled(Input)`
    &:invalid{
      border-color: red;
    }
+
+   @media(min-width:769px){
+       width:312px;
+   }
 `
 
-const OTPForm=styled(Input)`
+const OTPForm = styled(Input)`
     border-radius: 4px;
    border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
    outline: none;
@@ -169,11 +173,11 @@ export function SearchInputIndex({ type, name, placeholder, value, onChange }: I
 }
 
 export function DefaultInput({ type, name, placeholder, value, onChange }: InputProps) {
-    return <InputForm type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+    return <FormInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
 }
 
-export function OTPInput({ type, name, placeholder, value, onChange }: InputProps){
-    return <OTPForm type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />  
+export function OTPInput({ type, name, placeholder, value, onChange }: InputProps) {
+    return <OTPForm type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
 }
 
 

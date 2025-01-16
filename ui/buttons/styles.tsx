@@ -40,7 +40,7 @@ export const CardBtn = styled.button`
 `
 
 export const FormBtn=styled.button`
-  width: 312px;
+  width: 260px;
   height: 40px;
   padding: 10px 18px;
   text-align: center;
@@ -54,5 +54,10 @@ export const FormBtn=styled.button`
   letter-spacing: 1px;
   color:#eaeaea;
   cursor:pointer;
+  
+  @media(min-width:769px){
+       width:312px;
+   }
+  
   
 `
