@@ -61,20 +61,21 @@ export function useLogin() {
         const code = dataForm.otp.join("")
 
         try {
-            const res = await getToken(currentEmail, code)
-            //agregar condicional si la respuesta es null, 
-            //agregar toast y return
-            if (res === undefined) {
-                console.log("error")
-              await alert("codigo incorrecto")
+            const response = await getToken(currentEmail, code)
+            if (response.includes("incorrecto")) {
+              alert("codigo incorrecto")
                 return
+            }else if (response.includes("expirado")){
+                alert("codigo incorrecto")
+                return  
             }
+
             setData({
                 ...data,
                 isLogged: true,
             })
 
-            const token: string = res.token
+            const token: string = response.token
             loginToast()
             saveToken(token)
             router.push("/")
