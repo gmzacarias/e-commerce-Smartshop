@@ -46,19 +46,3 @@ export const Loader=styled.div`
    }
 `
 
-label {
-    color: #002;
-    font-size: 18px;
-    animation: bit 0.6s alternate infinite;
-  }
-  
-  @keyframes bit {
-    from {
-      opacity: 0.3;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-   
-
