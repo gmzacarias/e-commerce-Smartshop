@@ -38,7 +38,6 @@ export function useLogin() {
     })
 
     function cleanEmail(email: string) {
-        const emailformatted=email.trim().toLowerCase()
         return email.trim().toLowerCase()
     }
 
