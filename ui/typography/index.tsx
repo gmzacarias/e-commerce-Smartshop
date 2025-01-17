@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { TitleText, SubTitleText, SectionText, SectionTextBold, ParagraphText, ParagraphTextBold, SmallText, LabelText } from "./styles"
+import { TitleText, SubTitleText, SectionText, SectionTextBold, ParagraphText, ParagraphTextBold, SmallText, LabelText,LabelLoaderText } from "./styles"
 
 type TextProps ={
     children:ReactNode
@@ -34,8 +34,10 @@ export function Small({ children }:TextProps) {
 }
 
 export function Label({ children }:TextProps) {
-    return <LabelText>
-        {children}
-    </LabelText >
+    return <LabelText>{children}</LabelText >
+}
+
+export function LabelLoader({children}:TextProps){
+    return <LabelLoaderText>{children}</LabelLoaderText >
 }
 

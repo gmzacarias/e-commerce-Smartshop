@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled,{keyframes} from "styled-components"
 
 export const TitleText = styled.h1`
   font-size:clamp(32px,4vw,48px);
@@ -45,6 +45,20 @@ export const LabelText = styled.label`
   flex-direction: column;
   gap: 10px;
 `
+const Bit=keyframes`
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 1;
+  }
+`
+
+export const LabelLoaderText=styled(LabelText)`
+  animation: ${Bit} 0.6s alternate infinite;
+`
+
 
 export const SmallText = styled.h5`
   
