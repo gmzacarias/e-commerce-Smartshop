@@ -4,6 +4,7 @@ import { sendCode, getToken, saveToken } from "lib/api"
 import { useAppData } from "lib/atoms"
 import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast } from "lib/sonner"
 import { GiConsoleController } from "react-icons/gi";
+import { useEffect } from "react";
 
 
 interface EmailFormValue {
@@ -17,7 +18,6 @@ interface CodeFormValue {
 export function useLogin() {
     const [data, setData] = useAppData()
     const currentEmail: string = data.email
-
     const {
         handleSubmit: handleEmailSubmit,
         formState: { errors: emailErrors },
@@ -44,9 +44,10 @@ export function useLogin() {
     async function handleEmailForm(dataForm: EmailFormValue) {
         const { email } = dataForm
         const recipientEmail = cleanEmail(email)
+        
         setData({
             ...data,
-            email: cleanEmail,
+            email: recipientEmail,
         })
         await sendCode(recipientEmail)
         sendCodeToast(recipientEmail)
