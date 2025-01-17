@@ -89,9 +89,8 @@ export function useLogin() {
     }
 
     async function resendCode() {
-        const recipientEmail = cleanEmail(currentEmail)
-        await sendCode(recipientEmail)
-        sendCodeToast(recipientEmail)
+        await sendCode(currentEmail)
+        sendCodeToast(currentEmail)
         return
     }
 
