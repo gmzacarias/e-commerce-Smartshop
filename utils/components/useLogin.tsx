@@ -38,6 +38,7 @@ export function useLogin() {
     })
 
     function cleanEmail(email: string) {
+        const emailformatted=email.trim().toLowerCase()
         return email.trim().toLowerCase()
     }
 
@@ -89,9 +90,8 @@ export function useLogin() {
     }
 
     async function resendCode() {
-        const recipientEmail = cleanEmail(currentEmail)
-        await sendCode(recipientEmail)
-        sendCodeToast(recipientEmail)
+        await sendCode(currentEmail)
+        sendCodeToast(currentEmail)
         return
     }
 
