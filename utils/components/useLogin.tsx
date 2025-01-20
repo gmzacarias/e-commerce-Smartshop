@@ -35,7 +35,7 @@ export function useLogin() {
 
     } = useForm<CodeFormValue>({
         defaultValues: { otp: ["", "", "", "", ""] },
-        mode: "onChange"
+        mode: "onSubmit"
     })
 
     function cleanEmail(email: string) {
