@@ -84,9 +84,13 @@ export function useLogin() {
             if (error.message.includes("incorrecto")) {
                 errorCodeToast(error.message)
             }
-            if (error.message.includes("expirado")) {
+            else if (error.message.includes("expirado")) {
                 errorCodeToast(error.message)
+            }else{
+                errorCodeToast("Error al validar el codigo")
             }
+
+
         }
     }
 
@@ -98,7 +102,6 @@ export function useLogin() {
 
     function handleKeyUp(index: number) {
         const currentInput = otpRef?.current[index]
-        console.log("Input actual:", currentInput);
         if (currentInput?.value.length === 1) {
             const nextInput = otpRef.current[index + 1]
             if (nextInput) {

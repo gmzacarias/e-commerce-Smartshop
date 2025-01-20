@@ -1,13 +1,13 @@
 import { LoginBody, LoginContainer, PageContainer, OTPContainer } from "./styles";
-import { SubTitle, Label, Small, Paragraph } from "ui/typography"
-import { DefaultInput, OTPInput ,CurrentOTPInput} from "@/ui/inputs"
-import { DefaultButton, FormButton } from "ui/buttons"
+import { SubTitle, Label, Small} from "ui/typography"
+import { DefaultInput, CurrentOTPInput } from "@/ui/inputs"
+import { FormButton } from "ui/buttons"
 import { BrandPagesIcon } from "@/ui/icons";
 import { useLogin } from "@/utils/components/useLogin";
 import { Controller } from "react-hook-form";
 
 export function Login() {
-    const { otpRef,currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode,resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm,handleKeyUp } = useLogin()
+    const { otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp } = useLogin()
 
     return (
         <LoginBody>
@@ -74,17 +74,17 @@ export function Login() {
                                                 pattern: {
                                                     value: /^\d+$/,
                                                     message: "Formato de codigo inválido",
-                                                },
+                                                },  
                                             }
                                             }
                                             render={({ field: { onChange, value } }) => (
                                                 <CurrentOTPInput
-                                                    type="number"
+                                                    type="text"
                                                     ref={(element) => (otpRef.current[index] = element)}
                                                     placeholder="-"
                                                     maxlength={1}
                                                     onChange={onChange}
-                                                    onKeyUp={() => handleKeyUp(index)} 
+                                                    onKeyUp={() => handleKeyUp(index)}
                                                     value={value}
                                                     required
                                                 />
@@ -100,9 +100,9 @@ export function Login() {
                             </FormButton>
                         </form>
                         <Small>
-                            ¿No recibiste el código?  
+                            ¿No recibiste el código?
                         </Small>
-                        <button onClick={resendCode} style={{background:"none",border:"none",cursor:"pointer"}}>
+                        <button onClick={resendCode} style={{ background: "none", border: "none", cursor: "pointer" }}>
                             reenviar codigo
                         </button>
                     </LoginContainer>
