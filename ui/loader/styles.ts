@@ -23,6 +23,9 @@ export const LoaderContainer=styled.div`
   justify-content: space-evenly;
   padding: 30px;
   box-shadow: 2px 2px 10px -5px lightgrey;
+  position:absolute;
+  top:25%;
+  left:50%;
 `
 
 export const Loader=styled.div`
