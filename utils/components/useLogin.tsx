@@ -16,7 +16,7 @@ interface CodeFormValue {
 }
 
 export function useLogin() {
-    const otpRef = useRef<(HTMLInputElement|null)[]>([])
+    const otpRef = useRef<(HTMLInputElement | null)[]>([])
     const [data, setData] = useAppData()
     const currentEmail: string = data.email
     const {
@@ -35,7 +35,7 @@ export function useLogin() {
 
     } = useForm<CodeFormValue>({
         defaultValues: { otp: ["", "", "", "", ""] },
-        mode: "onSubmit"
+        mode: "onChange"
     })
 
     function cleanEmail(email: string) {
@@ -86,15 +86,18 @@ export function useLogin() {
             }
             else if (error.message.includes("expirado")) {
                 errorCodeToast(error.message)
-            }else{
-                errorCodeToast("Error al validar el codigo")
             }
-
-
         }
     }
 
     function onErrorCode() {
+        for (let index = 0; index < 5; index++) {
+            const error = codeErrors?.otp?.[index]
+            if (error && error.message) {
+                errorCodeToast(error.message)
+                return
+            }
+        }
         if (codeErrors.otp) {
             errorCodeToast(codeErrors.otp.message)
         }
@@ -114,5 +117,5 @@ export function useLogin() {
         }
     }
 
-    return { handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp, otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode }
+    return { handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp, otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode}
 }

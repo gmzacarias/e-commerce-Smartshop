@@ -12,7 +12,7 @@ type InputProps = {
 };
 
 type OTPProps = InputProps & {
-    maxlength: number,
+    maxLength: number,
     onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
@@ -181,8 +181,8 @@ export function DefaultInput({ type, name, placeholder, value, required, onChang
     return <FormInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
 }
 
-export function OTPInput({ type, name, placeholder, value, maxlength, required, onChange, onKeyUp }: OTPProps, ref: React.Ref<HTMLInputElement>) {
-    return <OTPForm type={type} name={name} ref={ref} placeholder={placeholder} value={value} maxLength={maxlength} onChange={onChange} onKeyUp={onKeyUp} required={required} />
+export function OTPInput({ type, name, placeholder, value, maxLength, required, onChange, onKeyUp }: OTPProps, ref: React.Ref<HTMLInputElement>) {
+    return <OTPForm type={type} name={name} ref={ref} placeholder={placeholder} value={value} maxLength={maxLength} onChange={onChange} onKeyUp={onKeyUp} required={required} />
 }
 
 export const CurrentOTPInput = React.forwardRef(OTPInput)

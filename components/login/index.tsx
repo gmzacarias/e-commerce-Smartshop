@@ -1,5 +1,5 @@
 import { LoginBody, LoginContainer, PageContainer, OTPContainer } from "./styles";
-import { SubTitle, Label, Small} from "ui/typography"
+import { SubTitle, Label, Small } from "ui/typography"
 import { DefaultInput, CurrentOTPInput } from "@/ui/inputs"
 import { FormButton } from "ui/buttons"
 import { BrandPagesIcon } from "@/ui/icons";
@@ -7,7 +7,7 @@ import { useLogin } from "@/utils/components/useLogin";
 import { Controller } from "react-hook-form";
 
 export function Login() {
-    const { otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp } = useLogin()
+    const {otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp } = useLogin()
 
     return (
         <LoginBody>
@@ -70,11 +70,11 @@ export function Login() {
                                             control={controlCode}
                                             name={`otp.${index}`}
                                             rules={{
-                                                required: "ingrese un codigo valido",
+                                                required: "ingrese solo numeros",
                                                 pattern: {
-                                                    value: /^\d+$/,
+                                                    value: /^\d$/,
                                                     message: "Formato de codigo inválido",
-                                                },  
+                                                },
                                             }
                                             }
                                             render={({ field: { onChange, value } }) => (
@@ -82,7 +82,7 @@ export function Login() {
                                                     type="text"
                                                     ref={(element) => (otpRef.current[index] = element)}
                                                     placeholder="-"
-                                                    maxlength={1}
+                                                    maxLength={1}
                                                     onChange={onChange}
                                                     onKeyUp={() => handleKeyUp(index)}
                                                     value={value}
