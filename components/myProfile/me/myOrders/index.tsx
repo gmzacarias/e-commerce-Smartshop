@@ -3,7 +3,9 @@ import router from "next/router"
 import { MyOrdersBody, TableOrders } from "./styles"
 
 export function MyOrders() {
-    const ordersData = useOrders()
+    const { getData } = useOrders()
+    const data = getData
+
     // console.log("component my orders", ordersData)
 
 
@@ -19,23 +21,23 @@ export function MyOrders() {
     }
 
 
-    
+
 
 
     function ProductList({ products }) {
-    
-    
-    
+
+
+
         return (
             <>
                 {products.map((product) => (
-                    <div key={product.productId} style={{backgroundColor:"blue",border:"solid 1px orange",width:"100%",margin:5,display:"flex",flexDirection:"row",}}>
+                    <div key={product.productId} style={{ backgroundColor: "blue", border: "solid 1px orange", width: "100%", margin: 5, display: "flex", flexDirection: "row", }}>
                         <img src={product.photo} style={{ width: 100, height: 100 }} alt="" />
-                    
+
                         <h4>{product.brand}</h4>
                         <h4>{product.model}</h4>
                         <p>{product.colour}</p>
-                        <button  onClick={() => goToProduct(product.productId)}>Volver a comprar</button>
+                        <button onClick={() => goToProduct(product.productId)}>Volver a comprar</button>
                     </div>
                 ))}
             </>
@@ -44,8 +46,8 @@ export function MyOrders() {
 
 
     function OrderList({ data }) {
-        const { id, status, totalPrice,products, created } = data;
-     
+        const { id, status, totalPrice, products, created } = data;
+
 
         return (
             <>
@@ -77,7 +79,7 @@ export function MyOrders() {
     return (
         <MyOrdersBody>
 
-            {ordersData?.length > 0 ?
+            {data?.length > 0 ?
                 (
 
                     <TableOrders>
@@ -88,7 +90,7 @@ export function MyOrders() {
                             </tr>
                         </thead>
                         <tbody>
-                            {ordersData.map((item) => (
+                            {data.map((item) => (
                                 <OrderList key={item.id} data={item}></OrderList>
                             ))}
                         </tbody>
