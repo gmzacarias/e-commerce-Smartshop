@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import type { AppProps } from "next/app"
-import { LoaderApp } from "@/ui/loader";
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider, ThemeConsumer } from "@/utils/darkMode/themeContext";
 import { Toaster } from "sonner"
@@ -10,7 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 export default function App({ Component, pageProps }: AppProps) {
 
   return (
-    <Suspense fallback={<LoaderApp />}>
+    
       <RecoilRoot>
         <ThemeProvider>
           <ThemeConsumer>
@@ -20,6 +18,5 @@ export default function App({ Component, pageProps }: AppProps) {
           </ThemeConsumer>
         </ThemeProvider>
       </RecoilRoot>
-    </Suspense>
   )
 }
