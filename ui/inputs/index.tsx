@@ -185,7 +185,7 @@ export function OTPInput({ type, name, placeholder, value, maxLength, required, 
     return <OTPForm type={type} name={name} ref={ref} placeholder={placeholder} value={value} maxLength={maxLength} onChange={onChange} onKeyUp={onKeyUp} required={required} />
 }
 
-export const CurrentOTPInput = React.forwardRef(OTPInput)
+export const RefOTPInput = React.forwardRef(OTPInput)
 
 
 
