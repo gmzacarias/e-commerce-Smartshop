@@ -7,7 +7,7 @@ import { useLogin } from "@/utils/components/useLogin";
 import { Controller } from "react-hook-form";
 
 export function Login() {
-    const { currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode,resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm } = useLogin()
+    const { otpRef,currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode,resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm,handleKeyUp } = useLogin()
 
     return (
         <LoginBody>
@@ -35,11 +35,11 @@ export function Login() {
                                     <Label>
                                         Email
                                         <DefaultInput
-                                        required
                                             type="text"
                                             placeholder="example@email.com"
                                             onChange={onChange}
                                             value={value}
+                                            required
                                         />
                                     </Label>
                                 )}
@@ -80,10 +80,13 @@ export function Login() {
                                             render={({ field: { onChange, value } }) => (
                                                 <OTPInput
                                                     type="text"
+                                                    ref={(element) => (otpRef.current[index] = element!)}
                                                     placeholder="-"
                                                     maxlength={1}
                                                     onChange={onChange}
+                                                    onKeyUp={() => handleKeyUp(index)} 
                                                     value={value}
+                                                    required
                                                 />
                                             )
                                             }

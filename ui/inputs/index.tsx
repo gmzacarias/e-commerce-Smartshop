@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import react, { ReactNode } from "react";
 import styled from "styled-components"
 
 
@@ -12,7 +12,9 @@ type InputProps = {
 };
 
 type OTPProps=InputProps &{
-    maxlength:number
+    maxlength:number,
+    ref:react.Ref<HTMLInputElement>
+    onKeyUp:(e?)=> void
 }
 
 
@@ -170,8 +172,8 @@ export function DefaultInput({ type, name, placeholder, value, required, onChang
     return <FormInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
 }
 
-export function OTPInput({ type, name, placeholder, value,maxlength,required, onChange }: OTPProps) {
-    return <OTPForm type={type} name={name} placeholder={placeholder} value={value} maxLength={maxlength} onChange={onChange} required={required} />
+export function OTPInput({ type, name, placeholder, value,maxlength,ref ,required, onChange,onKeyUp }: OTPProps) {
+    return <OTPForm type={type} name={name} ref={ref} placeholder={placeholder} value={value} maxLength={maxlength} onChange={onChange} onKeyUp={onKeyUp} required={required} />
 }
 
 

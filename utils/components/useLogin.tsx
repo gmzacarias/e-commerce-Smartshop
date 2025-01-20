@@ -4,7 +4,7 @@ import { sendCode, getToken, saveToken } from "lib/api"
 import { useAppData } from "lib/atoms"
 import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast } from "lib/sonner"
 import { GiConsoleController } from "react-icons/gi";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 
 interface EmailFormValue {
@@ -16,6 +16,7 @@ interface CodeFormValue {
 }
 
 export function useLogin() {
+    const otpRef = useRef<HTMLInputElement[]>([])
     const [data, setData] = useAppData()
     const currentEmail: string = data.email
     const {
@@ -44,13 +45,19 @@ export function useLogin() {
     async function handleEmailForm(dataForm: EmailFormValue) {
         const { email } = dataForm
         const recipientEmail = cleanEmail(email)
-        
+
         setData({
             ...data,
             email: recipientEmail,
         })
         await sendCode(recipientEmail)
         sendCodeToast(recipientEmail)
+        return
+    }
+
+    async function resendCode() {
+        await sendCode(currentEmail)
+        sendCodeToast(currentEmail)
         return
     }
 
@@ -89,11 +96,17 @@ export function useLogin() {
         }
     }
 
-    async function resendCode() {
-        await sendCode(currentEmail)
-        sendCodeToast(currentEmail)
-        return
+    function handleKeyUp(index: number) {
+        const currentInput = otpRef?.current[index]
+
+        if (currentInput.value.length === 1) {
+            const nextInput = otpRef.current[index + 1]
+            nextInput?.focus()
+            return true
+        } else {
+            return false
+        }
     }
 
-    return { handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode }
+    return { handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp, otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode }
 }
