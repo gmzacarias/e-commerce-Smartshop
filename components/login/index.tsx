@@ -1,6 +1,6 @@
 import { LoginBody, LoginContainer, PageContainer, OTPContainer } from "./styles";
 import { SubTitle, Label, Small, Paragraph } from "ui/typography"
-import { DefaultInput, OTPInput } from "@/ui/inputs"
+import { DefaultInput, OTPInput ,CurrentOTPInput} from "@/ui/inputs"
 import { DefaultButton, FormButton } from "ui/buttons"
 import { BrandPagesIcon } from "@/ui/icons";
 import { useLogin } from "@/utils/components/useLogin";
@@ -78,9 +78,9 @@ export function Login() {
                                             }
                                             }
                                             render={({ field: { onChange, value } }) => (
-                                                <OTPInput
-                                                    type="text"
-                                                    ref={(element) => (otpRef.current[index] = element!)}
+                                                <CurrentOTPInput
+                                                    type="number"
+                                                    ref={(element) => (otpRef.current[index] = element)}
                                                     placeholder="-"
                                                     maxlength={1}
                                                     onChange={onChange}

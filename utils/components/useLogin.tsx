@@ -16,7 +16,7 @@ interface CodeFormValue {
 }
 
 export function useLogin() {
-    const otpRef = useRef<HTMLInputElement[]>([])
+    const otpRef = useRef<(HTMLInputElement|null)[]>([])
     const [data, setData] = useAppData()
     const currentEmail: string = data.email
     const {
@@ -98,11 +98,14 @@ export function useLogin() {
 
     function handleKeyUp(index: number) {
         const currentInput = otpRef?.current[index]
-
-        if (currentInput.value.length === 1) {
+        console.log("Input actual:", currentInput);
+        if (currentInput?.value.length === 1) {
             const nextInput = otpRef.current[index + 1]
-            nextInput?.focus()
-            return true
+            if (nextInput) {
+                nextInput.focus();
+                return true
+            }
+            return
         } else {
             return false
         }

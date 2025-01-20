@@ -1,4 +1,4 @@
-import react, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components"
 
 
@@ -11,10 +11,9 @@ type InputProps = {
     onChange?: (e?) => void
 };
 
-type OTPProps=InputProps &{
-    maxlength:number,
-    ref:react.Ref<HTMLInputElement>
-    onKeyUp:(e?)=> void
+type OTPProps = InputProps & {
+    maxlength: number,
+    onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 
@@ -153,10 +152,20 @@ const OTPForm = styled(Input)`
    text-align:center;
    font-size: 24px;
 
-   &:focus {
-      border-color: #0091ea;
+   &:valid,
+   &:focus{
+    border-color: #0091ea;
    }
    
+   &::-webkit-outer-spin-button,
+&::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+& {
+  -moz-appearance: textfield; /* Para Firefox */
+}
    @media(min-width:769px){
       width:54px;
       height:50px;
@@ -172,11 +181,11 @@ export function DefaultInput({ type, name, placeholder, value, required, onChang
     return <FormInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
 }
 
-export function OTPInput({ type, name, placeholder, value,maxlength,ref ,required, onChange,onKeyUp }: OTPProps) {
+export function OTPInput({ type, name, placeholder, value, maxlength, required, onChange, onKeyUp }: OTPProps, ref: React.Ref<HTMLInputElement>) {
     return <OTPForm type={type} name={name} ref={ref} placeholder={placeholder} value={value} maxLength={maxlength} onChange={onChange} onKeyUp={onKeyUp} required={required} />
 }
 
-
+export const CurrentOTPInput = React.forwardRef(OTPInput)
 
 
 
