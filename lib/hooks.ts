@@ -23,21 +23,21 @@ export function useProductById(id: string) {
 }
 
 export function useProductSearch(query: string, offset?: string, limit?: string) {
-    const { data, error,isLoading } = useSWR(`/search?q=${query}&offset=${offset}&limit=${limit}`, fetchApi as any)
+    const { data, error, isLoading } = useSWR(`/search?q=${query}&offset=${offset}&limit=${limit}`, fetchApi as any)
     return {
         data,
         isLoading,
-        isError:!!error,
+        isError: !!error,
         error
     }
 }
 
-export function useProductsList(){
-    const {data,error,isLoading}=useSWR("/product",fetchApi as any)
+export function useProductsList() {
+    const { data, error, isLoading } = useSWR("/product", fetchApi as any)
     return {
         data,
         isLoading,
-        isError:!!error,
+        isError: !!error,
         error
     }
 }
@@ -50,29 +50,31 @@ export function useCart() {
         return error
     }
     const response = data?.cart
-    console.log("soy el carrito",response)
+    console.log("soy el carrito", response)
     return response
 }
 
 
-export function useOrders(){
-    const {data,error}=useSWR("/order/myorders", fetchApi as any)
-    if(error){
+export function useOrders() {
+    const { data, error, isLoading } = useSWR("/order/myorders", fetchApi as any)
+    const getData = data?.data
+
+    return {
+        getData,
+        isLoading,
+        isError: !!error,
+        error
+    }
+}
+
+export function useOrderById(id: string) {
+    const { data, error } = useSWR(`/order/myorders/${id}`, fetchApi as any)
+    if (error) {
         return error
     }
-    const response=data?.data as any
-    console.log("mis ordenes",response)
+    const response = data
+    console.log("orden por id", response)
     return response
-}
-
-export function useOrderById(id:string){
-const{data,error}=useSWR(`/order/myorders/${id}`, fetchApi as any)
-if (error){
-    return error
-}
-const response=data
-console.log("orden por id",response)
-return response
 }
 
 
