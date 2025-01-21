@@ -21,17 +21,16 @@ export const PageContainer = styled.section`
   background-blend-mode: overlay;
   background-color: ${({ theme }) => theme.background};
   width: 100%;
-  height:fit-content;
+  height:100%;
   padding: 70px 50px 50px;
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content:center;
   align-items: flex-start;
-  gap: 10px;
+  gap: 20px;
   text-align: left;
 
   @media(min-width:769px){
-    height: 100%;
     padding: 70px;
     flex-direction: column;
     justify-content: flex-start;
@@ -42,7 +41,7 @@ export const PageContainer = styled.section`
 `
 
 export const ProfileDataContainer = styled.div`
- background-color:${({ theme }) => theme.mode === "dark" ? "#121212" : "#f2f4f5"};
+  background-color:${({ theme }) => theme.mode === "dark" ? "#121212" : "#f2f4f5"};
   border-radius: 20px;
   box-shadow: 0 2px 6px 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
   width: 100%;
@@ -56,8 +55,8 @@ export const ProfileDataContainer = styled.div`
   gap:10px;    
 `
 export const ButtonsContainer = styled.div`
-width: 100%;
-display: flex;
-flex-direction:column ;
-align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction:column ;
+  align-items: center;
 `
