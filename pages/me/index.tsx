@@ -4,13 +4,6 @@ import { Layout } from "components/layout";
 import { Me } from "@/components/myProfile/me"
 import styled from "styled-components"
 
-const MePageBody = styled.div`
-    display: flex;
-    padding-top: 30px;
-    flex-direction: column;
-    align-items: center;
-`
-
 const MePage: NextPage = () => {
 
     return (
@@ -22,9 +15,7 @@ const MePage: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                <MePageBody>
                     <Me />
-                </MePageBody>
             </Layout>
         </>
     );
