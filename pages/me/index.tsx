@@ -1,9 +1,8 @@
 import { NextPage } from "next";
+import Head from "next/head"
 import { Layout } from "components/layout";
-import { useMe } from "lib/hooks"
 import { Me } from "@/components/myProfile/me"
 import styled from "styled-components"
-import Head from "next/head"
 
 const MePageBody = styled.div`
     display: flex;
