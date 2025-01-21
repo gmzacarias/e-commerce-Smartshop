@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDataValue } from "lib/atoms"
-import { LoaderApp } from '@/ui/loader';
+import { LoaderApp } from '@/components/loader';
 
 type RoutesProps = {
     children: React.ReactNode

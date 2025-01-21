@@ -1,11 +1,11 @@
 import { Loader, LoaderContainer } from "./styles";
-import { LabelLoader } from "../typography";
+import { LabelLoader } from "../../ui/typography";
 
-export function LoaderApp (){
+export function LoaderApp() {
     return (
         <LoaderContainer>
             <LabelLoader>Cargando...</LabelLoader>
-            <Loader/>
+            <Loader />
         </LoaderContainer>
     )
 }
