@@ -1,7 +1,7 @@
 import { useProfile } from "@/utils/components/useProfile"
 import { SubTitle, Label, Small, Paragraph, ParagraphBold } from "@/ui/typography"
 import { DefaultButton } from "ui/buttons"
-import { ProfileBody, PageContainer, ProfileDataContainer } from "./styles"
+import { ProfileBody, PageContainer, ProfileDataContainer, ButtonsContainer } from "./styles"
 
 export function Me() {
     const { userData, handleEdit, handleMyOrders, handleCancel } = useProfile()
@@ -28,6 +28,8 @@ export function Me() {
                         Celular
                         <ParagraphBold>{userData.phoneNumber}</ParagraphBold>
                     </Label>
+                    <ButtonsContainer>
+
                     <DefaultButton onClick={handleEdit}>
                         <Paragraph>Editar</Paragraph>
                     </DefaultButton>
@@ -37,6 +39,7 @@ export function Me() {
                     <DefaultButton onClick={handleCancel}>
                         <Paragraph>Regresar</Paragraph>
                     </DefaultButton>
+                    </ButtonsContainer>
                 </ProfileDataContainer>
             </PageContainer>
         </ProfileBody>

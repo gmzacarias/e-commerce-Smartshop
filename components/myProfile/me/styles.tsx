@@ -41,7 +41,7 @@ export const PageContainer = styled.section`
   
 `
 
-export const ProfileDataContainer=styled.div`
+export const ProfileDataContainer = styled.div`
  background-color:${({ theme }) => theme.mode === "dark" ? "#121212" : "#f2f4f5"};
   border-radius: 20px;
   box-shadow: 0 2px 6px 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
@@ -55,4 +55,9 @@ export const ProfileDataContainer=styled.div`
   align-items: flex-start;
   gap:10px;    
 `
-
+export const ButtonsContainer = styled.div`
+width: 100%;
+display: flex;
+flex-direction:column ;
+align-items: center;
+`
