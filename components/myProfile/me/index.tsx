@@ -1,11 +1,7 @@
-import styled from "styled-components"
-import router from "next/router"
+import { useProfile } from "@/utils/components/useProfile"
 import { SubTitle, Label, Small, Paragraph, ParagraphBold } from "@/ui/typography"
-import { InputDefault } from "ui/inputs"
 import { DefaultButton } from "ui/buttons"
-import { useMe } from "@/lib/hooks"
-import { useUserData } from "@/lib/atoms"
-import { useEffect } from "react"
+import styled from "styled-components"
 
 
 const MeBody = styled.div`
@@ -22,33 +18,7 @@ const DataContainer = styled.div`
 `
 
 export function Me() {
-    const data = useMe()
-    const [userData, setUserData] = useUserData()
-    useEffect(() => {
-        if (data) {
-            setUserData({
-                ...data,
-                email: data.email,
-                userName: data.userName,
-                address: data.address,
-                phoneNumber: data.phoneNumber,
-            })
-        }
-    }, [data])
-
-    console.log("userData", userData)
-
-    function handleEdit() {
-        router.push("/me/edit")
-    }
-
-    function handleCancel() {
-        router.push("/")
-    }
-
-    function handleMyOrders() {
-        router.push("/me/myorders")
-    }
+    const { userData, handleEdit, handleMyOrders, handleCancel } = useProfile()
 
     return (
         <MeBody>
