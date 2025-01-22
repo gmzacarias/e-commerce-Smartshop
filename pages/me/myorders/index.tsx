@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
 import { useMe } from "lib/hooks"
-import { Me } from "@/components/myProfile/me"
+import { Me } from "@/components/myProfile/profile"
 import styled from "styled-components"
 import Head from "next/head"
-import { MyOrders } from "@/components/myProfile/me/myOrders"
+import { MyOrders } from "@/components/myProfile/profile/myOrders"
 
 const MyOrdersPage: NextPage = () => {
 

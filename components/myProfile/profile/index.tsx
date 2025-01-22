@@ -3,7 +3,7 @@ import { SubTitle, Label, Small, Paragraph, ParagraphBold } from "@/ui/typograph
 import { DefaultButton } from "ui/buttons"
 import { ProfileBody, PageContainer, ProfileDataContainer, ButtonsContainer } from "./styles"
 
-export function Me() {
+export function Profile() {
     const { userData, handleEdit, handleMyOrders, handleCancel } = useProfile()
 
     return (

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head"
 import { Layout } from "components/layout";
-import { Me } from "@/components/myProfile/me"
+import { Me } from "@/components/myProfile/profile"
 import styled from "styled-components"
 
 const MePage: NextPage = () => {
@@ -15,7 +15,7 @@ const MePage: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                    <Me />
+                <Me />
             </Layout>
         </>
     );
