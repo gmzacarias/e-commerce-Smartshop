@@ -1,5 +1,5 @@
 import { useProducts } from "@/utils/components/useProducts"
-import { SkeletonProductsCard } from "@/components/cards/skeletonProductsCard"
+import { SkeletonProductsCard } from "@/components/skeletons/skeletonProductsCard"
 import { Paragraph, ParagraphBold } from "@/ui/typography"
 import { ImageProductCard } from "@/ui/images"
 import { CardButton } from "@/ui/buttons"
