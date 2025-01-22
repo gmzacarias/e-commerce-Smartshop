@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import Head from "next/head"
 import { Layout } from "components/layout";
-import { Profile } from "@/components/myProfile/profile"
-import styled from "styled-components"
+import { Profile } from "@/components/pages/myProfile/profile"
+
 
 const MePage: NextPage = () => {
 

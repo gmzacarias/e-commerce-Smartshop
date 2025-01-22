@@ -1,9 +1,8 @@
 import { NextPage } from "next";
-import { Layout } from "components/layout";
-import { useMe } from "lib/hooks"
-import { EditProfile } from "@/components/myProfile/editProfile"
-import styled from "styled-components"
 import Head from "next/head"
+import { Layout } from "components/layout";
+import { EditProfile } from "@/components/pages/myProfile/editProfile"
+import styled from "styled-components"
 
 const EditMePageBody = styled.div`
     display: flex;
