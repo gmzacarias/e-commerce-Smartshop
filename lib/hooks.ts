@@ -4,11 +4,15 @@ import { fetchApi } from "lib/api"
 import { useUserData } from './atoms'
 
 export function useMe() {
-    const { data, error } = useSWR("/me", fetchApi as any)
-    if (error) {
-        return error
+    const { data, error,isLoading } = useSWR("/me", fetchApi as any)
+    const getData = data?.data
+
+    return {
+        getData,
+        isLoading,
+        isError: !!error,
+        error
     }
-    return data?.data
 }
 
 export function useProductById(id: string) {
