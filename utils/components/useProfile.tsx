@@ -4,9 +4,9 @@ import { useMe } from "@/lib/hooks"
 import router from "next/router"
 
 export function useProfile() {
-    const data = useMe()
+    const { data, isLoading, error, isError } = useMe()
     const [userData, setUserData] = useUserData()
-    
+
     useEffect(() => {
         if (data) {
             setUserData({
@@ -18,8 +18,6 @@ export function useProfile() {
             })
         }
     }, [data])
-
-    console.log("userData", userData)
 
     function handleEdit() {
         router.push("/me/edit")
@@ -33,5 +31,5 @@ export function useProfile() {
         router.push("/me/myorders")
     }
 
-    return {userData,handleEdit,handleMyOrders,handleCancel}
+    return { data, isLoading, error, isError, handleEdit, handleMyOrders, handleCancel }
 }

@@ -4,41 +4,46 @@ import { DefaultButton } from "ui/buttons"
 import { ProfileBody, PageContainer, ProfileDataContainer, ButtonsContainer } from "./styles"
 
 export function Profile() {
-    const { userData, handleEdit, handleMyOrders, handleCancel } = useProfile()
+    const { data, isLoading, error, isError, handleEdit, handleMyOrders, handleCancel } = useProfile()
+
+    if (isLoading) {
+        return <div>loading....</div>
+    } else if (isError) {
+        return <div>no hay productos</div>
+    }
 
     return (
         <ProfileBody>
-
             <PageContainer>
                 <SubTitle>Mi perfil</SubTitle>
                 <ProfileDataContainer>
                     <Label>
                         Email
-                        <ParagraphBold>{userData.email}</ParagraphBold>
+                        <ParagraphBold>{data.email}</ParagraphBold>
                     </Label>
                     <Label>
                         Nombre Completo
-                        <ParagraphBold>{userData.userName}</ParagraphBold>
+                        <ParagraphBold>{data.userName}</ParagraphBold>
                     </Label>
                     <Label>
                         Direccion
-                        <ParagraphBold>{userData.address}</ParagraphBold>
+                        <ParagraphBold>{data.address}</ParagraphBold>
                     </Label>
                     <Label>
                         Celular
-                        <ParagraphBold>{userData.phoneNumber}</ParagraphBold>
+                        <ParagraphBold>{data.phoneNumber}</ParagraphBold>
                     </Label>
                     <ButtonsContainer>
 
-                    <DefaultButton onClick={handleEdit}>
-                        <Paragraph>Editar</Paragraph>
-                    </DefaultButton>
-                    <DefaultButton onClick={handleMyOrders}>
-                        <Paragraph>Mis ordenes</Paragraph>
-                    </DefaultButton>
-                    <DefaultButton onClick={handleCancel}>
-                        <Paragraph>Regresar</Paragraph>
-                    </DefaultButton>
+                        <DefaultButton onClick={handleEdit}>
+                            <Paragraph>Editar</Paragraph>
+                        </DefaultButton>
+                        <DefaultButton onClick={handleMyOrders}>
+                            <Paragraph>Mis ordenes</Paragraph>
+                        </DefaultButton>
+                        <DefaultButton onClick={handleCancel}>
+                            <Paragraph>Regresar</Paragraph>
+                        </DefaultButton>
                     </ButtonsContainer>
                 </ProfileDataContainer>
             </PageContainer>

@@ -5,12 +5,11 @@ import { useUserData } from './atoms'
 
 export function useMe() {
     const { data, error,isLoading } = useSWR("/me", fetchApi as any)
-    const getData = data?.data
 
     return {
-        getData,
+        data:data.data,
         isLoading,
-        isError: !!error,
+        isError:!!error,
         error
     }
 }
