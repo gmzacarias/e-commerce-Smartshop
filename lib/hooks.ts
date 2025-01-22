@@ -7,7 +7,7 @@ export function useMe() {
     const { data, error,isLoading } = useSWR("/me", fetchApi as any)
 
     return {
-        data:data.data,
+        data:data?.data,
         isLoading,
         isError:!!error,
         error
