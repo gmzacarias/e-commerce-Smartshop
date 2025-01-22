@@ -1,11 +1,9 @@
 import useSWR from 'swr'
 import useSWRImmutable from "swr/immutable"
 import { fetchApi } from "lib/api"
-import { useUserData } from './atoms'
 
 export function useMe() {
     const { data, error,isLoading } = useSWR("/me", fetchApi as any)
-
     return {
         data:data?.data,
         isLoading,
@@ -15,9 +13,9 @@ export function useMe() {
 }
 
 export function useProductById(id: string) {
-    //usan la funcion inmutable de swr,por que los productos no suelen variar.
+
     const { data, error } = useSWRImmutable(`/product/${id}`, fetchApi as any)
-    // console.log("id",id)
+
     if (error) {
         return error
     }
