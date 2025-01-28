@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useProductSearch } from "lib/hooks"
-import { SearchProductCard } from "../searchProductCard"
+import { SearchProductCard } from "@/components/cards/searchProductCard"
 import router from "next/router"
 import { SearchInputIndex } from "ui/inputs"
 import { DefaultButton } from "ui/buttons"

@@ -1,7 +1,7 @@
-import { Login } from "components/login"
+import { Login } from "@/components/pages/login"
 import { Layout } from "components/layout";
 import { NextPage } from "next";
-import { SearchProduct } from "@/components/searchProduct"
+import { SearchProduct } from "@/components/pages/searchProduct"
 import { useRouter } from "next/router";
 import { useEffect } from "react"
 import Head from "next/head"
