@@ -25,16 +25,12 @@ export const PageContainer = styled.section`
   padding: 70px 50px 50px;
   display: flex;
   flex-direction: column;
-  justify-content:center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   gap: 20px;
-  text-align: left;
 
   @media(min-width:769px){
     padding: 70px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     gap: 10px;
   }
   
