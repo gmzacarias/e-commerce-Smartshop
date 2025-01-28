@@ -59,5 +59,25 @@ export const FormBtn=styled.button`
        width:312px;
    }
   
+`
+
+export const DefaultBtn=styled.button`
+  width: 250px;
+  height: 40px;
+  padding: 10px 18px;
+  text-align: center;
+  background-color: #0091ea;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 10px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  font-size: 16px;
+  letter-spacing: 1px;
+  color:#eaeaea;
+  cursor:pointer;
   
+  @media(min-width:769px){
+       width:350px;
+   }
 `

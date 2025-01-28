@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { ReactNode } from "react"
 import { TrashIcon } from "ui/icons"
-import {SessionButton,ToggleButton,CardBtn, FormBtn} from "./styles"
+import {SessionButton,ToggleButton,CardBtn, FormBtn,DefaultBtn} from "./styles"
 
 type buttonProps = {
     children?: ReactNode,
@@ -122,30 +122,33 @@ export function FormButton({ onClick, title, children }: buttonProps){
     )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export function DefaultButton({ onClick, type, children }: buttonProps) {
-    return <Default type={type} onClick={onClick}>{children}</Default>
+export function DefaultButton({ onClick, title, children }: buttonProps){
+    return (
+        <DefaultBtn onClick={onClick} title={title}>
+            {children}
+        </DefaultBtn>
+    )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

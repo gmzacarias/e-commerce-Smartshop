@@ -16,7 +16,7 @@ export function Profile() {
             <PageContainer>
                 <SubTitle>Mi perfil</SubTitle>
                 {isLoading ? (
-                    <SkeletonProfile/>
+                    <SkeletonProfile />
                 ) : (
                     <ProfileDataContainer>
                         <Label>
@@ -36,16 +36,9 @@ export function Profile() {
                             <ParagraphBold>{data.phoneNumber}</ParagraphBold>
                         </Label>
                         <ButtonsContainer>
-
-                            <DefaultButton onClick={handleEdit}>
-                                <Paragraph>Editar</Paragraph>
-                            </DefaultButton>
-                            <DefaultButton onClick={handleMyOrders}>
-                                <Paragraph>Mis ordenes</Paragraph>
-                            </DefaultButton>
-                            <DefaultButton onClick={handleCancel}>
-                                <Paragraph>Regresar</Paragraph>
-                            </DefaultButton>
+                            <DefaultButton onClick={handleEdit} title={"editar perfil"}>Editar</DefaultButton>
+                            <DefaultButton onClick={handleMyOrders} title={"mis ordenes"}>Mis ordenes</DefaultButton>
+                            <DefaultButton onClick={handleCancel} title={"volver al inicio"}>Regresar</DefaultButton>
                         </ButtonsContainer>
                     </ProfileDataContainer>
                 )}
