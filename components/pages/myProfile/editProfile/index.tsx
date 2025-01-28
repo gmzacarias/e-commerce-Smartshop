@@ -7,19 +7,10 @@ import { useUserDataValue } from "lib/atoms"
 import { useState, useEffect } from "react"
 import { editProfile } from "lib/api"
 import { emptyInputToast } from "@/lib/sonner"
+import { ButtonsContainer, EditProfileDataContainer, EditProfileSection, PageContainer } from "./styles"
 
-const EditProfileBody = styled.div`
-    display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
-const FormContainer = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 
-`
+
 
 export function EditProfile() {
     const [value, setValue] = useState({
@@ -41,7 +32,7 @@ export function EditProfile() {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setValue((data) =>({
+        setValue((data) => ({
             ...data,
             [name]: value,
         })
@@ -77,35 +68,41 @@ export function EditProfile() {
     }
 
     return (
-        <EditProfileBody>
-            <SubTitle>Perfil</SubTitle>
-            <FormContainer onSubmit={handleSubmit}>
-                <Label>
-                    <Small>Email</Small>
-                    <InputDefault type="email" name="email" placeholder="ingresa tu email" value={value.email} onChange={handleChange} />
-                </Label>
-                <Label>
-                    <Small>Nombre Completo</Small>
-                    <InputDefault type="text" name="userName" placeholder="ingresa tu nombre completo" value={value.userName} onChange={handleChange} />
-                </Label>
-                <Label>
-                    <Small>Direccion</Small>
-                    <InputDefault type="text" name="address" placeholder="ingresa tu direccion" value={value.address} onChange={handleChange} />
-                </Label>
-                <Label>
-                    <Small>Celular</Small>
-                    <InputDefault type="number" name="phoneNumber" placeholder="ingresa tu numero" value={value.phoneNumber} onChange={handleChange} />
-                </Label>
-                <DefaultButton type="submit">
-                    <Paragraph>GUARDAR</Paragraph>
-                </DefaultButton>
-                <DefaultButton type="reset" onClick={handleReset}>
-                    <Paragraph>RESETEAR</Paragraph>
-                </DefaultButton>
-                <DefaultButton type="button" onClick={handleCancel}>
-                    <Paragraph>CANCELAR</Paragraph>
-                </DefaultButton>
-            </FormContainer>
-        </EditProfileBody>
+        <EditProfileSection>
+            <PageContainer>
+                <SubTitle>Editar mis datos</SubTitle>
+                <EditProfileDataContainer>
+                    <form onSubmit={handleSubmit}>
+                        <Label>
+                            Email
+                            <InputDefault type="email" name="email" placeholder="ingresa tu email" value={value.email} onChange={handleChange} />
+                        </Label>
+                        <Label>
+                            Nombre Completo
+                            <InputDefault type="text" name="userName" placeholder="ingresa tu nombre completo" value={value.userName} onChange={handleChange} />
+                        </Label>
+                        <Label>
+                            Direccion
+                            <InputDefault type="text" name="address" placeholder="ingresa tu direccion" value={value.address} onChange={handleChange} />
+                        </Label>
+                        <Label>
+                            Celular
+                            <InputDefault type="number" name="phoneNumber" placeholder="ingresa tu numero" value={value.phoneNumber} onChange={handleChange} />
+                        </Label>
+                        <ButtonsContainer>
+                            <DefaultButton type="submit">
+                                Guardar
+                            </DefaultButton>
+                            <DefaultButton type="reset" onClick={handleReset}>
+                                Resetear
+                            </DefaultButton>
+                            <DefaultButton type="button" onClick={handleCancel}>
+                                Cancelar
+                            </DefaultButton>
+                        </ButtonsContainer>
+                    </form>
+                </EditProfileDataContainer>
+            </PageContainer >
+        </EditProfileSection >
     )
 }
