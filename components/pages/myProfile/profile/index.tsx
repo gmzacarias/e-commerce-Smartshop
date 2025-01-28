@@ -1,14 +1,24 @@
 import { useProfile } from "@/utils/components/useProfile"
-import { SubTitle, Label, Small, Paragraph, ParagraphBold } from "@/ui/typography"
+import { SubTitle, Label, Paragraph, ParagraphBold } from "@/ui/typography"
 import { DefaultButton } from "ui/buttons"
-import { ProfileBody, PageContainer, ProfileDataContainer, ButtonsContainer } from "./styles"
+import { ProfileBody, PageContainer, ErrorContainer, ProfileDataContainer, ButtonsContainer } from "./styles"
 import { SkeletonProfile } from "@/components/skeletons/skeletonProfile"
 
 export function Profile() {
     const { data, isLoading, error, isError, handleEdit, handleMyOrders, handleCancel } = useProfile()
 
     if (isError) {
-        return <div>no hay productos</div>
+        return (
+            <ProfileBody>
+                <PageContainer>
+                    <SubTitle>Mi Perfil</SubTitle>
+                    <ErrorContainer>
+                        <ParagraphBold>Hubo un error al cargar el perfil</ParagraphBold>
+                        {/* <Paragraph>{error.message}</Paragraph> */}
+                    </ErrorContainer>
+                </PageContainer>
+            </ProfileBody>
+        )
     }
 
     return (
