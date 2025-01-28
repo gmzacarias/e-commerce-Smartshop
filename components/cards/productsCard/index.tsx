@@ -1,31 +1,15 @@
-import { useProducts } from "@/utils/components/useProducts"
-import { SkeletonProductsCard } from "@/components/skeletons/skeletonProductsCard"
 import { Paragraph, ParagraphBold } from "@/ui/typography"
 import { ImageProductCard } from "@/ui/images"
 import { CardButton } from "@/ui/buttons"
-import { ProductsContainer, ErrorContainer, ProductCard } from "./styles"
+import { ProductsContainer, ProductCard } from "./styles"
 
+type ProductsCardProps = {
+    data: any[],
+    formatPrice: (price: number) => string,
+    handleRedirect: (id: string) => void,
+}
 
-export function ProductsCard() {
-    const { data, isLoading, isError, error, formatPrice, handleRedirect } = useProducts()
-
-
-    if (isLoading) {
-        return (
-            <ProductsContainer>
-                <SkeletonProductsCard length={3} />
-            </ProductsContainer>
-        )
-    } else if (isError) {
-        return (
-            <ProductsContainer>
-                <ErrorContainer>
-                    <ParagraphBold>Hubo un error al cargar los productos:</ParagraphBold>
-                    <Paragraph>{error.message}</Paragraph>
-                </ErrorContainer>
-            </ProductsContainer>
-        )
-    }
+export function ProductsCard({data, formatPrice, handleRedirect}:ProductsCardProps) {
 
     return (
         <ProductsContainer>
