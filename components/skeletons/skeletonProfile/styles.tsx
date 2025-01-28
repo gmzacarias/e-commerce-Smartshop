@@ -7,17 +7,17 @@ export const SkeletonContainer = styled.div`
   border-radius: 20px;
   box-shadow: 0 2px 6px 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
   width: 100%;
-  max-width: 220px;
+  max-width: 500px;
   height:fit-content;
-  padding: 15px;
+  padding: 30px;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap:10px;    
 `
 export const SkeletonLabel = styled(Skeleton)`
-  width: 400px;
+  width: 100px;
   height: 18px;
 `
 
@@ -39,4 +39,5 @@ export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction:column ;
   align-items: center;
+  gap: 10px;
 `
