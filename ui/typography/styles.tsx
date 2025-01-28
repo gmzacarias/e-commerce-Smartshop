@@ -27,6 +27,7 @@ export const SectionTextBold = styled(SectionText)`
 `
 
 export const ParagraphText = styled.p`
+  max-width: 400px;
   font-size: 16px;
   font-weight: var(--font-weight-medium);
   color:${({ theme }) => theme.color};
