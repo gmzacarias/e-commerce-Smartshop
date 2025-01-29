@@ -34,10 +34,15 @@ export function useEditProfile() {
 
     async function handleSubmitForm(data: DataFormValue) {
         const { email, userName, address, phoneNumber } = data
-        const parsePhoneNumber = parseInt(phoneNumber)
-        await editProfile(userName, email, address, parsePhoneNumber)
-        router.replace("/me")
-        return
+        try {
+            const parsePhoneNumber = parseInt(phoneNumber)
+            await editProfile(userName, email, address, parsePhoneNumber)
+            router.replace("/me")
+            // toast datos actualizados
+            return           
+        } catch (error) {
+            //toast mensaje de error
+        }
     }
 
     function handleReset() {

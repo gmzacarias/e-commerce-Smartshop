@@ -113,12 +113,12 @@ export function EditProfile() {
                             <FormButton title="guardar">
                                 Guardar
                             </FormButton>
-                            <DefaultButton onClick={handleReset} title={"resetear formulario"}>
+                            <FormButton onClick={handleReset} title={"resetear formulario"}>
                                 Resetear
-                            </DefaultButton>
-                            <DefaultButton onClick={handleCancel} title={"cancelar"}>
+                            </FormButton>
+                            <FormButton onClick={handleCancel} title={"cancelar"}>
                                 Cancelar
-                            </DefaultButton>
+                            </FormButton>
                         </ButtonsContainer>
                     </form>
                 </EditProfileDataContainer>
