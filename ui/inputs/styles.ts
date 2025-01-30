@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const Input = styled.input`
   background-color:${({ theme }) => theme.backgroundSecondary} ;
-  border: none;
+  border-color: none;
   border-radius: 4px;
   box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
   outline: none;
@@ -18,13 +18,13 @@ const Input = styled.input`
   position:relative;
 
   &:focus {
-      border-color: #0091ea;
-    }
+    border-color: #0091ea;
+  }
 
   &:valid,
   &:focus{
-      border-color: #0091ea;
-    }
+    border-color: #0091ea;
+  }
 
   &::-webkit-search-cancel-button {
       display: none;

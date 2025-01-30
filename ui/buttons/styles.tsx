@@ -47,7 +47,6 @@ export const FormBtn=styled.button`
   background-color: #0091ea;
   border-radius: 4px;
   border: none;
-  margin-bottom: 10px;
   font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
   font-size: 16px;
