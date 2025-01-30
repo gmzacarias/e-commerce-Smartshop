@@ -112,17 +112,6 @@ const searchContainer = styled.div`
 
 `
 
-export function SearchInputNav({ type, name, placeholder, value, onChange }: InputProps) {
-    return (
-        <>
-            <SearchInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
-            <SearchIcon />
-        </>
-    )
-}
-
-
-
 const Login = styled(Input)`
   border-radius: 4px;
   border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
@@ -208,12 +197,6 @@ export function OTPInput({ type, name, placeholder, value, maxLength, required, 
 }
 
 export const RefOTPInput = React.forwardRef(OTPInput)
-
-
-
-export function InputDefault({ type, name, placeholder, value, onChange }: InputProps) {
-    return <FormInputs type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
-}
 
 // export function CountInputCart({ type, min, max, value, onChange }: inputProps) {
 //     return <CountInput type={type} min={min} max={max} value={value} onChange={onChange} />
