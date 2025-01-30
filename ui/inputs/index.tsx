@@ -154,8 +154,8 @@ const OTPForm = styled(Input)`
 
    &:valid,
    &:focus{
-    border-color: #0091ea;
-   }
+      border-color: #0091ea;
+    }
    
    &::-webkit-outer-spin-button,
 &::-webkit-inner-spin-button {
@@ -171,7 +171,23 @@ const OTPForm = styled(Input)`
       height:50px;
    }
 `
+const EditProfile = styled(Input)`
+  border-radius: 4px;
+  border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
+  outline: none;
+  width:260px;
+  height: 48px;
+  padding:0 16px;
+  text-align:left;
+   
+  &:focus {
+      border-color: #0091ea;
+   }
 
+  @media(min-width:769px){
+      width:312px;
+   }
+`
 
 
 /*inputs */
@@ -183,8 +199,8 @@ export function LoginInput({ type, name, placeholder, value, required, onChange 
     return <Login type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
 }
 
-export function ProfileFormInput({ type, name, placeholder, value, required, onChange }: InputProps) {
-    return <Login type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
+export function EditProfileInput({ type, name, placeholder, value, required, onChange }: InputProps) {
+    return <EditProfile type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
 }
 
 export function OTPInput({ type, name, placeholder, value, maxLength, required, onChange, onKeyUp }: OTPProps, ref: React.Ref<HTMLInputElement>) {
