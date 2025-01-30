@@ -123,7 +123,7 @@ export function SearchInputNav({ type, name, placeholder, value, onChange }: Inp
 
 
 
-const FormInput = styled(Input)`
+const Login = styled(Input)`
   border-radius: 4px;
   border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
   outline: none;
@@ -142,7 +142,7 @@ const FormInput = styled(Input)`
 `
 
 const OTPForm = styled(Input)`
-    border-radius: 4px;
+   border-radius: 4px;
    border:solid 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
    outline: none;
    width: 44px;
@@ -164,7 +164,7 @@ const OTPForm = styled(Input)`
 }
 
 & {
-  -moz-appearance: textfield; /* Para Firefox */
+  -moz-appearance: textfield;
 }
    @media(min-width:769px){
       width:54px;
@@ -172,13 +172,19 @@ const OTPForm = styled(Input)`
    }
 `
 
+
+
 /*inputs */
 export function SearchInputIndex({ type, name, placeholder, value, onChange }: InputProps) {
     return <SearchInputHome type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
 }
 
-export function DefaultInput({ type, name, placeholder, value, required, onChange }: InputProps) {
-    return <FormInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
+export function LoginInput({ type, name, placeholder, value, required, onChange }: InputProps) {
+    return <Login type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
+}
+
+export function ProfileFormInput({ type, name, placeholder, value, required, onChange }: InputProps) {
+    return <Login type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} required={required} />
 }
 
 export function OTPInput({ type, name, placeholder, value, maxLength, required, onChange, onKeyUp }: OTPProps, ref: React.Ref<HTMLInputElement>) {

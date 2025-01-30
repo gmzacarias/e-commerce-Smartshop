@@ -1,14 +1,14 @@
 import { Controller } from "react-hook-form"
 import { useEditProfile } from "@/utils/components/useEditProfile"
 import { SubTitle, Label } from "@/ui/typography"
-import { DefaultInput } from "ui/inputs"
+import { LoginInput } from "ui/inputs"
 import { DefaultButton, FormButton } from "ui/buttons"
 import { ButtonsContainer, EditProfileDataContainer, EditProfileSection, PageContainer } from "./styles"
 
 
 
 export function EditProfile() {
-    const { handleSubmit, handleSubmitForm, handleReset, handleCancel, onErrorForm, control} = useEditProfile()
+    const { handleSubmit, handleSubmitForm, handleReset, handleCancel, onErrorForm, control } = useEditProfile()
 
     return (
         <EditProfileSection>
@@ -30,7 +30,7 @@ export function EditProfile() {
                             render={({ field: { onChange, value } }) => (
                                 <Label>
                                     Email
-                                    <DefaultInput
+                                    <LoginInput
                                         type="text"
                                         placeholder="example@email.com"
                                         onChange={onChange}
@@ -53,7 +53,7 @@ export function EditProfile() {
                             render={({ field: { onChange, value } }) => (
                                 <Label>
                                     Nombre y Apellido
-                                    <DefaultInput
+                                    <LoginInput
                                         type="text"
                                         placeholder="nombre y apellido"
                                         onChange={onChange}
@@ -76,7 +76,7 @@ export function EditProfile() {
                             render={({ field: { onChange, value } }) => (
                                 <Label>
                                     Domicilio
-                                    <DefaultInput
+                                    <LoginInput
                                         type="text"
                                         placeholder="domicilio"
                                         onChange={onChange}
@@ -100,7 +100,7 @@ export function EditProfile() {
                             render={({ field: { onChange, value } }) => (
                                 <Label>
                                     Direccion
-                                    <DefaultInput
+                                    <LoginInput
                                         type="text"
                                         placeholder="numero de contacto"
                                         onChange={onChange}

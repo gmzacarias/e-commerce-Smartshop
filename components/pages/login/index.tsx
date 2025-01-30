@@ -1,13 +1,13 @@
 import { LoginBody, LoginContainer, PageContainer, OTPContainer } from "./styles";
 import { SubTitle, Label, Small } from "ui/typography"
-import { DefaultInput, RefOTPInput } from "@/ui/inputs"
+import { LoginInput, RefOTPInput } from "@/ui/inputs"
 import { FormButton } from "ui/buttons"
 import { BrandPagesIcon } from "@/ui/icons";
 import { useLogin } from "@/utils/components/useLogin";
 import { Controller } from "react-hook-form";
 
 export function Login() {
-    const {otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp } = useLogin()
+    const { otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp } = useLogin()
 
     return (
         <LoginBody>
@@ -34,7 +34,7 @@ export function Login() {
                                 render={({ field: { onChange, value } }) => (
                                     <Label>
                                         Email
-                                        <DefaultInput
+                                        <LoginInput
                                             type="text"
                                             placeholder="example@email.com"
                                             onChange={onChange}
