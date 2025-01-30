@@ -7,11 +7,11 @@ const Input = styled.input`
   box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
   outline: none;
   width: 100%;
-  min-width: 240px;
+  min-width: 220px;
   height: 50px;
   margin:unset;
   padding:unset;
-  font-size:18px;
+  font-size:16px;
   color:${({ theme }) => theme.color};
   text-align: left;
   caret-color: ${({ theme }) => theme.color};
@@ -40,9 +40,6 @@ const Input = styled.input`
       appearance: none;
     }
 
-    @media(min-width:769px){
-      font-size:24px;
-    }
 `
 
 export const SearchInputHome = styled(Input)`
@@ -55,10 +52,11 @@ export const Search = styled(Input)`
 `
 
 export const Login = styled(Input)`
+  
   padding:0 16px;
 
   @media(min-width:769px){
-      width:440px;
+      width:312px;
     }
 `
 
@@ -75,10 +73,11 @@ export const OTPForm = styled(Input)`
     }
 `
 export const EditProfile = styled(Input)`
-  /* width:244px; */
-  padding:0 16px;
+  width:fit-content;
+  padding-left: 5px;
+  padding-right:16px;
   
   @media(min-width:769px){
-      width:312px;
+      width:440px;
     }
 `

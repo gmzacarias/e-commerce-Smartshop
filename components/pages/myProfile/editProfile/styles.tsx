@@ -2,16 +2,16 @@ import styled from "styled-components"
 
 
 export const EditProfileSection = styled.div`
-width: 100%;
+  width: 100%;
   height: 100vh;
   display:flex;
   flex-direction: column;
   align-items: center;
  
   @media(min-width:769px){
-      flex-direction: row;
-      justify-content: center;
-    }
+    flex-direction: row;
+    justify-content: center;
+  }
 `
 export const PageContainer = styled.section`
   background: url("./brand.svg");
@@ -42,12 +42,15 @@ export const EditProfileDataContainer = styled.div`
   width: 100%;
   max-width: 500px;
   height:fit-content;
-  padding: 30px;
+  padding: 10px;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
-  gap:10px;    
+  align-items: flex-start;  
+  
+  @media (min-width:769px){
+    padding:30px;
+  }
 `
 
 export const ButtonsContainer = styled.div`

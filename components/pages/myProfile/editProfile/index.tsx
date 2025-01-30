@@ -1,7 +1,7 @@
 import { Controller } from "react-hook-form"
 import { useEditProfile } from "@/utils/components/useEditProfile"
 import { SubTitle, Label } from "@/ui/typography"
-import { LoginInput } from "ui/inputs"
+import { EditProfileInput } from "ui/inputs"
 import { DefaultButton, FormButton } from "ui/buttons"
 import { ButtonsContainer, EditProfileDataContainer, EditProfileSection, PageContainer } from "./styles"
 
@@ -30,7 +30,7 @@ export function EditProfile() {
                             render={({ field: { onChange, value } }) => (
                                 <Label>
                                     Email
-                                    <LoginInput
+                                    <EditProfileInput
                                         type="text"
                                         placeholder="example@email.com"
                                         onChange={onChange}
@@ -53,7 +53,7 @@ export function EditProfile() {
                             render={({ field: { onChange, value } }) => (
                                 <Label>
                                     Nombre y Apellido
-                                    <LoginInput
+                                    <EditProfileInput
                                         type="text"
                                         placeholder="nombre y apellido"
                                         onChange={onChange}
@@ -76,7 +76,7 @@ export function EditProfile() {
                             render={({ field: { onChange, value } }) => (
                                 <Label>
                                     Domicilio
-                                    <LoginInput
+                                    <EditProfileInput
                                         type="text"
                                         placeholder="domicilio"
                                         onChange={onChange}
@@ -100,7 +100,7 @@ export function EditProfile() {
                             render={({ field: { onChange, value } }) => (
                                 <Label>
                                     Direccion
-                                    <LoginInput
+                                    <EditProfileInput
                                         type="text"
                                         placeholder="numero de contacto"
                                         onChange={onChange}
