@@ -1,8 +1,8 @@
-import { Login } from "components/login"
-import { Layout } from "components/layout";
 import { NextPage } from "next";
-import styled from "styled-components"
 import Head from "next/head"
+import { Layout } from "components/layout";
+import { Login } from "components/pages/login"
+import styled from "styled-components"
 
 const LoginPageBody = styled.div`
     /* display: flex;
