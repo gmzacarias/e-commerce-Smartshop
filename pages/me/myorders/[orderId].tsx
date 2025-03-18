@@ -1,11 +1,10 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
-import { useMe } from "lib/hooks"
-import { Me } from "@/components/myProfile/profile"
+import { useMe } from "@/hooks/swr/useSWR"
 import styled from "styled-components"
 import Head from "next/head"
 import { useRouter } from "next/router";
-import { OrderById } from "@/components/myOrders/orderById";
+import { OrderById } from "@/features/user/components/myOrders/orderById"
 
 const OrderByIdPage: NextPage = () => {
     const router = useRouter();

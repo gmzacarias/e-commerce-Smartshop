@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAppDataValue } from "lib/atoms"
-import { LoaderApp } from '@/components/loader';
+import { useAppDataValue } from "@/hooks/recoil/atoms"
+import { LoaderApp } from '@/ui/loader';
 
 type RoutesProps = {
     children: React.ReactNode

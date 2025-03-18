@@ -3,7 +3,7 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
 import Head from "next/head"
-import { PurchaseTicketCard } from "@/components/purchaseTicketCard";
+import { PurchaseTicketCard } from "@/ui/cards/purchaseTicketCard";
 import { useCheckoutPages } from "@/utils/pages/usePages";
 
 const CheckOutPage: NextPage = () => {

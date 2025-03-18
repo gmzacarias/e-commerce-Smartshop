@@ -1,8 +1,5 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
-import { useMe } from "lib/hooks"
-import { Me } from "@/components/myProfile/profile"
-import styled from "styled-components"
 import Head from "next/head"
 
 const ThankYouPage: NextPage = () => {

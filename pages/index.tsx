@@ -1,7 +1,7 @@
 import { NextPage } from "next"
 import Head from "next/head"
 import { Layout } from "components/layout"
-import {Home} from "components/pages/home"
+import { Home } from "@/features/home/pages"
 
 const HomePage: NextPage = () => {
   return (
@@ -13,7 +13,7 @@ const HomePage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-       <Home/>
+        <Home />
       </Layout>
     </div>
   )

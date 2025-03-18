@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head"
 import { Layout } from "components/layout";
-import { Profile } from "@/components/pages/myProfile/profile"
+import { Profile } from "@/features/user/pages/profile"
 
 
 const MePage: NextPage = () => {

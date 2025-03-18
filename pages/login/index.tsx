@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head"
 import { Layout } from "components/layout";
-import { Login } from "components/pages/login"
+import { Login } from "@/features/auth/pages/login"
 import styled from "styled-components"
 
 const LoginPageBody = styled.div`

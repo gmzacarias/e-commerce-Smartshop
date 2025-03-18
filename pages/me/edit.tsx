@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head"
 import { Layout } from "components/layout";
-import { EditProfile } from "@/components/pages/myProfile/editProfile"
+import { EditProfile } from "@/features/user/pages/editProfile"
 import styled from "styled-components"
 
 
@@ -16,9 +16,9 @@ const EditMePage: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-               
-                    <EditProfile />
-               
+
+                <EditProfile />
+
             </Layout>
         </>
     );

@@ -1,8 +1,8 @@
-import { Login } from "components/login"
+import { Login } from "@/features/auth/pages/login"
 import { Layout } from "components/layout";
 import { NextPage } from "next";
 import Head from "next/head";
-import {Cart} from "components/cart"
+import {Cart} from "@/features/cart/pages/cart"
 
 const CartPage: NextPage = () => {
 
