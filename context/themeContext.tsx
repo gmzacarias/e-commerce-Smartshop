@@ -12,22 +12,42 @@ type ThemeProviderType = {
     children: ReactNode;
 };
 
-const currentTheme=document.cookie||false
+function setCookie(theme: boolean) {
+    const currentTheme = document.cookie = `darkMode=${theme}`
+    return currentTheme
+}
+
+function getCookieTheme() {
+    if (typeof document === "undefined") return null;
+    const cookieString = document.cookie as any
+    const cookies = cookieString.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith("darkMode=")) {
+            return cookie.substring("darkMode=".length);
+        }
+    }
+    return null;
+}
 
 export const ThemeContext = createContext<ThemeContextProps>({
-    isDarkMode:false,
+    isDarkMode: false,
     toggleTheme: () => { },
 });
 
 export function ThemeProvider({ children }: ThemeProviderType) {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    function toggleTheme(){
-        setIsDarkMode((prev)=> !prev)
-        console.log("currentTheme",currentTheme)
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        const currentCookie = getCookieTheme()
+        return currentCookie
+    })
+
+    function toggleTheme() {
+        setIsDarkMode((prev) => !prev)
+        setCookie(!isDarkMode)
     }
 
     return (
-        <ThemeContext.Provider value={{ isDarkMode, toggleTheme:()=> toggleTheme() }}>
+        <ThemeContext.Provider value={{ isDarkMode, toggleTheme: () => toggleTheme() }}>
             {children}
         </ThemeContext.Provider>
     );

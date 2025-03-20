@@ -1,5 +1,5 @@
 import router from "next/router"
-import { useProductsList } from "@/hooks/swr/useSWR"
+import { useProductsList } from "@/hooks/swr/useProductsList"
 
 
 export function useProducts(){
