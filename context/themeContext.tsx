@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState, useContext } from 'react';
-import { LightTheme, DarkTheme } from "@/styles/theme";
+import { LightTheme, DarkTheme } from "@/context/theme";
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { GlobalStyle } from "@/styles/globalStyles";
+import { GlobalStyle } from "@/context/globalStyles";
 
 interface ThemeContextProps {
     isDarkMode: boolean
@@ -12,8 +12,10 @@ type ThemeProviderType = {
     children: ReactNode;
 };
 
+const currentTheme=document.cookie||false
+
 export const ThemeContext = createContext<ThemeContextProps>({
-    isDarkMode: false,
+    isDarkMode:false,
     toggleTheme: () => { },
 });
 
@@ -21,6 +23,7 @@ export function ThemeProvider({ children }: ThemeProviderType) {
     const [isDarkMode, setIsDarkMode] = useState(false);
     function toggleTheme(){
         setIsDarkMode((prev)=> !prev)
+        console.log("currentTheme",currentTheme)
     }
 
     return (
