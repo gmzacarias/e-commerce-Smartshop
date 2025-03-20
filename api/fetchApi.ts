@@ -1,36 +1,33 @@
 const BASE_URL = "https://e-commerce-backend-lake.vercel.app/api"
 
-export async function fetchApi(
-    input: RequestInfo,
-    options?: any,
-) {
-    const url = BASE_URL + input;
-    const token = getSavedToken();
-    const newOptions: any = options || {}
-    //si me pasan un options  usalo, sino crealo
-    //si headers esta creado en options usalo, sino newoption es nulo o undefined crea un objeto vacio dentro de newoptions.headers
-    newOptions.headers ||= {}
-    newOptions.headers["content-type"] = "application/json"
+export async function fetchApi<T = unknown>(
+    endpoint: RequestInfo,
+    options: RequestInit = {},
+): Promise<T> {
+    const url = `${BASE_URL}${endpoint}`
+    const token = getSavedToken()
+    const headers = new Headers(options.headers)
+    headers.set("Content-Type", "application/json")
 
     if (token) {
-        newOptions.headers.authorization = "Bearer " + token
+        headers.set("Authorization", `Bearer ${token}`)
     }
 
-    if (newOptions.body) {
-        newOptions.body = JSON.stringify(newOptions.body)
+    const fetchOptions: RequestInit = {
+        ...options,
+        headers,
+        body: options.body ? JSON.stringify(options.body) : undefined
     }
 
     try {
-        const response = await fetch(url, newOptions)
-        if (response.status >= 200 && response.status < 300) {
-            return response.json()
-        } else {
-            const errorData = await response.json();
-            const errorMessage = errorData?.message || `status:${response.status}`;
-            throw new Error(errorMessage);
+        const response = await fetch(url, fetchOptions)
+        const data = await response.json()
+        if (!response.ok) {
+            throw new Error(data?.message || `Error:${response.status}`)
         }
-    } catch (error: any) {
-        console.log(`Hubo un problema:${error.message}`)
+        return data
+    } catch (error) {
+        console.log(`Hubo un problema al obtener de los datos:${(error as Error).message}`)
         throw error
     }
 }
