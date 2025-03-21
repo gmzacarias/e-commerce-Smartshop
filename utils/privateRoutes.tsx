@@ -1,7 +1,8 @@
 "use client"
+
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAppDataValue } from "@/hooks/recoil/atoms"
+import { useRouter } from 'next/router';
+import { useAppDataStore } from '@/store/zustand/useAppData';
 import { LoaderApp } from '@/ui/loader';
 
 type RoutesProps = {
@@ -9,13 +10,16 @@ type RoutesProps = {
 }
 function PrivateRoutes({ children }: RoutesProps) {
     const [isLoading, setIsLoading] = useState(true)
-    const data = useAppDataValue()
-    const { isLogged } = data
+    const {isLogged}=useAppDataStore()
     const router = useRouter()
 
     useEffect(() => {
-        if (isLogged === false) {
-            router.replace("/")
+        if (!isLogged) {
+           
+           setTimeout(() => {
+               router.replace("/")
+           }, 10000);
+            return
         }
         else {
             setIsLoading(false)
