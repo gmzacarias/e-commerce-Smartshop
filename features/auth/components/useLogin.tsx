@@ -5,17 +5,7 @@ import { sendCode} from "@/api/sendCode";
 import { getToken } from "@/api/getToken";
 import { useAppData } from "@/hooks/recoil/atoms"
 import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast } from "@/utils/sonner/toast"
-import { GiConsoleController } from "react-icons/gi";
-import { useEffect, useRef } from "react";
-
-
-interface EmailFormValue {
-    email: string
-}
-
-interface CodeFormValue {
-    otp: string[]
-}
+import { useRef } from "react";
 
 export function useLogin() {
     const otpRef = useRef<(HTMLInputElement | null)[]>([])
