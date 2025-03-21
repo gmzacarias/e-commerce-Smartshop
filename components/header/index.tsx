@@ -1,4 +1,4 @@
-import { NavBar } from "./navbar"
+import { NavBar } from "@/ui/navbar"
 
 export function Header() {
 
