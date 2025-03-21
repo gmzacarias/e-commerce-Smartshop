@@ -16,7 +16,7 @@ export async function fetchApi<T = unknown>(
     const fetchOptions: RequestInit = {
         ...options,
         headers,
-        body: options.body ? JSON.stringify(options.body) : undefined
+        body:typeof options.body === "object" ? JSON.stringify(options.body) : options.body
     }
 
     try {
