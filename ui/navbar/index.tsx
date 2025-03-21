@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { NavBody, NavContainer, HamburguerMenu, MenuContainer, ItemListMenu, LinkItemList, ButtonsContainer, UserContainer } from "./styles"
-import { UserIcon, CartIcon, BrandHeaderIcon, CloseHamburguerIcon, HamburguerIcon, LogoutIcon, LoginIcon,ListIcon, SunIcon, MoonIcon } from "ui/icons"
+import { UserIcon, CartIcon, BrandHeaderIcon, CloseHamburguerIcon, HamburguerIcon, LogoutIcon, LoginIcon, ListIcon, SunIcon, MoonIcon } from "ui/icons"
 import { Paragraph } from "@/ui/typography"
 import { UserSessionButton, ThemeToggleButton } from "@/ui/buttons"
-import { useNavbar } from "@/components/header/navbar/useNavbar"
+import { useNavbar } from "@/ui/navbar/useNavbar"
 
 
 
 export function NavBar() {
-  const { showMobileMenu, isLogged, valueCart, isMobile,isDarkMode, setShowMenu, handleLogin, handleLogOut,toggleTheme } = useNavbar()
+  const { showMobileMenu, isLogged, valueCart, isMobile, isDarkMode, setShowMenu, handleLogin, handleLogOut, toggleTheme } = useNavbar()
 
   return (
     <NavBody>
