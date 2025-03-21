@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { useProductSearch } from "@/hooks/swr/useSWR"
+import { useProductSearch } from "@/hooks/swr/useProductSearch"
 import { SearchProductCard } from "@/ui/cards/searchProductCard"
 import router from "next/router"
 import { SearchInputIndex } from "ui/inputs"

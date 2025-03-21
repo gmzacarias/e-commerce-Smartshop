@@ -1,6 +1,8 @@
 import router from "next/router"
 import { useForm } from "react-hook-form";
-import { sendCode, getToken, saveToken } from "@/api/fetchApi"
+import {saveToken } from "@/api/fetchApi"
+import { sendCode} from "@/api/sendCode";
+import { getToken } from "@/api/getToken";
 import { useAppData } from "@/hooks/recoil/atoms"
 import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast } from "@/utils/sonner/toast"
 import { GiConsoleController } from "react-icons/gi";
@@ -67,7 +69,7 @@ export function useLogin() {
         }
     }
 
-    async function handleCodeForm(dataForm: CodeFormValue) {
+    async function handleCodeForm(dataForm: CodeFormValue){
         const code = dataForm.otp.join("")
         try {
             const response = await getToken(currentEmail, code)

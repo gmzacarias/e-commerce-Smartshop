@@ -1,4 +1,4 @@
-import { useProductById } from "@/hooks/swr/useSWR"
+import { useProductById } from "@/hooks/swr/useProductsById"
 import { DetailedProductCard } from "@/ui/cards/detailedProductCard"
 import styled from "styled-components"
 import Skeleton from 'react-loading-skeleton'

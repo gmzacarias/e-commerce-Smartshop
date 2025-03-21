@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useUserData } from "@/hooks/recoil/atoms"
-import { useMe } from "@/hooks/swr/useSWR"
+import { useMe } from "@/hooks/swr/useMe"
 import router from "next/router"
 
 export function useProfile() {

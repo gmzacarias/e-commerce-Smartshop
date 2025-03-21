@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { editProfile } from "@/api/fetchApi";
+import { editProfile } from "@/api/editProfile";
 import { useUserDataValue } from "@/hooks/recoil/atoms";
 import { emptyInputToast } from "@/utils/sonner/toast";
 import { useEffect } from "react";

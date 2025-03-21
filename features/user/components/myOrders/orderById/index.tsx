@@ -1,4 +1,4 @@
-import { useOrderById } from "@/hooks/swr/useSWR"
+import { useOrderById } from "@/hooks/swr/useOrderById"
 import router from "next/router"
 
 export function OrderById({ orderId }) {
