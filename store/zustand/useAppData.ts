@@ -8,7 +8,7 @@ interface AppState {
     updateEmail?: (newEmail: string) => void,
     updateLogin?: (isLogged: boolean) => void,
     updateQuery?: (query: string) => void,
-    reset?: () => void
+    resetState?: (partialReset?: Partial<AppState>) => void
 }
 
 const initialState: AppState = {
@@ -19,12 +19,12 @@ const initialState: AppState = {
 
 export const useAppDataStore = create<AppState>()(
     persist(
-        (set) => ({
+        (set, get) => ({
             ...initialState,
             updateEmail: (email) => set({ email }),
             updateLogin: (isLogged) => set({ isLogged }),
             updateQuery: (query) => set({ query }),
-            reset: () => set(initialState)
+            resetState: (partialReset = {}) => set({ ...get(), ...partialReset })
         }),
         { name: "app-data" },
     ),
