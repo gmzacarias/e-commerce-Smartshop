@@ -1,50 +1,39 @@
 import router from "next/router"
 import { useForm } from "react-hook-form";
-import {saveToken } from "@/api/fetchApi"
-import { sendCode} from "@/api/sendCode";
+import { saveToken } from "@/api/fetchApi"
+import { sendCode } from "@/api/sendCode";
 import { getToken } from "@/api/getToken";
 import { useAppData } from "@/hooks/recoil/atoms"
 import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast } from "@/utils/sonner/toast"
 import { useRef } from "react";
+import { useEmailLogin } from "./useEmailLogin";
+import { useOTPLogin } from "./useOTPLogin";
+import { useAppDataStore } from "@/store/zustand/useAppData";
 
 export function useLogin() {
     const otpRef = useRef<(HTMLInputElement | null)[]>([])
     const [data, setData] = useAppData()
-    const currentEmail: string = data.email
-    const {
-        handleSubmit: handleEmailSubmit,
-        formState: { errors: emailErrors },
-        control: controlEmail,
-    } = useForm<EmailFormValue>({
-        defaultValues: { email: "" },
-        mode: "onSubmit"
-    })
+    const { email, isLogged, updateEmail, updateLogin } = useAppDataStore()
 
-    const {
-        handleSubmit: handleCodeSubmit,
-        formState: { errors: codeErrors },
-        control: controlCode,
-
-    } = useForm<CodeFormValue>({
-        defaultValues: { otp: ["", "", "", "", ""] },
-        mode: "onSubmit"
-    })
+    const { currentEmail, handleEmailSubmit, emailErrors, controlEmail } = useEmailLogin(email)
+    const { handleCodeSubmit, codeErrors, controlCode } = useOTPLogin()
 
     function cleanEmail(email: string) {
         return email.trim().toLowerCase()
     }
 
     async function handleEmailForm(dataForm: EmailFormValue) {
-        const { email } = dataForm
-        const recipientEmail = cleanEmail(email)
-
-        setData({
-            ...data,
-            email: recipientEmail,
-        })
-        await sendCode(recipientEmail)
-        sendCodeToast(recipientEmail)
-        return
+        try {
+            const { email } = dataForm
+            const recipientEmail = cleanEmail(email)
+            updateEmail!(recipientEmail)
+            const response = await sendCode(recipientEmail)
+            sendCodeToast(recipientEmail)
+            return response
+        } catch (error: any) {
+            console.error("no se pudo enviar el email:",error.message)
+            throw new Error(error.message)
+        }
     }
 
     async function resendCode() {
@@ -59,14 +48,11 @@ export function useLogin() {
         }
     }
 
-    async function handleCodeForm(dataForm: CodeFormValue){
+    async function handleCodeForm(dataForm: CodeFormValue) {
         const code = dataForm.otp.join("")
         try {
             const response = await getToken(currentEmail, code)
-            setData({
-                ...data,
-                isLogged: true,
-            })
+            updateLogin!(true)
             const token: string = response.token
             loginToast()
             saveToken(token)
@@ -109,5 +95,5 @@ export function useLogin() {
         }
     }
 
-    return { handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp, otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode}
+    return { handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp, otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode }
 }
