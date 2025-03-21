@@ -3,7 +3,7 @@ import { SubTitle, Label, Small } from "ui/typography"
 import { LoginInput, RefOTPInput } from "@/ui/inputs"
 import { FormButton } from "ui/buttons"
 import { BrandPagesIcon } from "@/ui/icons";
-import { useLogin } from "@/features/auth/components/useLogin";
+import { useLogin } from "@/features/auth/hooks/useLogin";
 import { Controller } from "react-hook-form";
 
 export function Login() {
@@ -109,11 +109,6 @@ export function Login() {
                 </>
             )
             }
-
-
-
-
-
         </LoginBody >
     )
 }
