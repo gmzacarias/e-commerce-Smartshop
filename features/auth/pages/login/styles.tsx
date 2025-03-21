@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-
 export const LoginBody = styled.div`
   width: 100%;
   height: 100vh;
@@ -13,6 +12,7 @@ export const LoginBody = styled.div`
       justify-content: center;
     }
 `
+
 export const PageContainer = styled.section`
   background: url("./brand.svg");
   background-repeat: repeat;
@@ -40,9 +40,10 @@ export const PageContainer = styled.section`
   }
 `
 
-export const LoginContainer = styled(PageContainer)`
+export const FormContainer = styled.div`
   background-color:var(--background-navfoot);
   background: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -58,18 +59,5 @@ export const LoginContainer = styled(PageContainer)`
   }
 `
 
-export const OTPContainer=styled(PageContainer)`
-  background-color:var(--background-navfoot);
-  background: none;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding:unset;
-  gap: 10px;
-    
-  @media(min-width:769px){
-    width: 50%;
-    height: 100%;
-  }
-` 
+
 

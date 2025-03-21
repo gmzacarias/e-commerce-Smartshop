@@ -1,114 +1,22 @@
-import { LoginBody, LoginContainer, PageContainer, OTPContainer } from "./styles";
-import { SubTitle, Label, Small } from "ui/typography"
-import { LoginInput, RefOTPInput } from "@/ui/inputs"
-import { FormButton } from "ui/buttons"
-import { BrandPagesIcon } from "@/ui/icons";
 import { useLogin } from "@/features/auth/hooks/useLogin";
-import { Controller } from "react-hook-form";
+import { EmailForm } from "@/features/auth/components/emailForm";
+import { OTPForm } from "@/features/auth/components/otpForm";
+import { SubTitle } from "ui/typography"
+import { BrandPagesIcon } from "@/ui/icons";
+import { LoginBody, PageContainer, FormContainer } from "./styles";
 
 export function Login() {
-    const { otpRef, currentEmail, controlEmail, controlCode, onErrorEmail, onErrorCode, resendCode, handleEmailSubmit, handleEmailForm, handleCodeSubmit, handleCodeForm, handleKeyUp } = useLogin()
+    const { currentEmail } = useLogin()
 
     return (
         <LoginBody>
-            {!currentEmail ? (
-                <>
-                    <PageContainer>
-                        <BrandPagesIcon />
-                        <SubTitle>Regístrate para comprar tu smartphone preferido</SubTitle>
-                    </PageContainer>
-
-                    <LoginContainer>
-                        <form onSubmit={handleEmailSubmit(handleEmailForm, onErrorEmail)}>
-                            <Controller
-                                control={controlEmail}
-                                name="email"
-                                rules={{
-                                    required: "ingrese un email valido",
-                                    pattern: {
-                                        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                                        message: "Formato de email inválido",
-                                    },
-                                }
-                                }
-                                render={({ field: { onChange, value } }) => (
-                                    <Label>
-                                        Email
-                                        <LoginInput
-                                            type="text"
-                                            placeholder="example@email.com"
-                                            onChange={onChange}
-                                            value={value}
-                                            required
-                                        />
-                                    </Label>
-                                )}
-                            />
-                            <FormButton title="iniciar sesion">
-                                INGRESAR
-                            </FormButton>
-                        </form>
-                    </LoginContainer>
-                </>
-            ) : (
-                <>
-                    <PageContainer>
-                        <BrandPagesIcon />
-                        <SubTitle>Ingresa el codigo para entrar a tu cuenta</SubTitle>
-                    </PageContainer>
-                    <LoginContainer>
-                        <form onSubmit={handleCodeSubmit(handleCodeForm, onErrorCode)}>
-                            <Label>
-                                Codigo
-                                <Small>
-                                    Enviamos un código de verificación a email
-                                </Small>
-                                <OTPContainer>
-                                    {Array.from({ length: 5 }).map((_, index) => (
-                                        <Controller
-                                            key={index}
-                                            control={controlCode}
-                                            name={`otp.${index}`}
-                                            rules={{
-                                                required: "ingrese solo numeros",
-                                                pattern: {
-                                                    value: /^\d$/,
-                                                    message: "Formato de codigo inválido",
-                                                },
-                                            }
-                                            }
-                                            render={({ field: { onChange, value } }) => (
-                                                <RefOTPInput
-                                                    type="text"
-                                                    ref={(element) => (otpRef.current[index] = element)}
-                                                    placeholder="-"
-                                                    maxLength={1}
-                                                    onChange={onChange}
-                                                    onKeyUp={() => handleKeyUp(index)}
-                                                    value={value}
-                                                    required
-                                                />
-                                            )
-                                            }
-                                        />
-                                    ))
-                                    }
-                                </OTPContainer>
-                            </Label>
-                            <FormButton title="iniciar sesion">
-                                INGRESAR
-                            </FormButton>
-                        </form>
-                        <Small>
-                            ¿No recibiste el código?
-                        </Small>
-                        <button onClick={resendCode} style={{ background: "none", border: "none", cursor: "pointer" }}>
-                            reenviar codigo
-                        </button>
-                    </LoginContainer>
-                </>
-            )
-            }
+            <PageContainer>
+                <BrandPagesIcon />
+                <SubTitle>Ingresa a tu cuenta</SubTitle>
+            </PageContainer>
+            <FormContainer>
+                {!currentEmail ? (<EmailForm />) : (<OTPForm />)}
+            </FormContainer>
         </LoginBody >
     )
 }
