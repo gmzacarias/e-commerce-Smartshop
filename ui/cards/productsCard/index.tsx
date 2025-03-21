@@ -1,7 +1,7 @@
 import { Paragraph, ParagraphBold } from "@/ui/typography"
 import { ImageProductCard } from "@/ui/images"
 import { CardButton } from "@/ui/buttons"
-import { ProductsContainer, ProductCard } from "./styles"
+import { ProductsContainer, ProductCard,TextContainer } from "./styles"
 
 type ProductsCardProps = {
     data: any[],
@@ -14,12 +14,13 @@ export function ProductsCard({data, formatPrice, handleRedirect}:ProductsCardPro
     return (
         <ProductsContainer>
             {data.map((item) => (
-                <ProductCard key={item.id}>
+                <ProductCard key={item.id} onClick={() => handleRedirect(item.id)}>
                     <ImageProductCard src={item.photo} alt={`${item.brand} ${item.model}`} title={`${item.brand} ${item.model}`} />
+                    <TextContainer>
                     <ParagraphBold>{item.brand}</ParagraphBold>
                     <Paragraph>{`${item.model} ${item.storage}`}</Paragraph>
                     <ParagraphBold>${formatPrice(item.price)}</ParagraphBold>
-                    <CardButton onClick={() => handleRedirect(item.id)} title="lo quiero">¡Lo quiero!</CardButton>
+                    </TextContainer>
                 </ProductCard>
 
             ))}

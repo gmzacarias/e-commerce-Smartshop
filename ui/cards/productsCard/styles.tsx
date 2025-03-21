@@ -30,15 +30,23 @@ export const ErrorContainer = styled.div`
 
 export const ProductCard = styled.div`
   background-color:${({ theme }) => theme.mode === "dark" ? "#121212" : "#f2f4f5"};
-  border-radius: 20px;
-  box-shadow: 0 2px 6px 1px ${({ theme }) => theme.mode === "dark" ? "#0a0b0c" : "#cbd0d5"};
-  width: 100%;
-  max-width: 220px;
+  border-radius:16px;
+  border:1px solid #ddd;
+  width: 240px;
   height:fit-content;
-  padding: 15px;
+  padding: 10px;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap:10px;    
+  cursor:pointer;
+`
+
+export const TextContainer = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap:10px
 `
