@@ -1,9 +1,12 @@
 import styled from "styled-components"
 
 
+
+
+
 export const EditProfileSection = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +16,7 @@ export const EditProfileSection = styled.div`
     justify-content: center;
   }
 `
-export const PageContainer = styled.section`
+export const PageContainer = styled.div`
   background: url("./brand.svg");
   background-repeat: repeat;
   background-size: 90px;
