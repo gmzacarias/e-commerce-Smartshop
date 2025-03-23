@@ -9,13 +9,13 @@ interface UserDataState {
     updateData?: (partialData?: Partial<UserDataState>) => void
     resetData?: () => void
 }
+
 const initialState: UserDataState = {
     email: "",
     userName: "",
     address: "",
-    phoneNumber: 0
+    phoneNumber:0,
 }
-
 
 export const useUserData = create<UserDataState>()(
     persist(
