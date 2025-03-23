@@ -3,9 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { editProfile } from "@/api/editProfile";
-import { useUserDataValue } from "@/hooks/recoil/atoms";
-import { emptyInputToast } from "@/utils/sonner/toast";
-import { useEffect } from "react";
+
+import { useUserData } from "@/store/zustand/useUserData";
 
 interface DataFormValue {
     email: string,
@@ -16,7 +15,9 @@ interface DataFormValue {
 
 export function useEditProfile() {
     const router = useRouter()
-    const { userName, email, address, phoneNumber } = useUserDataValue()
+    const { email, userName, address, phoneNumber } = useUserData()
+
+    console.log("phone",email,phoneNumber)
     const {
         handleSubmit,
         formState: { errors },
@@ -27,7 +28,7 @@ export function useEditProfile() {
             email: email,
             userName: userName,
             address: address,
-            phoneNumber: phoneNumber
+            phoneNumber: phoneNumber.toString()
         },
         mode: "onSubmit"
     })
@@ -39,7 +40,7 @@ export function useEditProfile() {
             await editProfile(userName, email, address, parsePhoneNumber)
             router.replace("/me")
             // toast datos actualizados
-            return           
+            return
         } catch (error) {
             //toast mensaje de error
         }
@@ -50,17 +51,14 @@ export function useEditProfile() {
             email: "",
             userName: "",
             address: "",
-            phoneNumber: "",
+            phoneNumber: ""
         })
     }
-    function handleCancel() {
-        router.replace("/me")
-    }
+
 
     function onErrorForm() {
-
-        return "hola"
-
+        return "soy el error"
     }
-    return { handleSubmit, handleSubmitForm, handleReset, handleCancel, onErrorForm, control}
+
+    return { handleSubmit, handleSubmitForm, handleReset, onErrorForm, control }
 }
