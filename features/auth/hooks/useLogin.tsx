@@ -1,26 +1,21 @@
+"use client"
+import { useRef } from "react";
 import router from "next/router"
-import { useForm } from "react-hook-form";
 import { saveToken } from "@/api/fetchApi"
 import { sendCode } from "@/api/sendCode";
 import { getToken } from "@/api/getToken";
-import { useAppData } from "@/hooks/recoil/atoms"
-import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast } from "@/utils/sonner/toast"
-import { useRef } from "react";
 import { useEmailLogin } from "./useEmailLogin";
 import { useOTPLogin } from "./useOTPLogin";
 import { useAppDataStore } from "@/store/zustand/useAppData";
+import { sendCodeToast, loginToast, errorSendCodeToast, errorCodeToast } from "@/utils/sonner/toast"
+import { cleanEmail } from "@/utils/cleanEmail";
 
 export function useLogin() {
     const otpRef = useRef<(HTMLInputElement | null)[]>([])
-    const [data, setData] = useAppData()
-    const { email, isLogged, updateEmail, updateLogin } = useAppDataStore()
-
+    const { email, updateEmail, updateLogin } = useAppDataStore()
     const { currentEmail, handleEmailSubmit, emailErrors, controlEmail } = useEmailLogin(email)
     const { handleCodeSubmit, codeErrors, controlCode } = useOTPLogin()
 
-    function cleanEmail(email: string) {
-        return email.trim().toLowerCase()
-    }
 
     async function handleEmailForm(dataForm: EmailFormValue) {
         try {
@@ -31,7 +26,7 @@ export function useLogin() {
             sendCodeToast(recipientEmail)
             return response
         } catch (error: any) {
-            console.error("no se pudo enviar el email:",error.message)
+            console.error("no se pudo enviar el email:", error.message)
             throw new Error(error.message)
         }
     }
