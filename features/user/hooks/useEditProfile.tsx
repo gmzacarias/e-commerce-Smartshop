@@ -1,43 +1,19 @@
 "use client"
-
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
 import { editProfile } from "@/api/editProfile";
-
+import { useDataForm } from "./useDataForm";
 import { useUserData } from "@/store/zustand/useUserData";
-
-interface DataFormValue {
-    email: string,
-    userName: string,
-    address: string,
-    phoneNumber: string,
-}
 
 export function useEditProfile() {
     const router = useRouter()
     const { email, userName, address, phoneNumber } = useUserData()
-
-    console.log("phone",email,phoneNumber)
-    const {
-        handleSubmit,
-        formState: { errors },
-        control,
-        reset,
-    } = useForm<DataFormValue>({
-        defaultValues: {
-            email: email,
-            userName: userName,
-            address: address,
-            phoneNumber: phoneNumber.toString()
-        },
-        mode: "onSubmit"
-    })
+    const { handleSubmit, errors, control, reset } = useDataForm({ email, userName, address, phoneNumber })
 
     async function handleSubmitForm(data: DataFormValue) {
         const { email, userName, address, phoneNumber } = data
         try {
-            const parsePhoneNumber = parseInt(phoneNumber)
-            await editProfile(userName, email, address, parsePhoneNumber)
+
+            await editProfile(userName, email, address, phoneNumber)
             router.replace("/me")
             // toast datos actualizados
             return
@@ -51,7 +27,7 @@ export function useEditProfile() {
             email: "",
             userName: "",
             address: "",
-            phoneNumber: ""
+            phoneNumber: 0
         })
     }
 
