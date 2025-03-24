@@ -1,4 +1,3 @@
-"use client"
 import { useRouter } from "next/navigation";
 import { editProfile } from "@/api/editProfile";
 import { useDataForm } from "./useDataForm";

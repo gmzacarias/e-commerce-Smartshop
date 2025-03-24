@@ -1,4 +1,3 @@
-"use client"
 import { useEffect } from "react"
 import { useMe } from "@/hooks/swr/useMe"
 import { useUserData } from "@/store/zustand/useUserData"
