@@ -15,6 +15,21 @@ declare global {
         otp: string[]
     }
 
+    /*User*/
+    interface DataFormValue {
+        email: string,
+        userName: string,
+        address: string,
+        phoneNumber: number,
+    }
+
+    interface DataFormParams {
+        email: string,
+        userName: string,
+        address: string,
+        phoneNumber: number
+    }
+
 }
 
 export { }
