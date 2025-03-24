@@ -34,3 +34,22 @@ export const ContentContainer = styled.div`
     gap: 10px;
   }
 `
+
+export const AuthFormContainer = styled.div`
+  background-color:var(--background-navfoot);
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    
+  @media(min-width:769px){
+    width: 50%;
+    height: 100%;
+    padding: 70px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+`
