@@ -10,24 +10,18 @@ type PagesContainerProps = {
 }
 
 export function PagesContainer({ isAuth, subTitleText, children }: PagesContainerProps) {
-    <PageContainer>
-        <ContentContainer>
-            {isAuth ? <BrandPagesIcon /> : ""}
-            <SubTitle>{subTitleText}</SubTitle>
-            {isAuth ?
-                (<>
-                    <AuthFormContainer>
-                        {children}
-                    </AuthFormContainer>
-                </>
-                ) :
-                (
-                    <>
-                        {children}
-                    </>
-                )
-            }
 
-        </ContentContainer>
-    </PageContainer>
+    return (
+        <PageContainer>
+            <ContentContainer>
+                {isAuth && <BrandPagesIcon />}
+                <SubTitle>{subTitleText}</SubTitle>
+                {isAuth ?
+                    (<AuthFormContainer> {children} </AuthFormContainer>)
+                    :
+                    children
+                }
+            </ContentContainer>
+        </PageContainer>
+    )
 }
