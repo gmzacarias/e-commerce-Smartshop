@@ -1,7 +1,8 @@
+"use client"
 import { Controller } from "react-hook-form";
 import { useLogin } from "@/features/auth/hooks/useLogin";
-import { Label, Small } from "@/ui/typography";
 import { OTPContainer } from "@/ui/containers/otpContainer";
+import { Label, Small } from "@/ui/typography";
 import { RefOTPInput } from "@/ui/inputs";
 import { FormButton } from "@/ui/buttons";
 

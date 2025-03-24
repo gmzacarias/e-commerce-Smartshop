@@ -1,8 +1,9 @@
+"use client"
+import { Controller } from "react-hook-form"
+import { useLogin } from "@/features/auth/hooks/useLogin"
 import { LoginInput } from "@/ui/inputs"
-import { useLogin } from "../../hooks/useLogin"
 import { Label } from "@/ui/typography"
 import { FormButton } from "@/ui/buttons"
-import { Controller } from "react-hook-form"
 
 export function EmailForm() {
     const { controlEmail, onErrorEmail, handleEmailSubmit, handleEmailForm } = useLogin()
