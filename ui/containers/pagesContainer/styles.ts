@@ -4,7 +4,7 @@ type ContentContainerProps = {
   isAuth: boolean
 }
 
-export const PageContainer = styled.div`
+export const PageContainer = styled.div<ContentContainerProps>`
   width: 100%;
   height: 100%;
   display:flex;
@@ -12,7 +12,7 @@ export const PageContainer = styled.div`
   align-items: center;
  
   @media(min-width:769px){
-    flex-direction: row;
+    flex-direction:${({ isAuth }) => (isAuth ? "row" : "column")};
     justify-content: center;
   }
 `
@@ -38,8 +38,7 @@ export const ContentContainer = styled.div<ContentContainerProps>`
     width: ${({ isAuth }) => (isAuth ? "50%" : "100%")};
     min-height:${({ isAuth }) => (isAuth ? "500px" : "100%")};
     padding: 70px;
-    align-items: flex-start;
-    gap: 10px;
+    align-items:${({ isAuth }) => (isAuth ? "flex-start" : "center")};
   }
 `
 

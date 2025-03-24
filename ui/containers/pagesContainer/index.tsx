@@ -12,16 +12,13 @@ type PagesContainerProps = {
 export function PagesContainer({ isAuth, subTitleText, children }: PagesContainerProps) {
 
     return (
-        <PageContainer>
+        <PageContainer isAuth={isAuth}>
             <ContentContainer isAuth={isAuth}>
                 {isAuth && <BrandPagesIcon />}
                 <SubTitle>{subTitleText}</SubTitle>
+                {!isAuth && children}
             </ContentContainer>
-            {isAuth ?
-                (<AuthFormContainer> {children} </AuthFormContainer>)
-                :
-                children
-            }
+            {isAuth && <AuthFormContainer>{children}</AuthFormContainer>}
         </PageContainer>
     )
 }
