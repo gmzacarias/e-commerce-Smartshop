@@ -1,6 +1,6 @@
 import { useUserData } from "@/store/zustand/useUserData"
 import { ProfileDataCard } from "@/ui/cards/profileDataCard"
-import { FormButton } from "@/ui/buttons"
+import { FormButton, DefaultButton } from "@/ui/buttons"
 import { useEditProfile } from "@/features/user/hooks/useEditProfile"
 
 export function EditProfileData() {
@@ -9,12 +9,8 @@ export function EditProfileData() {
 
     return (
         <ProfileDataCard isEditing={true} email={email} userName={userName} address={address} phoneNumber={phoneNumber}>
-            <FormButton title="guardar">
-                Guardar
-            </FormButton>
-            <FormButton onClick={handleReset} title={"resetear formulario"}>
-                Resetear
-            </FormButton>
+            <DefaultButton type="submit" title={"guardar cambios"}>Guardar</DefaultButton>
+            <DefaultButton onClick={handleReset} title={"resetear formulario"}>Resetear</DefaultButton>
         </ProfileDataCard>
     )
 }
