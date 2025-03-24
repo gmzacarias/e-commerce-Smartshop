@@ -1,7 +1,8 @@
+"use client"
 import { useUserData } from "@/store/zustand/useUserData"
+import { useEditProfile } from "@/features/user/hooks/useEditProfile"
 import { ProfileDataCard } from "@/ui/cards/profileDataCard"
 import { FormButton, DefaultButton } from "@/ui/buttons"
-import { useEditProfile } from "@/features/user/hooks/useEditProfile"
 
 export function EditProfileData() {
     const { email, userName, address, phoneNumber } = useUserData()

@@ -1,3 +1,4 @@
+"use client"
 import { useProfile } from "@/features/user/hooks/useProfile"
 import { SkeletonProfile } from "@/ui/skeletons/skeletonProfile"
 import { ProfileDataCard } from "@/ui/cards/profileDataCard"

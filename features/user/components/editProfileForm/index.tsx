@@ -1,6 +1,7 @@
+"use client"
 import { ReactNode } from "react"
 import { Controller } from "react-hook-form"
-import { useEditProfile } from "../../hooks/useEditProfile"
+import { useEditProfile } from "@/features/user/hooks/useEditProfile"
 import { EditProfileInput } from "@/ui/inputs"
 import { Label } from "@/ui/typography"
 
