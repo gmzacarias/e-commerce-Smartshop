@@ -3,7 +3,7 @@ import { PagesContainer } from "@/ui/containers/pagesContainer"
 
 export function EditProfile() {
     return (
-        <PagesContainer isAuth={false} subTitleText="Editar mis datos">
+        <PagesContainer $isAuth={false} subTitleText="Editar mis datos">
             <EditProfileData />
         </PagesContainer>
     )

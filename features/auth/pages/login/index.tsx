@@ -7,7 +7,7 @@ import { OTPForm } from "@/features/auth/components/otpForm";
 export function Login() {
     const { currentEmail } = useLogin()
     return (
-        <PagesContainer isAuth={true} subTitleText="Ingrese tu cuenta">
+        <PagesContainer $isAuth={true} subTitleText="Ingrese tu cuenta">
             {!currentEmail ? (<EmailForm />) : (<OTPForm />)}
         </PagesContainer>
 

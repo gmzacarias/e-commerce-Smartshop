@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 type ContentContainerProps = {
-  isAuth: boolean
+  $isAuth: boolean
 }
 
 export const PageContainer = styled.div<ContentContainerProps>`
@@ -12,7 +12,7 @@ export const PageContainer = styled.div<ContentContainerProps>`
   align-items: center;
  
   @media(min-width:769px){
-    flex-direction:${({ isAuth }) => (isAuth ? "row" : "column")};
+    flex-direction:${({ $isAuth }) => ($isAuth ? "row" : "column")};
     justify-content: center;
   }
 `
@@ -26,7 +26,7 @@ export const ContentContainer = styled.div<ContentContainerProps>`
   background-color: ${({ theme }) => theme.background};
   width: 100%;
   height:100%;
-  min-height:${({ isAuth }) => (isAuth ? "250px" : "100%")};
+  min-height:${({ $isAuth }) => ($isAuth ? "250px" : "100%")};
   padding: 70px 50px 50px;
   display: flex;
   flex-direction: column;
@@ -35,10 +35,10 @@ export const ContentContainer = styled.div<ContentContainerProps>`
   gap: 20px;
 
   @media(min-width:769px){
-    width: ${({ isAuth }) => (isAuth ? "50%" : "100%")};
-    min-height:${({ isAuth }) => (isAuth ? "500px" : "100%")};
+    width: ${({ $isAuth }) => ($isAuth ? "50%" : "100%")};
+    min-height:${({ $isAuth }) => ($isAuth ? "500px" : "100%")};
     padding: 70px;
-    align-items:${({ isAuth }) => (isAuth ? "flex-start" : "center")};
+    align-items:${({ $isAuth }) => ($isAuth ? "flex-start" : "center")};
   }
 `
 

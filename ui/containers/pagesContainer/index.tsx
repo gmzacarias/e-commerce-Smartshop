@@ -4,21 +4,21 @@ import { SubTitle } from "@/ui/typography";
 import { BrandPagesIcon } from "@/ui/icons";
 
 type PagesContainerProps = {
-    isAuth: boolean
+    $isAuth: boolean
     subTitleText: string,
     children: ReactNode
 }
 
-export function PagesContainer({ isAuth, subTitleText, children }: PagesContainerProps) {
+export function PagesContainer({ $isAuth, subTitleText, children }: PagesContainerProps) {
 
     return (
-        <PageContainer isAuth={isAuth}>
-            <ContentContainer isAuth={isAuth}>
-                {isAuth && <BrandPagesIcon />}
+        <PageContainer $isAuth={$isAuth}>
+            <ContentContainer $isAuth={$isAuth}>
+                {$isAuth && <BrandPagesIcon />}
                 <SubTitle>{subTitleText}</SubTitle>
-                {!isAuth && children}
+                {!$isAuth && children}
             </ContentContainer>
-            {isAuth && <AuthFormContainer>{children}</AuthFormContainer>}
+            {$isAuth && <AuthFormContainer>{children}</AuthFormContainer>}
         </PageContainer>
     )
 }
