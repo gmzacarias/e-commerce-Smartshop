@@ -1,3 +1,4 @@
+"use client"
 import { useLogin } from "@/features/auth/hooks/useLogin";
 import { PagesContainer } from "@/ui/containers/pagesContainer";
 import { EmailForm } from "@/features/auth/components/emailForm";
