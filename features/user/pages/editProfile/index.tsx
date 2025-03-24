@@ -1,17 +1,10 @@
-import { EditProfileData } from "../../components/editProfileData"
-import { SubTitle } from "@/ui/typography"
-import { EditProfileSection, PageContainer } from "./styles"
-
-
+import { EditProfileData } from "@/features/user/components/editProfileData"
+import { PagesContainer } from "@/ui/containers/pagesContainer"
 
 export function EditProfile() {
-
     return (
-        <EditProfileSection>
-            <PageContainer>
-                <SubTitle>Editar mis datos</SubTitle>
-                <EditProfileData />
-            </PageContainer >
-        </EditProfileSection >
+        <PagesContainer isAuth={false} subTitleText="Editar mis datos">
+            <EditProfileData />
+        </PagesContainer>
     )
 }

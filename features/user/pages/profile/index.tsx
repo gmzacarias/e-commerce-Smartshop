@@ -1,15 +1,9 @@
-import { ProfileData } from "@/features/user/components/profileData/profileData"
-import { SubTitle } from "@/ui/typography"
-import { ProfileBody, PageContainer } from "./styles"
+import { ProfileData } from "@/features/user/components/profileData"
+import { PagesContainer } from "@/ui/containers/pagesContainer"
 
 export function Profile() {
-
-    return (
-        <ProfileBody>
-            <PageContainer>
-                <SubTitle>Mi perfil</SubTitle>
-                <ProfileData />
-            </PageContainer>
-        </ProfileBody>
+    return (<PagesContainer isAuth={false} subTitleText="Mis datos">
+        <ProfileData />
+    </PagesContainer>
     )
 }
