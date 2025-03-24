@@ -13,15 +13,15 @@ export function PagesContainer({ isAuth, subTitleText, children }: PagesContaine
 
     return (
         <PageContainer>
-            <ContentContainer>
+            <ContentContainer isAuth={isAuth}>
                 {isAuth && <BrandPagesIcon />}
                 <SubTitle>{subTitleText}</SubTitle>
-                {isAuth ?
-                    (<AuthFormContainer> {children} </AuthFormContainer>)
-                    :
-                    children
-                }
             </ContentContainer>
+            {isAuth ?
+                (<AuthFormContainer> {children} </AuthFormContainer>)
+                :
+                children
+            }
         </PageContainer>
     )
 }
