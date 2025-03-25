@@ -4,12 +4,11 @@ export async function getToken(email: string, code: string): Promise<GetTokenRes
     try {
         const response = await fetchApi<GetTokenResponse>("/auth/token", {
             method: "POST",
-            body: JSON.stringify({
+            body: {
                 email,
                 code: parseInt(code)
-            })
-        }
-        )
+            }
+        })
         if (response.message.includes("incorrecto")) {
             throw new Error(`error del servidor:${response.message}`)
         }
