@@ -10,9 +10,10 @@ export function useEditProfile() {
 
     async function handleSubmitForm(data: DataFormValue) {
         const { email, userName, address, phoneNumber } = data
+        const formatPhoneNumber = Number(phoneNumber)
         try {
 
-            await editProfile(userName, email, address, phoneNumber)
+            await editProfile(userName, email, address, formatPhoneNumber)
             router.replace("/me")
             // toast datos actualizados
             return
