@@ -2,25 +2,24 @@ const BASE_URL = "https://e-commerce-backend-lake.vercel.app/api"
 
 export async function fetchApi<T = unknown>(
     endpoint: RequestInfo,
-    options: RequestInit = {},
+    options?: {},
 ): Promise<T> {
     const url = `${BASE_URL}${endpoint}`
     const token = getSavedToken()
-    const headers = new Headers(options.headers)
-    headers.set("Content-Type", "application/json")
+    const newOptions: any = options || {}
+    newOptions.headers ||= {}
+    newOptions.headers["content-type"] = "application/json"
 
     if (token) {
-        headers.set("Authorization", `Bearer ${token}`)
+        newOptions.headers["authorization"] = `Bearer ${token}`
     }
 
-    const fetchOptions: RequestInit = {
-        ...options,
-        headers,
-        body:typeof options.body === "object" ? JSON.stringify(options.body) : options.body
+    if (newOptions.body) {
+        newOptions.body = JSON.stringify(newOptions.body)
     }
 
     try {
-        const response = await fetch(url, fetchOptions)
+        const response = await fetch(url, newOptions)
         const data = await response.json()
         if (!response.ok) {
             throw new Error(data?.message || `Error:${response.status}`)
