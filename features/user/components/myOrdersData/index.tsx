@@ -1,3 +1,4 @@
+"use client"
 import { useMyOrders } from "@/features/user/hooks/useMyOrders";
 import { ErrorDataCard } from "@/ui/cards/errorDataCard";
 import { OrdersCard } from "@/ui/cards/ordersCard";
