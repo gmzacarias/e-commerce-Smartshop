@@ -60,7 +60,8 @@ declare global {
 
     type OrdersCardProps = {
         data: OrdersData[],
-        children: (products: ProductData, status: string) => ReactNode
+        children: (products: ProductData, status: string) => ReactNode,
+        buttons: ReactNode,
     }
 
     interface UseOrderData {
