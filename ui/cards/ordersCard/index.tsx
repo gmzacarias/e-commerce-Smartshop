@@ -1,6 +1,6 @@
-import { OrdersCardContainer, OrdersCardContent } from "./styles";
+import { OrdersCardContainer, OrdersCardContent, ButtonsContainer } from "./styles";
 
-export function OrdersCard({ data, children }: OrdersCardProps) {
+export function OrdersCard({ data, children, buttons }: OrdersCardProps) {
 
     return (
         <>
@@ -15,6 +15,9 @@ export function OrdersCard({ data, children }: OrdersCardProps) {
                             {children(product, item.status)}
                         </div>
                     ))}
+                    <ButtonsContainer>
+                        {buttons}
+                    </ButtonsContainer>
                 </OrdersCardContainer>
             ))}
         </>
