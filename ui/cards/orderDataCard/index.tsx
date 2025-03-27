@@ -18,9 +18,7 @@ export function OrderDataCard({ product, status, buttons }: OrderDataCardProps) 
                     </div>
                     <div>
                         <p>{status}</p>
-                        <ButtonsContainer>
-                            {buttons}
-                        </ButtonsContainer>
+                        {buttons && <ButtonsContainer>{buttons}</ButtonsContainer>}
                     </div>
                 </ProductsDataContainer>
             ))}

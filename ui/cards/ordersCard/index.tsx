@@ -1,6 +1,6 @@
 import { OrdersCardContainer, OrdersCardContent} from "./styles";
 
-export function OrdersCard({ data, children, buttons }: OrdersCardProps) {
+export function OrdersCard({ data, children}: OrdersCardProps) {
 
     return (
         <>
@@ -12,7 +12,7 @@ export function OrdersCard({ data, children, buttons }: OrdersCardProps) {
                     </OrdersCardContent>
                     {item.products?.map((product) => (
                         <div key={product.productId}>
-                            {children(product, item.status,buttons)}
+                            {children(product, item.status)}
                         </div>
                     ))}
                 </OrdersCardContainer>
