@@ -1,10 +1,9 @@
 import { NextPage } from "next";
 import { Layout } from "components/layout";
-import { useMe } from "@/hooks/swr/useSWR"
-import styled from "styled-components"
 import Head from "next/head"
 import { useRouter } from "next/router";
-import { OrderById } from "@/features/user/components/myOrders/orderById"
+import { OrdersById } from "@/features/user/components/orderById"
+import { MyOrderById } from "@/features/user/pages/myOrderById";
 
 const OrderByIdPage: NextPage = () => {
     const router = useRouter();
@@ -19,7 +18,7 @@ const OrderByIdPage: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                <OrderById orderId={orderId} />
+                <MyOrderById orderId={orderId} />
             </Layout>
         </>
     );
