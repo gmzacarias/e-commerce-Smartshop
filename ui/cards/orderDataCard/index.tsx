@@ -2,7 +2,7 @@ import { ButtonsContainer, ImageContainer, ImageContent, ProductsDataContainer }
 
 
 
-export function OrderDataCard({ product, status, buttons }: OrderDataCardProps) {
+export function OrderDataCard({ product, buttons }: OrderDataCardProps) {
     console.log("container", ProductsDataContainer)
     return (
         <>
@@ -17,7 +17,6 @@ export function OrderDataCard({ product, status, buttons }: OrderDataCardProps) 
                         <p style={{ fontSize: 14 }}>1 unidad</p>
                     </div>
                     <div>
-                        <p>{status}</p>
                         {buttons && <ButtonsContainer>{buttons}</ButtonsContainer>}
                     </div>
                 </ProductsDataContainer>

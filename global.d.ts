@@ -48,7 +48,6 @@ declare global {
 
     type OrderDataCardProps = {
         product: ProductData[],
-        status: string,
         buttons:ReactNode
     }
 

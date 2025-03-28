@@ -26,7 +26,7 @@ export function MyOrdersData() {
                     data={data}
                 >
                     {(product) => (
-                        <OrderDataCard key={product.productId} product={[product]} status={item.status} buttons={(
+                        <OrderDataCard key={product.productId} product={[product]} buttons={(
                             <>
                                 <DefaultButton onClick={() => handleNavigation(`${"/me/myorders/"}${item.id}`)} title={"ver compra"}>Ver compra</DefaultButton>
                                 <DefaultButton onClick={() => handleNavigation(`${"/product/"}${product.productId}`)} title={"volver a comprar"}>Volver a comprar</DefaultButton>
