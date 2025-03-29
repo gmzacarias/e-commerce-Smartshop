@@ -1,15 +1,12 @@
 "use client"
-import { useOrderById } from "@/hooks/swr/useOrderById"
 import { ErrorDataCard } from "@/ui/cards/errorDataCard"
-
+import { useMyOrderById } from "../../hooks/useMyOrderById"
+import { OrderByIdDataCard } from "@/ui/cards/orderByIdDataCard"
 
 export function OrderById({ orderId }) {
+    const { data, isLoading, isError, error } = useMyOrderById(orderId)
 
-
-
-    const { data, isLoading, isError, error } = useOrderById(orderId)
-    console.log("data a mostrar", data?.data.status)
-
+    console.log("data", data.data)
     if (isLoading) {
         return (
             <div>
@@ -22,7 +19,7 @@ export function OrderById({ orderId }) {
 
     return (
         <>
-            <div>soy la orden {orderId}</div>
+            <OrderByIdDataCard data={data?.data} />
         </>
     )
 

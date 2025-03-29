@@ -71,6 +71,19 @@ declare global {
         error: Error | null
     }
 
+    interface OrderByIdData {
+        id: string,
+        created: string,
+        url: string,
+        additionalInfo: string,
+        status: string
+    }
+    
+    type OrderByIdDataProps = {
+        data: OrderByIdData
+    }
+    
+
 }
 
 export { }
